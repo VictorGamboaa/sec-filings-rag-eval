@@ -2,7 +2,11 @@
 name = "rag-test"
 version = "0.1.0"
 description = "Ingestion and retrieval pipeline for SEC filings, built to measure retrieval quality, scaling behavior, build cost, and throughput."
-requires-python = ">=3.12"
+# Upper bound is deliberate. Ubuntu 26.04 ships Python 3.14, which satisfies
+# >=3.12 but has no manylinux wheels for faiss-cpu or torch -- resolution would
+# succeed and then strand us on a source build of faiss. Pinned to 3.12 here and
+# in .python-version so the interpreter cannot drift with the distro.
+requires-python = ">=3.12,<3.13"
 
 dependencies = [
     # Configuration and credentials
@@ -12,6 +16,10 @@ dependencies = [
     "httpx>=0.27",
     # Embedding and indexing
     "numpy>=1.26",
+    # Declared directly, though sentence-transformers would pull it anyway:
+    # [tool.uv.sources] only applies to direct dependencies, so the CPU-index
+    # pin below is silently ignored if torch arrives transitively.
+    "torch>=2.0",
     "sentence-transformers>=3.0",
     "faiss-cpu>=1.8",
 ]
@@ -21,6 +29,18 @@ dev = [
     "pytest>=8.0",
 ]
 
+# Host is a Qualcomm Oryon (aarch64) with no NVIDIA GPU. Default PyPI torch --
+# on linux-aarch64 as well as x86_64 -- pulls the CUDA build and ~17 nvidia-*
+# runtime wheels totalling several GB, all of it dead weight here. Pinning the
+# CPU index drops those entirely (verified: torch==2.14.0+cpu, 0 nvidia pkgs).
 [tool.uv]
-# torch wheels are large; resolution is slow but installs are cached.
 package = false
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+
