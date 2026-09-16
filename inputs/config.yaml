@@ -1,0 +1,69 @@
+# Tunables for the filing RAG evaluation harness.
+#
+# Rule 3: every value here is configuration, never a constant in code. Any of
+# them can be overridden per-run without editing this file:
+#
+#   python -m tools.<stage> --set embed.batch_size=128 --set fetch.concurrency=8
+#
+# The resolved values (after overrides) are written into the run log, so every
+# measurement is traceable to the exact tunables that produced it.
+
+run:
+  # null => timestamp-derived id, e.g. 20260914T155500Z
+  id: null
+  log_dir: outputs/runs
+
+fetch:
+  source: edgar
+  base_url: https://data.sec.gov
+  archives_url: https://www.sec.gov/Archives
+  # Name of the env var holding the SEC-mandated contact string. The value is
+  # resolved from the environment at load; the secret never sits in this file.
+  user_agent_env: EDGAR_USER_AGENT
+  # SEC's published ceiling is 10 req/sec. Staying under it is deliberate.
+  rate_limit_per_sec: 8
+  concurrency: 4
+  max_retries: 5
+  backoff_initial_sec: 1.0
+  timeout_sec: 30
+  out_dir: temp/filings
+
+parse:
+  out_dir: temp/parsed
+
+chunk:
+  # unit: tokens | chars
+  unit: tokens
+  size: 1000
+  overlap: 200
+  out_dir: temp/chunks
+
+embed:
+  # Selects an implementation from the registry in tools/embedders/.
+  # Only "local" is implemented; see tools/embedders/base.py for the interface
+  # a hosted provider would implement.
+  provider: local
+  batch_size: 64
+  concurrency: 1
+  out_dir: temp/embeddings
+  providers:
+    local:
+      model: BAAI/bge-small-en-v1.5
+      # device: auto | cpu | cuda
+      device: auto
+      normalize: true
+      # bge models expect this prefix on queries but not on documents.
+      query_prefix: "Represent this sentence for searching relevant passages: "
+
+index:
+  backend: faiss
+  # ip = inner product. With normalized vectors this is cosine similarity.
+  metric: ip
+  out_dir: outputs/index
+
+retrieve:
+  top_k: 10
+  out_dir: outputs/retrievals
+
+evaluate:
+  out_dir: outputs/eval

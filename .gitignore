@@ -1,0 +1,22 @@
+# Credentials — never commit (CLAUDE.md, mandatory)
+.env
+
+# Environments and agent state (CLAUDE.md, mandatory)
+.venv/
+.claude
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Build artifacts: run logs, indexes, intermediates.
+# Structure is preserved via .gitkeep; contents are not tracked.
+outputs/*
+!outputs/.gitkeep
+temp/*
+!temp/.gitkeep
+
+# Model caches
+.cache/
