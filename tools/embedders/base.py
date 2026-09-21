@@ -15,10 +15,21 @@ An implementation must honour five things. Each exists because a hosted provider
 would otherwise diverge from the local one in a way that silently corrupts a
 comparison between them.
 
-1. ``dim`` and ``normalized`` are known *before* any text is embedded.
+1. ``dim``, ``normalized`` and ``max_seq_tokens`` are known *before* any text is
+   embedded.
    The FAISS index must be allocated with the right width and the right metric
    at construction. An embedder that only learns its own dimension after the
    first call cannot be indexed against without a wasted probe call.
+
+   ``max_seq_tokens`` is on this list for a sharper reason than the other two.
+   Exceeding it is not an error in any embedding library -- the input is
+   silently truncated and a perfectly well-formed vector comes back for the
+   first N tokens. BAAI/bge-small-en-v1.5 accepts 512; a 1000-token chunk sent
+   to it yields a vector representing roughly half the text, with nothing in the
+   return value indicating that the rest was dropped. Every downstream
+   measurement then reports a full corpus. Declaring the limit up front is what
+   lets the chunker size its output against it and the index stage refuse an
+   over-length chunk instead of truncating it.
 
 2. Queries and documents are embedded by separate methods.
    The local bge model treats them near-identically apart from a query prefix,
@@ -92,6 +103,10 @@ class Embedder(Protocol):
     max_batch: int
     #: True if returned vectors are L2-normalized, making inner product == cosine.
     normalized: bool
+    #: Longest input in tokens, including any special tokens the model adds.
+    #: Text beyond this is truncated by the backend WITHOUT error, so callers
+    #: must validate against it rather than discover it. See contract point 1.
+    max_seq_tokens: int
 
     def embed_documents(
         self, texts: list[str], stage: StageRecorder | None = None

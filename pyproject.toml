@@ -44,3 +44,10 @@ explicit = true
 [tool.uv.sources]
 torch = { index = "pytorch-cpu" }
 
+
+[tool.pytest.ini_options]
+# The project is not installed as a package (package = false above), so the repo
+# root goes on sys.path for `import tools`. Tests also load inputs/config.yaml by
+# its default relative path, which requires the repo root as rootdir.
+pythonpath = ["."]
+testpaths = ["tests"]

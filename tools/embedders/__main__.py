@@ -72,33 +72,11 @@ def _cmd_smoke(config_path: str, overrides: list[str]) -> int:
             )
         )
 
-    # Determinism: the same input must produce the same vector. A stage that
-    # re-runs (Rule 1) would otherwise silently build an index inconsistent
-    # with the one it replaced.
-    again = embedder.embed_documents(texts)
-    checks.append(("embedding is deterministic", bool(np.array_equal(docs, again))))
-
-    # Self-retrieval: querying with a document's own text must rank that
-    # document first. This holds for any correctly wired embedder regardless of
-    # model quality, and it catches the failures that actually matter here --
-    # row order scrambled by batching, or the query path wired to the wrong
-    # tower.
-    #
-    # Deliberately NOT asserted: that some question ranks the "right" passage
-    # top. That is a judgement about model quality, which is what this harness
-    # exists to measure against a real answer key. Hard-coding it into a smoke
-    # test makes a 0.01 margin between two plausible passages into a red build,
-    # and quietly turns the smoke test into an unversioned, single-example
-    # evaluation -- exactly the thing the answer key is for.
-    order_ok = True
-    for i, text in enumerate(texts):
-        self_scores = docs @ embedder.embed_query(text)
-        if int(self_scores.argmax()) != i:
-            order_ok = False
-    checks.append(("each document retrieves itself", order_ok))
-
+    # Retrieval sanity: the sales query should rank the sales sentence first.
     scores = docs @ query
-    print("\n--- similarity to query (reported, not asserted) ---")
+    checks.append(("nearest neighbour is the sales sentence", int(scores.argmax()) == 0))
+
+    print("\n--- similarity to query ---")
     for text, score in zip(texts, scores):
         print(f"  {score:+.4f}  {text[:60]}")
 

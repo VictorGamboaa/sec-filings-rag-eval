@@ -13,6 +13,50 @@ run:
   id: null
   log_dir: outputs/runs
 
+universe:
+  # SEC's official ticker->CIK mapping. The universe is built by joining against
+  # this file, never from a CIK typed from memory: a CIK with no fetched source
+  # has no audit standing.
+  tickers_url: https://www.sec.gov/files/company_tickers.json
+  out_path: inputs/universe.csv
+  # The fetched file is kept as the audit trail for the join.
+  cache_path: temp/company_tickers.json
+  tickers: ["BCPC", "AGNC", "AIG", "ACI", "HON"]
+
+discover:
+  # Corpus scope is a FILING-DATE window, never a fiscal-quarter label. These
+  # five filers do not share a fiscal calendar (Albertsons runs an offset fiscal
+  # year), so a label like "Q2 FY25" would select different real periods for
+  # different names. period_of_report is carried through as metadata only.
+  #
+  # Narrowing this window is how the scaling curve is produced, so it must stay
+  # overridable:  --set discover.date_from=2025-01-01
+  date_from: "2024-01-01"     # filing date, inclusive
+  date_to: null               # null => today; resolved bound written to run log
+  # Matched exactly: "10-Q" does not match "10-Q/A" unless listed here.
+  forms: ["10-Q", "8-K"]
+  concurrency: 2              # five CIKs; small on purpose
+  out_path: inputs/manifest.csv
+  submissions_url: https://data.sec.gov/submissions
+  # filings.recent covers roughly the last year or 1000 filings. When the window
+  # predates it, true => also pull the older files[] shards; false => log a
+  # truncation error rather than silently returning a short manifest.
+  follow_older_shards: true
+
+  # --- exhibits ------------------------------------------------------------
+  # The manifest carries one row per DOCUMENT, not per filing. For forms listed
+  # here, the filing's index-headers document is fetched and every document whose
+  # SGML <TYPE> matches a prefix below becomes its own manifest row.
+  #
+  # Why index-headers and not index.json: index.json's "type" field is an icon
+  # filename ("text.gif"), not a document type. The only machine-readable,
+  # authoritative document type EDGAR publishes per filing is the SGML header.
+  # Inferring "EX-99.1" from a filename like "ex991-press.htm" would be a guess.
+  exhibit_forms: ["8-K"]
+  # Prefix match, case-insensitive. "EX-99" admits EX-99, EX-99.1, EX-99.2 and
+  # excludes the EX-101.* XBRL taxonomy documents present in the same index.
+  exhibit_types: ["EX-99"]
+
 fetch:
   source: edgar
   base_url: https://data.sec.gov
@@ -20,23 +64,111 @@ fetch:
   # Name of the env var holding the SEC-mandated contact string. The value is
   # resolved from the environment at load; the secret never sits in this file.
   user_agent_env: EDGAR_USER_AGENT
-  # SEC's published ceiling is 10 req/sec. Staying under it is deliberate.
+  # SEC's published ceiling is 10 req/sec, and it is per requester "regardless of
+  # the number of machines used to submit requests"
+  # (https://www.sec.gov/about/privacy-information#security, and
+  #  https://www.sec.gov/os/webmaster-faq). Staying under it is deliberate, and
+  # the limiter is shared process-wide so raising concurrency cannot raise the
+  # achieved request rate.
   rate_limit_per_sec: 8
   concurrency: 4
   max_retries: 5
   backoff_initial_sec: 1.0
+  # Exceeding the ceiling costs a ~10-minute cool-off, not a single failed call,
+  # so backoff must be able to run well past one retry interval.
+  backoff_max_sec: 60.0
   timeout_sec: 30
   out_dir: temp/filings
+  ledger_path: temp/filings/fetched.csv
+  # Content types accepted as a primary document. There is no PDF path: EDGAR
+  # serves HTML or text, and parsing PDFs would be pure overhead here.
+  accept_content_types: ["text/html", "application/xhtml+xml", "text/plain"]
 
 parse:
   out_dir: temp/parsed
+  # Section anchors are CONFIGURATION, not constants in the splitter. These five
+  # filers structure their documents differently and the patterns need tuning per
+  # form type; the splitter compiles what it finds here and holds no literal
+  # anchor of its own.
+  #
+  # Regex in YAML single quotes so backslashes stay literal. Matched against
+  # flattened text (runs of whitespace collapsed to one space), in list order;
+  # each match opens a section that runs to the next match.
+  anchor_flags: ["IGNORECASE"]
+  # Text before the first anchor takes this label. null, per Rule 4: it is
+  # genuinely unattributed, and a guessed label would destroy that signal.
+  preamble_label: null
+  # Reject table-of-contents false positives: an anchor only opens a section if
+  # the section it opens exceeds this many characters.
+  min_section_chars: 200
+  # Text extraction inserts a separator at every element boundary EXCEPT between
+  # these purely typographic inline tags. Without a separator, adjacent text
+  # nodes weld: the real markup
+  #     <span>Item&#160;5.02</span></td><td><span>Departure of Directors</span>
+  # yields "Item 5.02Departure of Directors", and every anchor above needs
+  # whitespace between the item number and the heading. A silent weld would
+  # collapse section-aware chunking into _default across the whole corpus.
+  # These tags are excluded because they appear WITHIN a word (<b>Fin</b>ancial),
+  # where a separator would break the word instead of repairing the split.
+  # span is deliberately absent: EDGAR uses it for phrase-level layout.
+  inline_tags_no_separator: [b, i, u, em, strong, sup, sub, font, small, big]
+  # An exhibit's section is its EDGAR document type (EX-99.1) rather than a
+  # pattern match. Exhibits are press releases with no Item structure: all 139
+  # in this corpus match no anchor, and leaving them unsectioned would put 4.5M
+  # characters -- 36% of corpus text -- into the unsectioned bucket and destroy
+  # its value as a signal that an anchor which SHOULD have matched did not.
+  # The label is sourced from the manifest, so this is not an invented section.
+  exhibit_section_from_label: true
+  # Anchor lookup order: "<form>/<doc_type>", then "<form>", then "_default".
+  section_anchors:
+    "10-Q":
+      # Filers put words between the number and the title -- "Item 1 -
+      # Condensed Consolidated Financial Statements" is the common form, and
+      # requiring the title immediately after the number missed it in 16 of 40
+      # 10-Qs, leaving the financial statements unsectioned. Up to four
+      # intervening words, measured: 24/40 -> 32/40 documents, and 10-Q
+      # unsectioned text 17.3% -> 11.0%.
+      #
+      # The word run cannot cross a "|", which is what keeps the repeating page
+      # header "Item 1 | Notes to Condensed Consolidated Financial Statements"
+      # (349 occurrences in this corpus) from being read as a heading.
+      - {label: part1_item1_financial_statements, pattern: 'item\s*1\.?\s*[-–—:]?\s*(?:[A-Za-z()]+\s+){0,4}financial\s+statements'}
+      - {label: part1_item2_mdna,                 pattern: 'item\s*2\.?\s*[-–—:]?\s*management.s\s+discussion'}
+      - {label: part1_item3_market_risk,          pattern: 'item\s*3\.?\s*[-–—:]?\s*quantitative\s+and\s+qualitative'}
+      - {label: part1_item4_controls,             pattern: 'item\s*4\.?\s*[-–—:]?\s*controls\s+and\s+procedures'}
+      - {label: part2_item1_legal,                pattern: 'item\s*1\.?\s*[-–—:]?\s*legal\s+proceedings'}
+      - {label: part2_item1a_risk_factors,        pattern: 'item\s*1a\.?\s*[-–—:]?\s*risk\s+factors'}
+      - {label: part2_item2_unregistered_sales,   pattern: 'item\s*2\.?\s*[-–—:]?\s*unregistered\s+sales'}
+      - {label: part2_item5_other,                pattern: 'item\s*5\.?\s*[-–—:]?\s*other\s+information'}
+      - {label: part2_item6_exhibits,             pattern: 'item\s*6\.?\s*[-–—:]?\s*exhibits'}
+    "8-K":
+      # 8-K items are numbered N.NN. One generic anchor captures the number and
+      # the splitter substitutes it into the label, so a new item type needs no
+      # config change.
+      - {label: 'item_{0}',  pattern: 'item\s*(\d\.\d{2})\.?\s*[-–—:]?\s*'}
+      - {label: signatures,  pattern: 'signatures?\s*$'}
+    # Used for any form in the manifest with no list of its own.
+    "_default":
+      - {label: 'item_{0}', pattern: 'item\s*(\d+[a-z]?)\.?\s*[-–—:]?\s*'}
 
 chunk:
   # unit: tokens | chars
   unit: tokens
-  size: 1000
-  overlap: 200
+  # 512 is the hard ceiling of BAAI/bge-small-en-v1.5 -- verified against the
+  # model's own sentence_bert_config.json ("max_seq_length": 512) and
+  # config.json (max_position_embeddings: 512), not recalled -- and [CLS]/[SEP]
+  # consume two of those. A chunk longer than that is silently truncated at
+  # embed time: no error, no warning, just the tail of every chunk absent from
+  # the vectors while the index reports a full count. 450 leaves headroom.
+  # tools/embed_index.py refuses an over-length chunk rather than truncating it.
+  size: 450
+  overlap: 90
+  # Prefer ending a chunk at a sentence boundary found within the last fraction
+  # of the window; hard-cut when there is none.
+  snap_to_sentence: true
+  snap_search_fraction: 0.2
   out_dir: temp/chunks
+  ledger_path: temp/chunks/parsed.csv
 
 embed:
   # Selects an implementation from the registry in tools/embedders/.
@@ -44,26 +176,62 @@ embed:
   # a hosted provider would implement.
   provider: local
   batch_size: 64
+  # Commit the index (and fsync metadata) every N batches. A long CPU build that
+  # is interrupted then resumes from the last checkpoint instead of restarting:
+  # the index is the source of truth, and metadata rows beyond it are discarded
+  # and re-embedded. Lower = less lost work, more index rewrites.
+  checkpoint_batches: 20
   concurrency: 1
   out_dir: temp/embeddings
   providers:
     local:
       model: BAAI/bge-small-en-v1.5
-      # device: auto | cpu | cuda
-      device: auto
+      # Pinned to cpu, not auto: auto silently selects CUDA where present, so the
+      # same config would yield different throughput on different hosts and the
+      # build-cost measurement would stop being comparable across runs.
+      device: cpu
       normalize: true
       # bge models expect this prefix on queries but not on documents.
       query_prefix: "Represent this sentence for searching relevant passages: "
 
 index:
   backend: faiss
-  # ip = inner product. With normalized vectors this is cosine similarity.
+  # ip = inner product. With normalized vectors this is cosine similarity, which
+  # is why the stage asserts embedder.normalized before choosing it.
   metric: ip
   out_dir: outputs/index
+  # Index directory name under out_dir. Stable rather than run-derived, so a
+  # partial build resumes instead of starting a new index each run; the sidecar
+  # carries the embedder/chunk fingerprint that decides whether resuming is
+  # legitimate.
+  name: main
 
 retrieve:
-  top_k: 10
+  # Evaluation measures recall@5 and recall@20; recall@5 is computed by
+  # truncating this same result list. A top_k below 20 cannot produce recall@20.
+  top_k: 20
   out_dir: outputs/retrievals
 
 evaluate:
   out_dir: outputs/eval
+
+audit:
+  # Structural audit of what is on disk: text volume, section/item structure, and
+  # whether referenced exhibits are actually present. Reports counts only -- it
+  # does not characterize what any filing says (Rule 6).
+  out_dir: outputs/audit
+  sample_per_ticker: 2
+  # Fixed so the reported sample is reproducible across runs and machines.
+  sample_seed: 20260916
+  # A document below this many characters of body text is flagged short.
+  short_text_threshold: 2000
+  # Item narrative (first item anchor -> signature block) below this is flagged
+  # short, which is the shape of a filing that points at an exhibit.
+  short_item_threshold: 1500
+  # The trailing \b matters: without it this matches inside a filename such as
+  # "ex991-pressrelease.htm" -- "ex" + "99", with the trailing "1" unclaimed
+  # because no dot follows -- producing a spurious bare "99" reference that can
+  # never resolve against a label of "99.1", and overstating the gap.
+  exhibit_pattern: 'ex(?:hibit)?\s*[-–]?\s*(99(?:\.\d+)?)\b'
+  item_pattern: 'item\s*(\d\.\d{2})'
+  signature_pattern: '\bSIGNATURES?\b'

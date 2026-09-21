@@ -1,1 +1,6 @@
-ticker,cik,company_name,form_types,date_from,date_to
+ticker,cik,company_name
+BCPC,0000009326,BALCHEM CORP
+AGNC,0001423689,AGNC Investment Corp.
+AIG,0000005272,"AMERICAN INTERNATIONAL GROUP, INC."
+ACI,0001646972,"Albertsons Companies, Inc."
+HON,0000773840,HONEYWELL INTERNATIONAL INC

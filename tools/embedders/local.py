@@ -71,6 +71,17 @@ _KNOWN_DIMS: dict[str, int] = {
     "sentence-transformers/all-mpnet-base-v2": 768,
 }
 
+#: Maximum input length in tokens. Only models whose published config has been
+#: read are listed; anything else loads the model to read its real
+#: ``max_seq_length``, exactly as an unlisted dimension does. A wrong value here
+#: would be worse than an absent one -- too high and chunks are silently
+#: truncated, which is invisible downstream.
+_KNOWN_MAX_SEQ: dict[str, int] = {
+    # Verified against the model's sentence_bert_config.json ("max_seq_length":
+    # 512) and config.json (max_position_embeddings: 512).
+    "BAAI/bge-small-en-v1.5": 512,
+}
+
 
 class LocalEmbedder:
     """sentence-transformers backend running on local hardware."""
@@ -100,6 +111,14 @@ class LocalEmbedder:
             # Unknown model: load now and read the real width. Never guess --
             # a wrong dim would mis-allocate the index and fail obscurely later.
             self.dim = int(self._ensure_model().get_sentence_embedding_dimension())
+
+        known_max = _KNOWN_MAX_SEQ.get(model)
+        if known_max is not None:
+            self.max_seq_tokens = known_max
+        else:
+            # Same rule, and it matters more here: guessing high means silent
+            # truncation rather than a loud failure.
+            self.max_seq_tokens = int(self._ensure_model().max_seq_length)
 
     def _ensure_model(self) -> Any:
         """Load the model on first use.
@@ -167,6 +186,7 @@ class LocalEmbedder:
             "dim": self.dim,
             "normalized": self.normalized,
             "max_batch": self.max_batch,
+            "max_seq_tokens": self.max_seq_tokens,
             "device": self.device or "auto",
             "query_prefix": self.query_prefix or None,
         }
