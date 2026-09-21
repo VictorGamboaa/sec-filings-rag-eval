@@ -1,0 +1,553 @@
+# Answer key — filing RAG evaluation harness
+#
+# 26 entries scored against outputs/index/main. Every quote in this file has
+# been asserted verbatim against that index by tools/verify_key.py BEFORE being
+# written: a quote that did not match was never committed, and the nearest real
+# span was inspected by hand instead. Entries drafted from a summarising fetch
+# were rejected on exactly this test -- three of them, in the first pass.
+#
+# ENTRY TYPES AND WHAT EACH IS SCORED ON
+#
+#   single_fact (14)         Recall of a specific chunk. The ground truth names
+#                            one accession and one document; a match in a
+#                            different document of the same filing does not
+#                            count. q27 in particular lives in an EXHIBIT, not
+#                            the 8-K primary, and is the measurement that says
+#                            whether fetching exhibits paid off.
+#
+#   cross_company (1)        Recall over a SET. Every listed accession must
+#                            appear in top-k; a partial set scores as a miss.
+#
+#   period_over_period (5)   Recall over a SET across two filing dates. The
+#                            finding is the CHANGE between them, so returning
+#                            one period only is a miss.
+#
+#   negative_control (5)     ground_truth null by construction. Not scored on
+#                            recall. Scored on whether the top similarity score
+#                            is distinguishably lower than for answerable
+#                            questions.
+#
+#   dedup_diagnostic (1)     Not scored on recall at all. Measures how widely
+#                            one string occurs: count DISTINCT accessions and
+#                            DISTINCT chunk texts in top-20. A high accession
+#                            count against a low text count means the retriever
+#                            is returning the same boilerplate from different
+#                            filings, and deduplication is worth doing.
+#
+# STATUS LEGEND
+#   verified        quote confirmed verbatim against the index and scoreable
+#   TO_WRITE        question itself not written yet
+#
+# SCORING NOTES THAT APPLY TO THE KEY AS A WHOLE
+#
+#   * Score on ACCESSION COVERAGE, not on text. Several quotes are verbatim in
+#     more than one filing -- q19's hedging sentence is byte-identical across
+#     all eight AGNC 10-Qs, and q01's acquisition note recurs in later HON
+#     filings. A retriever can return textually correct chunks from the wrong
+#     filing. Only accession-and-document scoping distinguishes a hit from a
+#     coincidence, which is what tools/verify_key.py enforces.
+#
+#   * Some section labels are known to be wrong, and are recorded as the index
+#     has them rather than as the filing reads. HON and AIG notes are labelled
+#     part2_item1a_risk_factors or part1_item2_mdna because the Item 1A anchor
+#     matches early and absorbs the notes region; AGNC financial statements are
+#     unsectioned entirely. Fixing the anchors changes the chunk fingerprint,
+#     re-chunks the corpus and invalidates every section value here --
+#     verify_key will show the mismatch immediately.
+#
+# DELIBERATELY REMOVED -- these are scope decisions, not unwritten stubs
+#
+#   q14  A second cross_company question. Removed: five cross-sector names
+#        share too little comparable disclosure for it to mean anything.
+#   q20  A sixth period_over_period question. Removed: five already make the
+#        type meaningful.
+#
+# HOW TO FIX OR ADD AN ENTRY (about 2 minutes each)
+#   Find the chunk, then copy its real wording -- never transcribe from the
+#   rendered filing, which differs from the extracted text (the extractor emits
+#   "$ 4,913 million" and "100 %", with spaces).
+#
+#     cd ~/dev/rag-test
+#     python - <<'PY'
+#     import json
+#     ACC, TERM = "0000773840-24-000082", "Access Solutions"
+#     for line in open("outputs/index/main/metadata.jsonl"):
+#         r = json.loads(line)
+#         if r.get("accession") == ACC and TERM.lower() in r.get("text","").lower():
+#             print(r["chunk_id"], "|", r.get("section"))
+#             print(r["text"][:1200]); print("-"*70)
+#     PY
+#
+#   Copy a distinctive 10-20 word span from the printed text into `quote`, set
+#   `section` from what it prints, then run:
+#
+#     uv run python -m tools.verify_key --only <id>
+
+# =============================================================================
+# SINGLE FACT
+# =============================================================================
+
+- id: q01
+  type: single_fact
+  status: verified
+  question: "How much did Honeywell pay for Carrier's Global Access Solutions business?"
+  ground_truth:
+    ticker: HON
+    accession: "0000773840-24-000082"
+    document: hon-20240630.htm
+    section: part2_item1a_risk_factors
+    quote: "for total consideration of $ 4,913 million, net of cash acquired"
+  notes: >
+    Carrier Global Corporation's Global Access Solutions business
+    (referred to as "Access Solutions" in the filing), acquired 3 June 2024.
+    Quote verified verbatim in Note 3, chunk ordinals 16-17.
+    The quote carries the figure rather than the business name because the
+    two sit either side of a long appositive in the same sentence and no
+    span of reasonable length holds both.
+    NOTE THE SPACING: the extracted text reads "$ 4,913 million" and
+    "100 %" -- the v1 quote used "$4,913" and "100%" and so matched nothing.
+    This span also occurs in 7 chunks corpus-wide (Honeywell repeats the
+    acquisition note in later 10-Qs); scoring must stay scoped to the
+    accession and document, which verify_key does.
+
+- id: q02
+  type: single_fact
+  status: verified
+  question: "What did Honeywell announce about separating its Automation and Aerospace businesses?"
+  ground_truth:
+    ticker: HON
+    accession: "0000773840-25-000064"
+    document: hon-20250630.htm
+    section: part2_item1a_risk_factors
+    quote: "the Company announced its intention to pursue a separation of its Automation and Aerospace Technologies businesses into independent, U.S. publicly traded companies"
+  notes: >
+    Landed in Risk Factors, not a financial-statements note. Confirm this is the
+    substantive disclosure and not a passing mention — the same event is also
+    described in Note 3. If both exist, consider listing both chunks as
+    acceptable ground truth.
+
+- id: q03
+  type: single_fact
+  status: verified
+  question: "What did Honeywell acquire in June 2025 and for how much?"
+  ground_truth:
+    ticker: HON
+    accession: "0000773840-25-000064"
+    document: hon-20250630.htm
+    section: part2_item1a_risk_factors
+    quote: "for total consideration of $ 2,152 million, net of cash acquired"
+  notes: >
+    Sundyne -- a designer of highly-engineered pumps and gas compressors --
+    acquired 6 June 2025. Quote verified verbatim in Note 3, chunk ordinal 16,
+    and unique corpus-wide (1 match).
+    The quote carries the figure rather than the name for the same reason as
+    q01: they are separated by an appositive within one sentence.
+    NOTE THE SPACING: "$ 2,152 million" in the extracted text.
+
+- id: q04
+  type: single_fact
+  status: verified
+  question: "What business did Honeywell divest in May 2025?"
+  ground_truth:
+    ticker: HON
+    accession: "0000773840-25-000064"
+    document: hon-20250630.htm
+    section: part2_item1a_risk_factors
+    quote: "the Company completed the sale of its personal protective equipment (PPE) business in exchange for total consideration of"
+  notes: "$1,157 million. Same risk-factors caveat as q02."
+
+- id: q05
+  type: single_fact
+  status: verified
+  question: "What was the outcome of the FTC's challenge to the Kroger-Albertsons merger?"
+  ground_truth:
+    ticker: ACI
+    accession: "0001646972-25-000063"
+    document: aci-20250614.htm
+    section: TBD
+    quote: "the United States District Court for the District of Oregon issued a preliminary injunction in the case Federal Trade Commission et al. v. The Kroger Company and Albertsons Companies, Inc."
+
+- id: q06
+  type: single_fact
+  status: verified
+  question: "How did the False Claims Act case against Albertsons resolve?"
+  ground_truth:
+    ticker: ACI
+    accession: "0001646972-25-000063"
+    document: aci-20250614.htm
+    section: TBD
+    quote: "the Company prevailed at trial and the District Court entered judgment in favor of the Company"
+
+- id: q07
+  type: single_fact
+  status: verified
+  question: "What were the terms of the senior unsecured notes Albertsons issued in March 2025?"
+  ground_truth:
+    ticker: ACI
+    accession: "0001646972-25-000063"
+    document: aci-20250614.htm
+    section: TBD
+    quote: "completed the issuance of $600.0 million in aggregate principal amount of 6.250% senior unsecured notes due March 15, 2033"
+  notes: "Matched 2 chunks — expected given the 90-token overlap."
+
+- id: q08
+  type: single_fact
+  status: verified
+  question: "What is the borrowing capacity under Balchem's 2022 Credit Agreement?"
+  ground_truth:
+    ticker: BCPC
+    accession: "0000009326-25-000014"
+    document: bcpc-20250630.htm
+    section: part1_item1_financial_statements
+    quote: "The 2022 Credit Agreement allows for up to $ 550,000 of borrowing"
+  notes: >
+    Capacity is stated in NOTE 7 - REVOLVING LOAN, not in MD&A.
+    Verified verbatim at chunk ordinals 21-22.
+    TRAP: MD&A says "resulting in $360,000 available under the 2022 Credit
+    Agreement". That $360,000 is HEADROOM remaining after borrowings, not
+    the facility's capacity. The capacity is $550,000; answering with
+    $360,000 is wrong, and a retriever that returns only the MD&A chunk
+    will look correct to a careless grader.
+    NOTE THE SPACING: the extracted text reads "$ 550,000".
+
+- id: q09
+  type: single_fact
+  status: verified
+  question: "What joint venture does Balchem have with Eastman Chemical, and what is the ownership split?"
+  ground_truth:
+    ticker: BCPC
+    accession: "0000009326-25-000014"
+    document: bcpc-20250630.htm
+    section: TBD
+    quote: "the Company and Eastman Chemical Company formed a joint venture"
+  notes: "66.66% / 33.34%."
+
+- id: q10
+  type: single_fact
+  status: verified
+  question: "What are Balchem's reportable segments?"
+  ground_truth:
+    ticker: BCPC
+    accession: "0000009326-25-000014"
+    document: bcpc-20250630.htm
+    section: TBD
+    quote: "three reportable segments: Human Nutrition and Health, Animal Nutrition and Health, and Specialty Products"
+
+- id: q11
+  type: single_fact
+  status: verified
+  question: "What instruments does AGNC use to hedge interest rate risk?"
+  ground_truth:
+    ticker: AGNC
+    accession: "0001423689-25-000073"
+    document: agnc-20250630.htm
+    section: null
+    quote: "The primary instruments that we use are interest rate swaps, options to enter into interest rate swaps"
+  notes: >
+    section is null — the known AGNC anchor gap. Score this on recall and
+    citation-by-accession only; exclude from any section-accuracy metric.
+    Matched 2 chunks, expected from overlap.
+
+- id: q12
+  type: single_fact
+  status: verified
+  question: "What is the stated objective of AGNC's risk management strategy?"
+  ground_truth:
+    ticker: AGNC
+    accession: "0001423689-25-000073"
+    document: agnc-20250630.htm
+    section: null
+    quote: "The objective of our risk management strategy is to reduce fluctuations in net book value over a range of interest rate scenarios."
+  notes: "Same AGNC section caveat as q11."
+
+- id: q27
+  type: single_fact
+  status: verified
+  question: "What did Honeywell's CEO say about second quarter 2025 results?"
+  ground_truth:
+    ticker: HON
+    accession: "0000773840-25-000062"
+    document: exhibit99-q22025earningsre.htm
+    section: EX-99
+    quote: "Honeywell delivered outstanding results in the second quarter with both organic growth and adjusted earnings per share exceeding guidance despite the unpredictable macroeconomic backdrop"
+  notes: >
+    THE MOST IMPORTANT QUESTION IN THIS KEY.
+    Ground truth lives in the EXHIBIT, not the 8-K primary. The primary is a
+    one-sentence shell pointing at Exhibit 99.
+    If retrieval returns the shell, the exhibit expansion did not pay off.
+    If it returns the exhibit, the 139-document fix is validated by measurement.
+
+- id: q28
+  type: single_fact
+  status: verified
+  question: "Why did AIG stop consolidating Corebridge Financial?"
+  ground_truth:
+    ticker: AIG
+    accession: "0000005272-24-000063"
+    document: aig-20240609.htm
+    section: item_2.01
+    quote: "it no longer had a controlling interest in Corebridge and would no longer consolidate Corebridge"
+  notes: "Item 2.01 8-K, 2024-06-09. Run through verify_key before scoring."
+
+# =============================================================================
+# CROSS COMPANY
+# =============================================================================
+#
+# Recall over a SET: every listed accession must appear in top-k.
+
+- id: q13
+  type: cross_company
+  status: verified
+  question: "Which companies disclosed the enactment of the One Big Beautiful Bill Act and its tax implications?"
+  ground_truth:
+    - ticker: ACI
+      accession: "0001646972-25-000063"
+      document: aci-20250614.htm
+      section: TBD
+      quote: "the President signed into law the One Big Beautiful Bill Act"
+    - ticker: BCPC
+      accession: "0000009326-25-000014"
+      document: bcpc-20250630.htm
+      section: TBD
+      quote: "the One Big Beautiful Bill Act"
+  notes: >
+    Scores as recall over a SET — both accessions must appear in top-k.
+    Check whether HON, AIG or AGNC also disclose it; if so, add them, since a
+    partial set would score as a miss.
+
+# =============================================================================
+# PERIOD OVER PERIOD
+# =============================================================================
+#
+# Ground truth in BOTH accessions. The finding is the CHANGE between them,
+# so returning one period only is a miss.
+
+- id: q15
+  type: period_over_period
+  status: verified
+  question: "How did Honeywell's stated timing for the Solstice Advanced Materials spin-off change between its Q2 and Q3 2025 filings?"
+  ground_truth:
+    - ticker: HON
+      accession: "0000773840-25-000064"
+      document: hon-20250630.htm
+      section: part2_item1a_risk_factors
+      quote: "expected to be completed during the fourth quarter of 2025"
+    - ticker: HON
+      accession: "0000773840-25-000105"
+      document: hon-20250930.htm
+      section: part1_item2_mdna
+      quote: "the Board approved the spin-off, which will be effective as of 12:01 a.m."
+  notes: >
+    Quarter-level expectation becomes a board-approved effective date of
+    October 30, 2025.
+    Both quotes appear TWICE in their filing -- in the notes and again in
+    MD&A -- so each matches chunks in two different sections. The section
+    recorded is the one holding the majority of matches; the full observed
+    set is listed below. Scoring on section alone will therefore be
+    ambiguous for this entry.
+    observed: hon-20250630.htm -> {'part2_item1a_risk_factors': 2, 'part1_item2_mdna': 1}, chunk ordinals [21, 22, 80]
+    observed: hon-20250930.htm -> {'part2_item1a_risk_factors': 1, 'part1_item2_mdna': 2}, chunk ordinals [21, 72, 73]
+
+- id: q16
+  type: period_over_period
+  status: verified
+  question: "What did Honeywell say about the expected closing of the Johnson Matthey Catalyst Technologies acquisition?"
+  ground_truth:
+    - ticker: HON
+      accession: "0000773840-25-000064"
+      document: hon-20250630.htm
+      section: part2_item1a_risk_factors
+      quote: "announced its agreement to acquire Johnson Matthey's Catalyst Technologies business segment in an all-cash transaction"
+    - ticker: HON
+      accession: "0000773840-25-000105"
+      document: hon-20250930.htm
+      section: part2_item1a_risk_factors
+      quote: "The transaction is subject to customary closing conditions, including receipt of certain regulatory approvals."
+  notes: >
+    Weakest of the three -- announcement to stated H1 2026 expectation.
+    Drop if you want a tighter key.
+    The second quote is generic closing-conditions language: it matches 2
+    chunks in the target filing but similar wording recurs across the
+    corpus, so it identifies the passage only because scoring is scoped to
+    accession and document.
+    observed: hon-20250630.htm -> {'part2_item1a_risk_factors': 1}, chunk ordinals [16]
+    observed: hon-20250930.htm -> {'part2_item1a_risk_factors': 2}, chunk ordinals [16, 17]
+
+- id: q17
+  type: period_over_period
+  status: verified
+  question: "How did Albertsons' description of the Kroger merger change between its fiscal 2024 and fiscal 2025 second-quarter filings?"
+  ground_truth:
+    - ticker: ACI
+      accession: "0001646972-24-000225"
+      document: aci-20240907.htm
+      section: part1_item1_financial_statements
+      quote: "The FTC administrative proceeding and the preliminary injunction hearing in the Federal Action have concluded and the Company awaits a decision."
+    - ticker: ACI
+      accession: "0001646972-25-000063"
+      document: aci-20250614.htm
+      section: part1_item1_financial_statements
+      quote: "the Company exercised its right to terminate the Merger Agreement and sent a notice to Kroger on December 10, 2024 terminating the Merger Agreement"
+  notes: >
+    Pending and awaiting decision, to enjoined and terminated. The single
+    largest disclosure change in the corpus and the closest analogue to
+    what IA's filing-change detection is for.
+    The proposed second quote was byte-identical to q05's, on the same
+    accession, so both questions would have scored against the same single
+    chunk. Replaced with the termination sentence from the same Note,
+    which is what this question actually asks about: q05 targets the
+    injunction, q17 targets the termination that followed it.
+    observed: aci-20240907.htm -> {'part1_item1_financial_statements': 1}, chunk ordinals [20]
+    observed: aci-20250614.htm -> {'part1_item1_financial_statements': 2}, chunk ordinals [28, 29]
+
+- id: q18
+  type: period_over_period
+  status: verified
+  question: "How did AIG's retained ownership in Corebridge and its accounting treatment change between 2024 and 2026?"
+  ground_truth:
+    - ticker: AIG
+      accession: "0000005272-24-000079"
+      document: aig-20240630.htm
+      section: part1_item2_mdna
+      quote: "Corebridge retained investment ( 48.4 % @ 28.90 per share at June 9, 2024)"
+    - ticker: AIG
+      accession: "0000005272-26-000052"
+      document: aig-20260331.htm
+      section: part1_item2_mdna
+      quote: "AIG held 5.6 percent of the outstanding common stock of Corebridge and we concluded that we no longer have the ability to exert significant influence over Corebridge"
+  notes: >
+    Retained ownership falls from 48.4% at the June 2024 deconsolidation to
+    5.6% at 2026-03-31, and the accounting treatment changes with it: AIG
+    concluded it no longer exerts significant influence, so the holding moved
+    from an equity method investment to an equity security at fair value.
+    The change in treatment, not the falling number, is the disclosure event.
+    ASYMMETRIC RECALL IS EXPECTED HERE, AND IS NOT A DEFECT. The 2024 span is
+    TABULAR -- a row of the loss-on-deconsolidation table, reading
+    "Corebridge retained investment ( 48.4 % @ 28.90 per share...)", with the
+    spacing the extractor produces from table cells. The 2026 span is ordinary
+    PROSE. An embedding model handles the two very differently, so the two
+    accessions will not be recalled at comparable ranks. Score coverage of both
+    accessions; do not read a rank gap between them as a retrieval failure.
+    Sections read part1_item2_mdna for both, but the text is plainly Notes to
+    the Condensed Consolidated Financial Statements -- the AIG anchor mislabel
+    noted in the header.
+
+- id: q19
+  type: period_over_period
+  status: verified
+  question: "Has AGNC's stated set of primary interest rate hedging instruments changed between 2024 and 2026?"
+  ground_truth:
+    - ticker: AGNC
+      accession: "0001423689-24-000058"
+      document: agnc-20240630.htm
+      section: null
+      quote: "The primary instruments that we use are interest rate swaps, options to enter into interest rate swaps"
+    - ticker: AGNC
+      accession: "0001423689-26-000128"
+      document: agnc-20260630.htm
+      section: null
+      quote: "The primary instruments that we use are interest rate swaps, options to enter into interest rate swaps"
+  notes: >
+    The correct answer is NO CHANGE -- the language is byte-identical across
+    2024-06-30, 2025-06-30 and 2026-06-30. Tests two things: whether retrieval
+    surfaces chunks from BOTH accessions when the text is identical, and
+    whether the system can support "unchanged" as a finding.
+    Section is null for both, the known AGNC anchor gap: its 10-Q financial
+    statements match no configured anchor, so these chunks are unsectioned.
+    Scoring this entry on section is not possible until that is fixed.
+    OVERLAP WITH q11: the quote is identical, and occurs in 10 chunks
+    across all 8 AGNC 10-Qs in the corpus. The two do NOT score
+    identically because they target different accessions -- q11 the
+    2025-06-30 filing, q19 the 2024-06-30 and 2026-06-30 filings. But a
+    retriever can return textually correct chunks from any of the eight, so
+    q19 is only meaningful if scored on accession coverage, not on text.
+
+# =============================================================================
+# NEGATIVE CONTROLS
+# =============================================================================
+#
+# ground_truth null by construction. Not scored on recall. Scored on whether
+# the TOP SIMILARITY SCORE is distinguishably lower than for answerable
+# questions.
+
+- id: q21
+  type: negative_control
+  status: verified
+  question: "What did Costco report for membership fee revenue in its most recent quarter?"
+  ground_truth: null
+  notes: "Company outside the universe."
+
+- id: q22
+  type: negative_control
+  status: verified
+  question: "What did Honeywell disclose about its aerospace segment performance in 2019?"
+  ground_truth: null
+  notes: "In universe, outside the date window. Harder than q21 — the name pulls strong matches."
+
+- id: q23
+  type: negative_control
+  status: verified
+  question: "What is the total compensation of Balchem's chief executive officer?"
+  ground_truth: null
+  notes: "Lives in DEF 14A, not in corpus. Tests the form-type boundary."
+
+- id: q24
+  type: negative_control
+  status: verified
+  question: "What did Balchem disclose about its semiconductor fabrication segment?"
+  ground_truth: null
+  notes: >
+    Most diagnostic control in the key. Plausible-sounding, nonexistent —
+    Balchem has three segments, none semiconductor. A confident high-scoring
+    result means the system cannot distinguish "not disclosed" from "asked oddly".
+
+- id: q25
+  type: negative_control
+  status: verified
+  question: "What is AIG's projected combined ratio for 2028?"
+  ground_truth: null
+  notes: "Forward-looking beyond any guidance. Tests whether speculation surfaces as disclosure."
+
+# =============================================================================
+# DEDUP DIAGNOSTIC — not scored on recall
+# =============================================================================
+
+- id: q26
+  type: dedup_diagnostic
+  status: verified
+  question: "Which Honeywell securities are registered under Section 12(b) of the Exchange Act?"
+  ground_truth:
+    ticker: HON
+    accession: ANY
+    document: ANY
+    section: None
+    quote: |-
+      d-2(b)) ☐ Pre-commencement communications pursuant to Rule 13e-4(c) under the Exchange Act (17 CFR 240.13e-4(c)) Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading Symbol(s) Name of each exchange on which registered Common Stock, par value $1 per share HON The Nasdaq Stock Market LLC 3.500% Senior Notes due 2027 HON 27 The Nasdaq Stock Market LLC 2.250% Senior Notes due 2028 HON 28A The Nasdaq Stock Market LLC 3.375% Senior Notes due 2030 HON 30 The Nasdaq Stock Market LLC 0.750% Senior Notes due 2032 HON 32 The Nasdaq Stock Market LLC 3.750% Senior Notes due 2032 HON 32A The Nasdaq Stock Market LLC 4.125% Senior Notes due 2034 HON 34 The Nasdaq Stock Market LLC 3.750% Senior Notes due 2036 HON 36 The Nasdaq Stock Market LLC Indicate by check mark whether the registrant is an emerging growth company as defined in Rule 405 of the Securities Act of 1933 (§230.405 of this chapter) or Rule 12b-2 of the Securities Exchange Act of 1934 (§240.12b-2 of this chapter). Emerging Growth Company ☐ If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐
+  notes: >
+    The x31 duplicate boilerplate: the Section 12(b) securities table on
+    Honeywell's 8-K cover page, chunk_ordinal 1, identical across
+    31 accessions. Verified against the index:
+    34 matching chunks / 34 distinct accessions /
+    3 distinct chunk texts.
+    NO span isolates exactly the 31: three further chunks contain this
+    block in full with different chunk boundaries (1292 and 1915 chars),
+    so any substring search returns 34. That floor is the honest
+    measurement, not a defect in the quote.
+    METRIC: count DISTINCT accessions and DISTINCT chunk texts in top-20.
+    A ratio near 34:3 means the retriever is returning the same
+    cover-page text from different filings, and deduplication is worth doing.
+    The previous quote ("855 S. Mint Street") measured nothing: it sits in
+    chunk_ordinal 0, whose text differs per filing (7 hits, 7 distinct texts).
+
+# =============================================================================
+# EXCLUDED — do not write ground truth here
+# =============================================================================
+#
+# AGNC financial statements   0/8 section-labelled; a miss would be a labelling
+#                             gap, not a retrieval failure
+# AIG  2024-08-01 EX-99       exhibit not fetched
+# HON  2025-07-24 EX-99       exhibit not fetched (NB: this is the 10-Q
+#                             accession 0000773840-25-000064, NOT the 8-K
+#                             0000773840-25-000062 used in q27 — that exhibit
+#                             IS in the corpus)
+# HON  2025-04-29 EX-99       exhibit not fetched

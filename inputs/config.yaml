@@ -214,6 +214,11 @@ retrieve:
 
 evaluate:
   out_dir: outputs/eval
+  answer_key_path: inputs/answer_key.yaml
+  # A quote matching more than this many chunks is flagged as too generic to
+  # score cleanly: a retrieval result containing "the" match is not evidence of
+  # anything when the text appears in many chunks.
+  generic_match_threshold: 3
 
 audit:
   # Structural audit of what is on disk: text volume, section/item structure, and
