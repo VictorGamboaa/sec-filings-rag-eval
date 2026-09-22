@@ -1,0 +1,19 @@
+{
+  "embedder": {
+    "provider": "local",
+    "model": "BAAI/bge-small-en-v1.5",
+    "dim": 384,
+    "normalized": true,
+    "max_batch": 64,
+    "max_seq_tokens": 512,
+    "device": "cpu",
+    "query_prefix": "Represent this sentence for searching relevant passages: "
+  },
+  "chunk_fingerprint": "ac83b4d88850dfdf",
+  "windower": "tokens:BAAI/bge-small-en-v1.5",
+  "dim": 384,
+  "metric": "ip",
+  "count": 8690,
+  "index_file": "index.faiss",
+  "metadata_file": "metadata.jsonl"
+}

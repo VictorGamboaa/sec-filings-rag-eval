@@ -1,0 +1,5608 @@
+{
+  "headline": {
+    "answerable": {
+      "n": 20,
+      "min": 0.6741,
+      "median": 0.7771,
+      "max": 0.8709,
+      "scores": [
+        0.8709,
+        0.8581,
+        0.8476,
+        0.8431,
+        0.8343,
+        0.8215,
+        0.8158,
+        0.7982,
+        0.7828,
+        0.7791,
+        0.775,
+        0.766,
+        0.7621,
+        0.7531,
+        0.7473,
+        0.7415,
+        0.7406,
+        0.7273,
+        0.7138,
+        0.6741
+      ]
+    },
+    "negative_control": {
+      "n": 5,
+      "min": 0.6947,
+      "median": 0.7371,
+      "max": 0.7786,
+      "scores": [
+        0.7786,
+        0.7477,
+        0.7371,
+        0.706,
+        0.6947
+      ]
+    },
+    "median_separation": 0.04,
+    "distributions_overlap": true,
+    "lowest_answerable": 0.6741,
+    "highest_negative_control": 0.7786
+  },
+  "by_type": {
+    "cross_company": {
+      "n": 1,
+      "scored": true,
+      "recall@5": 0.0,
+      "recall@20": 1.0
+    },
+    "dedup_diagnostic": {
+      "n": 1,
+      "scored": false
+    },
+    "negative_control": {
+      "n": 5,
+      "scored": false
+    },
+    "period_over_period": {
+      "n": 5,
+      "scored": true,
+      "recall@5": 0.0,
+      "recall@20": 0.4,
+      "target_recall_meaningful_n": 1,
+      "target_recall@5": 0.0,
+      "target_recall@20": 0.0
+    },
+    "single_fact": {
+      "n": 14,
+      "scored": true,
+      "recall@5": 0.2857,
+      "recall@20": 0.4286,
+      "top1_correct": 0.0714,
+      "citation_correct": 0.2143
+    }
+  },
+  "section_accuracy": {
+    "tickers_included": [
+      "ACI",
+      "BCPC"
+    ],
+    "excluded": {
+      "AGNC": "chunks are unsectioned (anchor gap)",
+      "HON": "Notes text carries part2_item1a_risk_factors (anchor mislabel)",
+      "AIG": "Notes text carries part1_item2_mdna (anchor mislabel)"
+    },
+    "n": 7,
+    "correct": 2,
+    "accuracy": 0.2857
+  },
+  "answer_key": "inputs/answer_key.yaml",
+  "retriever": "dense",
+  "index_dir": "outputs/index/main",
+  "index_fingerprint": "7614b05c13658707",
+  "embedder": {
+    "provider": "local",
+    "model": "BAAI/bge-small-en-v1.5",
+    "dim": 384,
+    "normalized": true,
+    "max_batch": 64,
+    "max_seq_tokens": 512,
+    "device": "cpu",
+    "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+    "query_prefix": "Represent this sentence for searching relevant passages: "
+  },
+  "top_k": 20,
+  "results": [
+    {
+      "id": "q01",
+      "type": "single_fact",
+      "question": "How much did Honeywell pay for Carrier's Global Access Solutions business?",
+      "top1_score": 0.870867,
+      "top1_chunk_id": "0000773840-24-000066:exhibit99-carrieracquisiti.htm:00000",
+      "top1_ticker": "HON",
+      "unresolved_ground_truths": 0,
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.870867,
+          "chunk_id": "0000773840-24-000066:exhibit99-carrieracquisiti.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-24-000066",
+          "document": "exhibit99-carrieracquisiti.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 2,
+          "score": 0.776531,
+          "chunk_id": "0000773840-25-000105:hon-20250930.htm:00020",
+          "ticker": "HON",
+          "accession": "0000773840-25-000105",
+          "document": "hon-20250930.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 3,
+          "score": 0.775627,
+          "chunk_id": "0000773840-25-000064:hon-20250630.htm:00020",
+          "ticker": "HON",
+          "accession": "0000773840-25-000064",
+          "document": "hon-20250630.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 4,
+          "score": 0.771344,
+          "chunk_id": "0000773840-24-000082:hon-20240630.htm:00017",
+          "ticker": "HON",
+          "accession": "0000773840-24-000082",
+          "document": "hon-20240630.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 5,
+          "score": 0.771124,
+          "chunk_id": "0000773840-24-000066:exhibit99-carrieracquisiti.htm:00001",
+          "ticker": "HON",
+          "accession": "0000773840-24-000066",
+          "document": "exhibit99-carrieracquisiti.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 6,
+          "score": 0.743389,
+          "chunk_id": "0000773840-24-000099:hon-20240930.htm:00019",
+          "ticker": "HON",
+          "accession": "0000773840-24-000099",
+          "document": "hon-20240930.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 7,
+          "score": 0.737027,
+          "chunk_id": "0000773840-24-000066:hon-20240603.htm:00002",
+          "ticker": "HON",
+          "accession": "0000773840-24-000066",
+          "document": "hon-20240603.htm",
+          "section": "item_2.02"
+        },
+        {
+          "rank": 8,
+          "score": 0.736387,
+          "chunk_id": "0000773840-24-000054:hon-20240425.htm:00004",
+          "ticker": "HON",
+          "accession": "0000773840-24-000054",
+          "document": "hon-20240425.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 9,
+          "score": 0.727248,
+          "chunk_id": "0000773840-26-000057:hon-20260331.htm:00052",
+          "ticker": "HON",
+          "accession": "0000773840-26-000057",
+          "document": "hon-20260331.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 10,
+          "score": 0.719688,
+          "chunk_id": "0000773840-24-000099:hon-20240930.htm:00069",
+          "ticker": "HON",
+          "accession": "0000773840-24-000099",
+          "document": "hon-20240930.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 11,
+          "score": 0.711675,
+          "chunk_id": "0000773840-25-000064:hon-20250630.htm:00060",
+          "ticker": "HON",
+          "accession": "0000773840-25-000064",
+          "document": "hon-20250630.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 12,
+          "score": 0.709269,
+          "chunk_id": "0000773840-25-000037:hon-20250331.htm:00052",
+          "ticker": "HON",
+          "accession": "0000773840-25-000037",
+          "document": "hon-20250331.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 13,
+          "score": 0.708283,
+          "chunk_id": "0000773840-24-000054:hon-20240425.htm:00196",
+          "ticker": "HON",
+          "accession": "0000773840-24-000054",
+          "document": "hon-20240425.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 14,
+          "score": 0.702577,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00022",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 15,
+          "score": 0.701255,
+          "chunk_id": "0001193125-26-095179:d71810dex991.htm:00002",
+          "ticker": "HON",
+          "accession": "0001193125-26-095179",
+          "document": "d71810dex991.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 16,
+          "score": 0.701096,
+          "chunk_id": "0000773840-26-000055:exhibit99-q12026earningsre.htm:00007",
+          "ticker": "HON",
+          "accession": "0000773840-26-000055",
+          "document": "exhibit99-q12026earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 17,
+          "score": 0.699998,
+          "chunk_id": "0000773840-25-000105:hon-20250930.htm:00062",
+          "ticker": "HON",
+          "accession": "0000773840-25-000105",
+          "document": "hon-20250930.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 18,
+          "score": 0.699497,
+          "chunk_id": "0000773840-24-000066:hon-20240603.htm:00003",
+          "ticker": "HON",
+          "accession": "0000773840-24-000066",
+          "document": "hon-20240603.htm",
+          "section": "item_9.01"
+        },
+        {
+          "rank": 19,
+          "score": 0.699023,
+          "chunk_id": "0000773840-25-000035:exhibit99-q12025earningsre.htm:00014",
+          "ticker": "HON",
+          "accession": "0000773840-25-000035",
+          "document": "exhibit99-q12025earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 20,
+          "score": 0.698231,
+          "chunk_id": "0000773840-24-000082:hon-20240630.htm:00062",
+          "ticker": "HON",
+          "accession": "0000773840-24-000082",
+          "document": "hon-20240630.htm",
+          "section": "part2_item1a_risk_factors"
+        }
+      ],
+      "scored": true,
+      "score": {
+        "recall@5": true,
+        "recall@20": true,
+        "rank": 4,
+        "top1_correct": false,
+        "citation_correct": false,
+        "target_chunks": 2
+      },
+      "section": {
+        "eligible": false
+      }
+    },
+    {
+      "id": "q02",
+      "type": "single_fact",
+      "question": "What did Honeywell announce about separating its Automation and Aerospace businesses?",
+      "top1_score": 0.843115,
+      "top1_chunk_id": "0000773840-25-000005:exhibit992-winter.htm:00002",
+      "top1_ticker": "HON",
+      "unresolved_ground_truths": 0,
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.843115,
+          "chunk_id": "0000773840-25-000005:exhibit992-winter.htm:00002",
+          "ticker": "HON",
+          "accession": "0000773840-25-000005",
+          "document": "exhibit992-winter.htm",
+          "section": "EX-99.2"
+        },
+        {
+          "rank": 2,
+          "score": 0.805083,
+          "chunk_id": "0000773840-25-000099:exhibit99-projectsummerxpr.htm:00001",
+          "ticker": "HON",
+          "accession": "0000773840-25-000099",
+          "document": "exhibit99-projectsummerxpr.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 3,
+          "score": 0.803493,
+          "chunk_id": "0000773840-25-000005:exhibit992-winter.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-25-000005",
+          "document": "exhibit992-winter.htm",
+          "section": "EX-99.2"
+        },
+        {
+          "rank": 4,
+          "score": 0.796542,
+          "chunk_id": "0000773840-25-000064:hon-20250630.htm:00021",
+          "ticker": "HON",
+          "accession": "0000773840-25-000064",
+          "document": "hon-20250630.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 5,
+          "score": 0.795972,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00006",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 6,
+          "score": 0.795166,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00133",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 7,
+          "score": 0.793283,
+          "chunk_id": "0000773840-26-000124:hon-20260630.htm:00005",
+          "ticker": "HON",
+          "accession": "0000773840-26-000124",
+          "document": "hon-20260630.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 8,
+          "score": 0.790206,
+          "chunk_id": "0000773840-24-000054:hon-20240425.htm:00005",
+          "ticker": "HON",
+          "accession": "0000773840-24-000054",
+          "document": "hon-20240425.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 9,
+          "score": 0.790017,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00051",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 10,
+          "score": 0.785439,
+          "chunk_id": "0000773840-25-000117:exhibit991-pressrelease110.htm:00002",
+          "ticker": "HON",
+          "accession": "0000773840-25-000117",
+          "document": "exhibit991-pressrelease110.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 11,
+          "score": 0.785238,
+          "chunk_id": "0000773840-25-000099:exhibit99-projectsummerxpr.htm:00003",
+          "ticker": "HON",
+          "accession": "0000773840-25-000099",
+          "document": "exhibit99-projectsummerxpr.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 12,
+          "score": 0.784596,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00005",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 13,
+          "score": 0.783958,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00007",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 14,
+          "score": 0.782335,
+          "chunk_id": "0000773840-25-000037:hon-20250331.htm:00022",
+          "ticker": "HON",
+          "accession": "0000773840-25-000037",
+          "document": "hon-20250331.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 15,
+          "score": 0.780432,
+          "chunk_id": "0000773840-25-000099:exhibit99-projectsummerxpr.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-25-000099",
+          "document": "exhibit99-projectsummerxpr.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 16,
+          "score": 0.78031,
+          "chunk_id": "0000773840-26-000057:hon-20260331.htm:00059",
+          "ticker": "HON",
+          "accession": "0000773840-26-000057",
+          "document": "hon-20260331.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 17,
+          "score": 0.7799,
+          "chunk_id": "0000773840-24-000054:hon-20240425.htm:00110",
+          "ticker": "HON",
+          "accession": "0000773840-24-000054",
+          "document": "hon-20240425.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 18,
+          "score": 0.77828,
+          "chunk_id": "0000773840-25-000099:hon-20251022.htm:00002",
+          "ticker": "HON",
+          "accession": "0000773840-25-000099",
+          "document": "hon-20251022.htm",
+          "section": "item_8.01"
+        },
+        {
+          "rank": 19,
+          "score": 0.777847,
+          "chunk_id": "0000773840-25-000005:exhibit992-winter.htm:00001",
+          "ticker": "HON",
+          "accession": "0000773840-25-000005",
+          "document": "exhibit992-winter.htm",
+          "section": "EX-99.2"
+        },
+        {
+          "rank": 20,
+          "score": 0.777495,
+          "chunk_id": "0000773840-26-000057:hon-20260331.htm:00054",
+          "ticker": "HON",
+          "accession": "0000773840-26-000057",
+          "document": "hon-20260331.htm",
+          "section": "part2_item1a_risk_factors"
+        }
+      ],
+      "scored": true,
+      "score": {
+        "recall@5": true,
+        "recall@20": true,
+        "rank": 4,
+        "top1_correct": false,
+        "citation_correct": false,
+        "target_chunks": 1
+      },
+      "section": {
+        "eligible": false
+      }
+    },
+    {
+      "id": "q03",
+      "type": "single_fact",
+      "question": "What did Honeywell acquire in June 2025 and for how much?",
+      "top1_score": 0.779149,
+      "top1_chunk_id": "0000773840-25-000064:hon-20250630.htm:00060",
+      "top1_ticker": "HON",
+      "unresolved_ground_truths": 0,
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.779149,
+          "chunk_id": "0000773840-25-000064:hon-20250630.htm:00060",
+          "ticker": "HON",
+          "accession": "0000773840-25-000064",
+          "document": "hon-20250630.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 2,
+          "score": 0.760546,
+          "chunk_id": "0000773840-25-000062:exhibit99-q22025earningsre.htm:00003",
+          "ticker": "HON",
+          "accession": "0000773840-25-000062",
+          "document": "exhibit99-q22025earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 3,
+          "score": 0.752041,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00005",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 4,
+          "score": 0.747799,
+          "chunk_id": "0000773840-26-000055:exhibit99-q12026earningsre.htm:00007",
+          "ticker": "HON",
+          "accession": "0000773840-26-000055",
+          "document": "exhibit99-q12026earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 5,
+          "score": 0.744091,
+          "chunk_id": "0000773840-26-000017:exhibit991-pressrelease332.htm:00002",
+          "ticker": "HON",
+          "accession": "0000773840-26-000017",
+          "document": "exhibit991-pressrelease332.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 6,
+          "score": 0.734704,
+          "chunk_id": "0000773840-26-000006:exhibit991-q42025earningsr.htm:00010",
+          "ticker": "HON",
+          "accession": "0000773840-26-000006",
+          "document": "exhibit991-q42025earningsr.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 7,
+          "score": 0.734667,
+          "chunk_id": "0000773840-24-000099:hon-20240930.htm:00069",
+          "ticker": "HON",
+          "accession": "0000773840-24-000099",
+          "document": "hon-20240930.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 8,
+          "score": 0.733749,
+          "chunk_id": "0000773840-26-000124:hon-20260630.htm:00049",
+          "ticker": "HON",
+          "accession": "0000773840-26-000124",
+          "document": "hon-20260630.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 9,
+          "score": 0.731707,
+          "chunk_id": "0000773840-25-000062:hon-20250724.htm:00002",
+          "ticker": "HON",
+          "accession": "0000773840-25-000062",
+          "document": "hon-20250724.htm",
+          "section": "item_2.02"
+        },
+        {
+          "rank": 10,
+          "score": 0.731533,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00222",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 11,
+          "score": 0.731354,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00153",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 12,
+          "score": 0.731296,
+          "chunk_id": "0000773840-26-000124:hon-20260630.htm:00077",
+          "ticker": "HON",
+          "accession": "0000773840-26-000124",
+          "document": "hon-20260630.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 13,
+          "score": 0.731271,
+          "chunk_id": "0000773840-25-000005:exhibit992-winter.htm:00005",
+          "ticker": "HON",
+          "accession": "0000773840-25-000005",
+          "document": "exhibit992-winter.htm",
+          "section": "EX-99.2"
+        },
+        {
+          "rank": 14,
+          "score": 0.730691,
+          "chunk_id": "0000773840-25-000005:exhibit992-winter.htm:00004",
+          "ticker": "HON",
+          "accession": "0000773840-25-000005",
+          "document": "exhibit992-winter.htm",
+          "section": "EX-99.2"
+        },
+        {
+          "rank": 15,
+          "score": 0.730585,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00160",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 16,
+          "score": 0.729634,
+          "chunk_id": "0000773840-25-000105:hon-20250930.htm:00062",
+          "ticker": "HON",
+          "accession": "0000773840-25-000105",
+          "document": "hon-20250930.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 17,
+          "score": 0.729525,
+          "chunk_id": "0000773840-26-000124:hon-20260630.htm:00078",
+          "ticker": "HON",
+          "accession": "0000773840-26-000124",
+          "document": "hon-20260630.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 18,
+          "score": 0.729261,
+          "chunk_id": "0000773840-25-000105:hon-20250930.htm:00039",
+          "ticker": "HON",
+          "accession": "0000773840-25-000105",
+          "document": "hon-20250930.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 19,
+          "score": 0.728538,
+          "chunk_id": "0000773840-25-000035:hon-20250429.htm:00002",
+          "ticker": "HON",
+          "accession": "0000773840-25-000035",
+          "document": "hon-20250429.htm",
+          "section": "item_2.02"
+        },
+        {
+          "rank": 20,
+          "score": 0.727952,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00025",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        }
+      ],
+      "scored": true,
+      "score": {
+        "recall@5": false,
+        "recall@20": false,
+        "rank": null,
+        "top1_correct": false,
+        "citation_correct": true,
+        "target_chunks": 1
+      },
+      "section": {
+        "eligible": false
+      }
+    },
+    {
+      "id": "q04",
+      "type": "single_fact",
+      "question": "What business did Honeywell divest in May 2025?",
+      "top1_score": 0.74149,
+      "top1_chunk_id": "0000773840-26-000055:exhibit99-q12026earningsre.htm:00007",
+      "top1_ticker": "HON",
+      "unresolved_ground_truths": 0,
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.74149,
+          "chunk_id": "0000773840-26-000055:exhibit99-q12026earningsre.htm:00007",
+          "ticker": "HON",
+          "accession": "0000773840-26-000055",
+          "document": "exhibit99-q12026earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 2,
+          "score": 0.736051,
+          "chunk_id": "0000773840-25-000091:exhibit991-pressrelease101.htm:00001",
+          "ticker": "HON",
+          "accession": "0000773840-25-000091",
+          "document": "exhibit991-pressrelease101.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 3,
+          "score": 0.726334,
+          "chunk_id": "0000773840-25-000105:hon-20250930.htm:00022",
+          "ticker": "HON",
+          "accession": "0000773840-25-000105",
+          "document": "hon-20250930.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 4,
+          "score": 0.721826,
+          "chunk_id": "0000773840-26-000006:exhibit991-q42025earningsr.htm:00010",
+          "ticker": "HON",
+          "accession": "0000773840-26-000006",
+          "document": "exhibit991-q42025earningsr.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 5,
+          "score": 0.719984,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00024",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 6,
+          "score": 0.719045,
+          "chunk_id": "0000773840-25-000105:hon-20250930.htm:00085",
+          "ticker": "HON",
+          "accession": "0000773840-25-000105",
+          "document": "hon-20250930.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 7,
+          "score": 0.717928,
+          "chunk_id": "0000773840-25-000064:hon-20250630.htm:00060",
+          "ticker": "HON",
+          "accession": "0000773840-25-000064",
+          "document": "hon-20250630.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 8,
+          "score": 0.715586,
+          "chunk_id": "0000773840-25-000091:hon-20250929.htm:00002",
+          "ticker": "HON",
+          "accession": "0000773840-25-000091",
+          "document": "hon-20250929.htm",
+          "section": "item_7.01"
+        },
+        {
+          "rank": 9,
+          "score": 0.714821,
+          "chunk_id": "0000773840-26-000057:hon-20260331.htm:00073",
+          "ticker": "HON",
+          "accession": "0000773840-26-000057",
+          "document": "hon-20260331.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 10,
+          "score": 0.714076,
+          "chunk_id": "0000773840-25-000005:exhibit992-winter.htm:00004",
+          "ticker": "HON",
+          "accession": "0000773840-25-000005",
+          "document": "exhibit992-winter.htm",
+          "section": "EX-99.2"
+        },
+        {
+          "rank": 11,
+          "score": 0.713048,
+          "chunk_id": "0000773840-25-000064:hon-20250630.htm:00021",
+          "ticker": "HON",
+          "accession": "0000773840-25-000064",
+          "document": "hon-20250630.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 12,
+          "score": 0.712929,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00005",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 13,
+          "score": 0.712674,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00025",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 14,
+          "score": 0.710359,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00079",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 15,
+          "score": 0.709857,
+          "chunk_id": "0000773840-25-000005:exhibit992-winter.htm:00005",
+          "ticker": "HON",
+          "accession": "0000773840-25-000005",
+          "document": "exhibit992-winter.htm",
+          "section": "EX-99.2"
+        },
+        {
+          "rank": 16,
+          "score": 0.708468,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00003",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 17,
+          "score": 0.705503,
+          "chunk_id": "0000773840-25-000005:exhibit991-q42024earningsr.htm:00009",
+          "ticker": "HON",
+          "accession": "0000773840-25-000005",
+          "document": "exhibit991-q42024earningsr.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 18,
+          "score": 0.703619,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00004",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 19,
+          "score": 0.70263,
+          "chunk_id": "0000773840-26-000057:hon-20260331.htm:00059",
+          "ticker": "HON",
+          "accession": "0000773840-26-000057",
+          "document": "hon-20260331.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 20,
+          "score": 0.702541,
+          "chunk_id": "0000773840-26-000057:hon-20260331.htm:00005",
+          "ticker": "HON",
+          "accession": "0000773840-26-000057",
+          "document": "hon-20260331.htm",
+          "section": "part2_item1a_risk_factors"
+        }
+      ],
+      "scored": true,
+      "score": {
+        "recall@5": false,
+        "recall@20": false,
+        "rank": null,
+        "top1_correct": false,
+        "citation_correct": false,
+        "target_chunks": 1
+      },
+      "section": {
+        "eligible": false
+      }
+    },
+    {
+      "id": "q05",
+      "type": "single_fact",
+      "question": "What was the outcome of the FTC's challenge to the Kroger-Albertsons merger?",
+      "top1_score": 0.747263,
+      "top1_chunk_id": "0001646972-24-000231:aci-20241210.htm:00002",
+      "top1_ticker": "ACI",
+      "unresolved_ground_truths": 0,
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.747263,
+          "chunk_id": "0001646972-24-000231:aci-20241210.htm:00002",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000231",
+          "document": "aci-20241210.htm",
+          "section": "item_1.02"
+        },
+        {
+          "rank": 2,
+          "score": 0.741452,
+          "chunk_id": "0001646972-24-000165:aci-20240615.htm:00017",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000165",
+          "document": "aci-20240615.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 3,
+          "score": 0.731147,
+          "chunk_id": "0001646972-25-000007:aciq324earningsrelease.htm:00005",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000007",
+          "document": "aciq324earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 4,
+          "score": 0.728132,
+          "chunk_id": "0001646972-26-000046:aci-20260620.htm:00031",
+          "ticker": "ACI",
+          "accession": "0001646972-26-000046",
+          "document": "aci-20260620.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 5,
+          "score": 0.727813,
+          "chunk_id": "0001646972-25-000008:aci-20241130.htm:00020",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000008",
+          "document": "aci-20241130.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 6,
+          "score": 0.727697,
+          "chunk_id": "0001646972-24-000063:ex991aprildivestiturerelea.htm:00004",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000063",
+          "document": "ex991aprildivestiturerelea.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 7,
+          "score": 0.722984,
+          "chunk_id": "0001646972-25-000008:aci-20241130.htm:00047",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000008",
+          "document": "aci-20241130.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 8,
+          "score": 0.721508,
+          "chunk_id": "0001646972-25-000008:aci-20241130.htm:00019",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000008",
+          "document": "aci-20241130.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 9,
+          "score": 0.720572,
+          "chunk_id": "0001646972-24-000059:aciq423earningsrelease.htm:00004",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000059",
+          "document": "aciq423earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 10,
+          "score": 0.717902,
+          "chunk_id": "0001646972-24-000063:ex991aprildivestiturerelea.htm:00000",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000063",
+          "document": "ex991aprildivestiturerelea.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 11,
+          "score": 0.715526,
+          "chunk_id": "0001646972-24-000063:ex991aprildivestiturerelea.htm:00005",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000063",
+          "document": "ex991aprildivestiturerelea.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 12,
+          "score": 0.713258,
+          "chunk_id": "0001646972-24-000063:aci-20240422.htm:00002",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000063",
+          "document": "aci-20240422.htm",
+          "section": "item_8.01"
+        },
+        {
+          "rank": 13,
+          "score": 0.709291,
+          "chunk_id": "0001646972-24-000063:ex991aprildivestiturerelea.htm:00003",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000063",
+          "document": "ex991aprildivestiturerelea.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 14,
+          "score": 0.707678,
+          "chunk_id": "0001646972-24-000225:aci-20240907.htm:00044",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000225",
+          "document": "aci-20240907.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 15,
+          "score": 0.706783,
+          "chunk_id": "0001646972-24-000225:aci-20240907.htm:00019",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000225",
+          "document": "aci-20240907.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 16,
+          "score": 0.706602,
+          "chunk_id": "0001646972-24-000165:aci-20240615.htm:00040",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000165",
+          "document": "aci-20240615.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 17,
+          "score": 0.705972,
+          "chunk_id": "0001646972-25-000083:aci-20250906.htm:00034",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000083",
+          "document": "aci-20250906.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 18,
+          "score": 0.705553,
+          "chunk_id": "0001646972-25-000063:aci-20250614.htm:00029",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000063",
+          "document": "aci-20250614.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 19,
+          "score": 0.702118,
+          "chunk_id": "0001646972-26-000046:aci-20260620.htm:00030",
+          "ticker": "ACI",
+          "accession": "0001646972-26-000046",
+          "document": "aci-20260620.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 20,
+          "score": 0.702015,
+          "chunk_id": "0001646972-26-000010:aci-20251129.htm:00037",
+          "ticker": "ACI",
+          "accession": "0001646972-26-000010",
+          "document": "aci-20251129.htm",
+          "section": "part1_item1_financial_statements"
+        }
+      ],
+      "scored": true,
+      "score": {
+        "recall@5": false,
+        "recall@20": false,
+        "rank": null,
+        "top1_correct": false,
+        "citation_correct": false,
+        "target_chunks": 1
+      },
+      "section": {
+        "eligible": true,
+        "expected": [
+          "part1_item1_financial_statements"
+        ],
+        "observed": "item_1.02",
+        "correct": false,
+        "tickers": [
+          "ACI"
+        ]
+      }
+    },
+    {
+      "id": "q06",
+      "type": "single_fact",
+      "question": "How did the False Claims Act case against Albertsons resolve?",
+      "top1_score": 0.713784,
+      "top1_chunk_id": "0001646972-26-000028:ex992-opioid.htm:00000",
+      "top1_ticker": "ACI",
+      "unresolved_ground_truths": 0,
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.713784,
+          "chunk_id": "0001646972-26-000028:ex992-opioid.htm:00000",
+          "ticker": "ACI",
+          "accession": "0001646972-26-000028",
+          "document": "ex992-opioid.htm",
+          "section": "EX-99.2"
+        },
+        {
+          "rank": 2,
+          "score": 0.703819,
+          "chunk_id": "0001646972-26-000028:ex993-dividendrelease.htm:00002",
+          "ticker": "ACI",
+          "accession": "0001646972-26-000028",
+          "document": "ex993-dividendrelease.htm",
+          "section": "EX-99.3"
+        },
+        {
+          "rank": 3,
+          "score": 0.699726,
+          "chunk_id": "0001646972-24-000165:aci-20240615.htm:00037",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000165",
+          "document": "aci-20240615.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 4,
+          "score": 0.699625,
+          "chunk_id": "0001646972-24-000009:aci-20231202.htm:00029",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000009",
+          "document": "aci-20231202.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 5,
+          "score": 0.695482,
+          "chunk_id": "0001646972-26-000010:aci-20251129.htm:00081",
+          "ticker": "ACI",
+          "accession": "0001646972-26-000010",
+          "document": "aci-20251129.htm",
+          "section": "part2_item6_exhibits"
+        },
+        {
+          "rank": 6,
+          "score": 0.695258,
+          "chunk_id": "0001646972-25-000034:aci-20250311.htm:00002",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000034",
+          "document": "aci-20250311.htm",
+          "section": "item_1.01"
+        },
+        {
+          "rank": 7,
+          "score": 0.695086,
+          "chunk_id": "0001646972-26-000010:aci-20251129.htm:00028",
+          "ticker": "ACI",
+          "accession": "0001646972-26-000010",
+          "document": "aci-20251129.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 8,
+          "score": 0.694666,
+          "chunk_id": "0001646972-25-000063:aci-20250614.htm:00020",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000063",
+          "document": "aci-20250614.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 9,
+          "score": 0.692827,
+          "chunk_id": "0001646972-24-000006:aciq323earningsrelease.htm:00007",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000006",
+          "document": "aciq323earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 10,
+          "score": 0.691508,
+          "chunk_id": "0001646972-25-000095:october2025bondlaunch.htm:00001",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000095",
+          "document": "october2025bondlaunch.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 11,
+          "score": 0.690371,
+          "chunk_id": "0001646972-25-000016:february2025bondlaunch.htm:00001",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000016",
+          "document": "february2025bondlaunch.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 12,
+          "score": 0.689471,
+          "chunk_id": "0001646972-25-000095:october2025bondprice.htm:00001",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000095",
+          "document": "october2025bondprice.htm",
+          "section": "EX-99.2"
+        },
+        {
+          "rank": 13,
+          "score": 0.688652,
+          "chunk_id": "0001646972-25-000098:aci-20251110.htm:00002",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000098",
+          "document": "aci-20251110.htm",
+          "section": "item_1.01"
+        },
+        {
+          "rank": 14,
+          "score": 0.685356,
+          "chunk_id": "0001646972-25-000083:aci-20250906.htm:00025",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000083",
+          "document": "aci-20250906.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 15,
+          "score": 0.683586,
+          "chunk_id": "0001646972-26-000046:aci-20260620.htm:00030",
+          "ticker": "ACI",
+          "accession": "0001646972-26-000046",
+          "document": "aci-20260620.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 16,
+          "score": 0.683186,
+          "chunk_id": "0001646972-24-000231:aci-20241210.htm:00002",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000231",
+          "document": "aci-20241210.htm",
+          "section": "item_1.02"
+        },
+        {
+          "rank": 17,
+          "score": 0.683161,
+          "chunk_id": "0001646972-24-000224:aciq224earningsrelease.htm:00004",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000224",
+          "document": "aciq224earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 18,
+          "score": 0.682693,
+          "chunk_id": "0001646972-26-000010:aci-20251129.htm:00032",
+          "ticker": "ACI",
+          "accession": "0001646972-26-000010",
+          "document": "aci-20251129.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 19,
+          "score": 0.682175,
+          "chunk_id": "0001646972-26-000041:aci-20260723.htm:00004",
+          "ticker": "ACI",
+          "accession": "0001646972-26-000041",
+          "document": "aci-20260723.htm",
+          "section": "item_9.01"
+        },
+        {
+          "rank": 20,
+          "score": 0.681544,
+          "chunk_id": "0001646972-24-000164:aci-20240723.htm:00004",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000164",
+          "document": "aci-20240723.htm",
+          "section": "item_9.01"
+        }
+      ],
+      "scored": true,
+      "score": {
+        "recall@5": false,
+        "recall@20": false,
+        "rank": null,
+        "top1_correct": false,
+        "citation_correct": false,
+        "target_chunks": 1
+      },
+      "section": {
+        "eligible": true,
+        "expected": [
+          "part1_item1_financial_statements"
+        ],
+        "observed": "EX-99.2",
+        "correct": false,
+        "tickers": [
+          "ACI"
+        ]
+      }
+    },
+    {
+      "id": "q07",
+      "type": "single_fact",
+      "question": "What were the terms of the senior unsecured notes Albertsons issued in March 2025?",
+      "top1_score": 0.798237,
+      "top1_chunk_id": "0001646972-25-000016:february2025bondlaunch.htm:00000",
+      "top1_ticker": "ACI",
+      "unresolved_ground_truths": 0,
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.798237,
+          "chunk_id": "0001646972-25-000016:february2025bondlaunch.htm:00000",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000016",
+          "document": "february2025bondlaunch.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 2,
+          "score": 0.795591,
+          "chunk_id": "0001646972-26-000015:january2026bondlaunch.htm:00000",
+          "ticker": "ACI",
+          "accession": "0001646972-26-000015",
+          "document": "january2026bondlaunch.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 3,
+          "score": 0.792291,
+          "chunk_id": "0001646972-25-000034:aci-20250311.htm:00002",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000034",
+          "document": "aci-20250311.htm",
+          "section": "item_1.01"
+        },
+        {
+          "rank": 4,
+          "score": 0.779802,
+          "chunk_id": "0001646972-26-000015:january2026bondprice.htm:00000",
+          "ticker": "ACI",
+          "accession": "0001646972-26-000015",
+          "document": "january2026bondprice.htm",
+          "section": "EX-99.2"
+        },
+        {
+          "rank": 5,
+          "score": 0.77765,
+          "chunk_id": "0001646972-25-000095:october2025bondlaunch.htm:00000",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000095",
+          "document": "october2025bondlaunch.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 6,
+          "score": 0.774959,
+          "chunk_id": "0001646972-25-000016:february2025bondprice.htm:00000",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000016",
+          "document": "february2025bondprice.htm",
+          "section": "EX-99.2"
+        },
+        {
+          "rank": 7,
+          "score": 0.772866,
+          "chunk_id": "0001646972-25-000095:october2025bondprice.htm:00000",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000095",
+          "document": "october2025bondprice.htm",
+          "section": "EX-99.2"
+        },
+        {
+          "rank": 8,
+          "score": 0.768238,
+          "chunk_id": "0001646972-25-000059:aciq125earningsrelease.htm:00004",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000059",
+          "document": "aciq125earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 9,
+          "score": 0.760247,
+          "chunk_id": "0001646972-25-000098:aci-20251110.htm:00002",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000098",
+          "document": "aci-20251110.htm",
+          "section": "item_1.01"
+        },
+        {
+          "rank": 10,
+          "score": 0.759734,
+          "chunk_id": "0001646972-26-000019:aci-20260202.htm:00002",
+          "ticker": "ACI",
+          "accession": "0001646972-26-000019",
+          "document": "aci-20260202.htm",
+          "section": "item_1.01"
+        },
+        {
+          "rank": 11,
+          "score": 0.756937,
+          "chunk_id": "0001646972-25-000063:aci-20250614.htm:00017",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000063",
+          "document": "aci-20250614.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 12,
+          "score": 0.756404,
+          "chunk_id": "0001646972-25-000016:aci-20250219.htm:00002",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000016",
+          "document": "aci-20250219.htm",
+          "section": "item_8.01"
+        },
+        {
+          "rank": 13,
+          "score": 0.745774,
+          "chunk_id": "0001646972-25-000095:aci-20251021.htm:00003",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000095",
+          "document": "aci-20251021.htm",
+          "section": "item_2.04"
+        },
+        {
+          "rank": 14,
+          "score": 0.742182,
+          "chunk_id": "0001646972-26-000015:january2026bondlaunch.htm:00001",
+          "ticker": "ACI",
+          "accession": "0001646972-26-000015",
+          "document": "january2026bondlaunch.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 15,
+          "score": 0.741577,
+          "chunk_id": "0001646972-26-000015:january2026bondprice.htm:00001",
+          "ticker": "ACI",
+          "accession": "0001646972-26-000015",
+          "document": "january2026bondprice.htm",
+          "section": "EX-99.2"
+        },
+        {
+          "rank": 16,
+          "score": 0.738482,
+          "chunk_id": "0001646972-25-000011:aci-20250214.htm:00002",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000011",
+          "document": "aci-20250214.htm",
+          "section": "item_2.04"
+        },
+        {
+          "rank": 17,
+          "score": 0.735873,
+          "chunk_id": "0001646972-25-000095:aci-20251021.htm:00002",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000095",
+          "document": "aci-20251021.htm",
+          "section": "item_2.04"
+        },
+        {
+          "rank": 18,
+          "score": 0.733268,
+          "chunk_id": "0001646972-26-000046:aci-20260620.htm:00017",
+          "ticker": "ACI",
+          "accession": "0001646972-26-000046",
+          "document": "aci-20260620.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 19,
+          "score": 0.731075,
+          "chunk_id": "0001646972-25-000095:october2025bondprice.htm:00001",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000095",
+          "document": "october2025bondprice.htm",
+          "section": "EX-99.2"
+        },
+        {
+          "rank": 20,
+          "score": 0.729186,
+          "chunk_id": "0001646972-26-000010:aci-20251129.htm:00023",
+          "ticker": "ACI",
+          "accession": "0001646972-26-000010",
+          "document": "aci-20251129.htm",
+          "section": "part1_item1_financial_statements"
+        }
+      ],
+      "scored": true,
+      "score": {
+        "recall@5": false,
+        "recall@20": false,
+        "rank": null,
+        "top1_correct": false,
+        "citation_correct": false,
+        "target_chunks": 2
+      },
+      "section": {
+        "eligible": true,
+        "expected": [
+          "part1_item2_mdna"
+        ],
+        "observed": "EX-99.1",
+        "correct": false,
+        "tickers": [
+          "ACI"
+        ]
+      }
+    },
+    {
+      "id": "q08",
+      "type": "single_fact",
+      "question": "What is the borrowing capacity under Balchem's 2022 Credit Agreement?",
+      "top1_score": 0.774962,
+      "top1_chunk_id": "0000009326-26-000026:exhibit991-q22026.htm:00005",
+      "top1_ticker": "BCPC",
+      "unresolved_ground_truths": 0,
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.774962,
+          "chunk_id": "0000009326-26-000026:exhibit991-q22026.htm:00005",
+          "ticker": "BCPC",
+          "accession": "0000009326-26-000026",
+          "document": "exhibit991-q22026.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 2,
+          "score": 0.757634,
+          "chunk_id": "0001140361-26-029658:ef20078813_8k.htm:00003",
+          "ticker": "BCPC",
+          "accession": "0001140361-26-029658",
+          "document": "ef20078813_8k.htm",
+          "section": "item_1.01"
+        },
+        {
+          "rank": 3,
+          "score": 0.756039,
+          "chunk_id": "0001140361-26-029658:ef20078813_8k.htm:00002",
+          "ticker": "BCPC",
+          "accession": "0001140361-26-029658",
+          "document": "ef20078813_8k.htm",
+          "section": "item_1.01"
+        },
+        {
+          "rank": 4,
+          "score": 0.747162,
+          "chunk_id": "0000009326-25-000022:bcpc-20250930.htm:00023",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000022",
+          "document": "bcpc-20250930.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 5,
+          "score": 0.747089,
+          "chunk_id": "0001628280-24-020268:bcpc-20240331.htm:00020",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-020268",
+          "document": "bcpc-20240331.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 6,
+          "score": 0.746545,
+          "chunk_id": "0000009326-25-000012:exhibit991-q22025.htm:00005",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000012",
+          "document": "exhibit991-q22025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 7,
+          "score": 0.742902,
+          "chunk_id": "0000009326-25-000014:bcpc-20250630.htm:00026",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000014",
+          "document": "bcpc-20250630.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 8,
+          "score": 0.742166,
+          "chunk_id": "0001628280-24-033177:bcpc-20240630.htm:00021",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-033177",
+          "document": "bcpc-20240630.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 9,
+          "score": 0.737446,
+          "chunk_id": "0000009326-26-000016:exhibit991-q12026.htm:00005",
+          "ticker": "BCPC",
+          "accession": "0000009326-26-000016",
+          "document": "exhibit991-q12026.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 10,
+          "score": 0.736755,
+          "chunk_id": "0001628280-25-019487:exhibit991-q12025.htm:00005",
+          "ticker": "BCPC",
+          "accession": "0001628280-25-019487",
+          "document": "exhibit991-q12025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 11,
+          "score": 0.736344,
+          "chunk_id": "0000009326-25-000014:bcpc-20250630.htm:00022",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000014",
+          "document": "bcpc-20250630.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 12,
+          "score": 0.734265,
+          "chunk_id": "0001628280-25-019593:bcpc-20250331.htm:00020",
+          "ticker": "BCPC",
+          "accession": "0001628280-25-019593",
+          "document": "bcpc-20250331.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 13,
+          "score": 0.733181,
+          "chunk_id": "0001628280-24-043795:bcpc-20240930.htm:00022",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-043795",
+          "document": "bcpc-20240930.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 14,
+          "score": 0.730619,
+          "chunk_id": "0000009326-26-000026:exhibit991-q22026.htm:00001",
+          "ticker": "BCPC",
+          "accession": "0000009326-26-000026",
+          "document": "exhibit991-q22026.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 15,
+          "score": 0.729024,
+          "chunk_id": "0000773840-25-000064:hon-20250630.htm:00040",
+          "ticker": "HON",
+          "accession": "0000773840-25-000064",
+          "document": "hon-20250630.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 16,
+          "score": 0.720741,
+          "chunk_id": "0000009326-26-000026:exhibit991-q22026.htm:00000",
+          "ticker": "BCPC",
+          "accession": "0000009326-26-000026",
+          "document": "exhibit991-q22026.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 17,
+          "score": 0.720555,
+          "chunk_id": "0000009326-26-000028:bcpc-20260630.htm:00023",
+          "ticker": "BCPC",
+          "accession": "0000009326-26-000028",
+          "document": "bcpc-20260630.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 18,
+          "score": 0.719812,
+          "chunk_id": "0001628280-24-020128:exhibit991-q12024.htm:00005",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-020128",
+          "document": "exhibit991-q12024.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 19,
+          "score": 0.71674,
+          "chunk_id": "0000009326-26-000028:bcpc-20260630.htm:00019",
+          "ticker": "BCPC",
+          "accession": "0000009326-26-000028",
+          "document": "bcpc-20260630.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 20,
+          "score": 0.716682,
+          "chunk_id": "0000009326-26-000004:exhibit991q42025.htm:00006",
+          "ticker": "BCPC",
+          "accession": "0000009326-26-000004",
+          "document": "exhibit991q42025.htm",
+          "section": "EX-99.1"
+        }
+      ],
+      "scored": true,
+      "score": {
+        "recall@5": false,
+        "recall@20": true,
+        "rank": 11,
+        "top1_correct": false,
+        "citation_correct": false,
+        "target_chunks": 2
+      },
+      "section": {
+        "eligible": true,
+        "expected": [
+          "part1_item1_financial_statements"
+        ],
+        "observed": "EX-99.1",
+        "correct": false,
+        "tickers": [
+          "BCPC"
+        ]
+      }
+    },
+    {
+      "id": "q09",
+      "type": "single_fact",
+      "question": "What joint venture does Balchem have with Eastman Chemical, and what is the ownership split?",
+      "top1_score": 0.674135,
+      "top1_chunk_id": "0001140361-25-045137:ef20061036_ex99-1.htm:00000",
+      "top1_ticker": "BCPC",
+      "unresolved_ground_truths": 0,
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.674135,
+          "chunk_id": "0001140361-25-045137:ef20061036_ex99-1.htm:00000",
+          "ticker": "BCPC",
+          "accession": "0001140361-25-045137",
+          "document": "ef20061036_ex99-1.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 2,
+          "score": 0.669318,
+          "chunk_id": "0001140361-24-048915:ef20039817_ex99-1.htm:00000",
+          "ticker": "BCPC",
+          "accession": "0001140361-24-048915",
+          "document": "ef20039817_ex99-1.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 3,
+          "score": 0.652963,
+          "chunk_id": "0001628280-24-005203:exhibit991q42023.htm:00006",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-005203",
+          "document": "exhibit991q42023.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 4,
+          "score": 0.651072,
+          "chunk_id": "0000009326-25-000012:exhibit991-q22025.htm:00001",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000012",
+          "document": "exhibit991-q22025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 5,
+          "score": 0.650974,
+          "chunk_id": "0001628280-24-005203:exhibit991q42023.htm:00010",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-005203",
+          "document": "exhibit991q42023.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 6,
+          "score": 0.649851,
+          "chunk_id": "0001628280-25-019487:exhibit991-q12025.htm:00001",
+          "ticker": "BCPC",
+          "accession": "0001628280-25-019487",
+          "document": "exhibit991-q12025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 7,
+          "score": 0.646599,
+          "chunk_id": "0000009326-25-000014:bcpc-20250630.htm:00048",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000014",
+          "document": "bcpc-20250630.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 8,
+          "score": 0.645746,
+          "chunk_id": "0001628280-24-033055:exhibit991-q22024.htm:00007",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-033055",
+          "document": "exhibit991-q22024.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 9,
+          "score": 0.645717,
+          "chunk_id": "0000009326-26-000018:bcpc-20260331.htm:00038",
+          "ticker": "BCPC",
+          "accession": "0000009326-26-000018",
+          "document": "bcpc-20260331.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 10,
+          "score": 0.644988,
+          "chunk_id": "0001140361-25-006756:ef20044803_8k.htm:00000",
+          "ticker": "BCPC",
+          "accession": "0001140361-25-006756",
+          "document": "ef20044803_8k.htm",
+          "section": null
+        },
+        {
+          "rank": 11,
+          "score": 0.644877,
+          "chunk_id": "0001628280-24-043795:bcpc-20240930.htm:00046",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-043795",
+          "document": "bcpc-20240930.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 12,
+          "score": 0.64487,
+          "chunk_id": "0001628280-24-033177:bcpc-20240630.htm:00045",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-033177",
+          "document": "bcpc-20240630.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 13,
+          "score": 0.644385,
+          "chunk_id": "0000009326-26-000028:bcpc-20260630.htm:00044",
+          "ticker": "BCPC",
+          "accession": "0000009326-26-000028",
+          "document": "bcpc-20260630.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 14,
+          "score": 0.644271,
+          "chunk_id": "0000009326-25-000022:bcpc-20250930.htm:00050",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000022",
+          "document": "bcpc-20250930.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 15,
+          "score": 0.644207,
+          "chunk_id": "0001628280-24-020128:exhibit991-q12024.htm:00001",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-020128",
+          "document": "exhibit991-q12024.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 16,
+          "score": 0.643923,
+          "chunk_id": "0001628280-24-020128:exhibit991-q12024.htm:00005",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-020128",
+          "document": "exhibit991-q12024.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 17,
+          "score": 0.643051,
+          "chunk_id": "0001628280-25-019593:bcpc-20250331.htm:00042",
+          "ticker": "BCPC",
+          "accession": "0001628280-25-019593",
+          "document": "bcpc-20250331.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 18,
+          "score": 0.642504,
+          "chunk_id": "0001628280-24-020268:bcpc-20240331.htm:00042",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-020268",
+          "document": "bcpc-20240331.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 19,
+          "score": 0.641771,
+          "chunk_id": "0000009326-25-000012:exhibit991-q22025.htm:00000",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000012",
+          "document": "exhibit991-q22025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 20,
+          "score": 0.641697,
+          "chunk_id": "0000009326-26-000004:exhibit991q42025.htm:00000",
+          "ticker": "BCPC",
+          "accession": "0000009326-26-000004",
+          "document": "exhibit991q42025.htm",
+          "section": "EX-99.1"
+        }
+      ],
+      "scored": true,
+      "score": {
+        "recall@5": false,
+        "recall@20": false,
+        "rank": null,
+        "top1_correct": false,
+        "citation_correct": false,
+        "target_chunks": 1
+      },
+      "section": {
+        "eligible": true,
+        "expected": [
+          "part1_item1_financial_statements"
+        ],
+        "observed": "EX-99.1",
+        "correct": false,
+        "tickers": [
+          "BCPC"
+        ]
+      }
+    },
+    {
+      "id": "q10",
+      "type": "single_fact",
+      "question": "What are Balchem's reportable segments?",
+      "top1_score": 0.753122,
+      "top1_chunk_id": "0000009326-26-000018:bcpc-20260331.htm:00021",
+      "top1_ticker": "BCPC",
+      "unresolved_ground_truths": 0,
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.753122,
+          "chunk_id": "0000009326-26-000018:bcpc-20260331.htm:00021",
+          "ticker": "BCPC",
+          "accession": "0000009326-26-000018",
+          "document": "bcpc-20260331.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 2,
+          "score": 0.752784,
+          "chunk_id": "0000009326-25-000022:bcpc-20250930.htm:00028",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000022",
+          "document": "bcpc-20250930.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 3,
+          "score": 0.750612,
+          "chunk_id": "0001628280-25-019593:bcpc-20250331.htm:00024",
+          "ticker": "BCPC",
+          "accession": "0001628280-25-019593",
+          "document": "bcpc-20250331.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 4,
+          "score": 0.689714,
+          "chunk_id": "0001628280-24-020268:bcpc-20240331.htm:00024",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-020268",
+          "document": "bcpc-20240331.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 5,
+          "score": 0.689027,
+          "chunk_id": "0000009326-26-000028:bcpc-20260630.htm:00023",
+          "ticker": "BCPC",
+          "accession": "0000009326-26-000028",
+          "document": "bcpc-20260630.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 6,
+          "score": 0.688914,
+          "chunk_id": "0001628280-24-043795:bcpc-20240930.htm:00027",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-043795",
+          "document": "bcpc-20240930.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 7,
+          "score": 0.684943,
+          "chunk_id": "0000009326-25-000014:bcpc-20250630.htm:00026",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000014",
+          "document": "bcpc-20250630.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 8,
+          "score": 0.677269,
+          "chunk_id": "0001628280-24-033055:exhibit991-q22024.htm:00007",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-033055",
+          "document": "exhibit991-q22024.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 9,
+          "score": 0.675162,
+          "chunk_id": "0001628280-24-043795:bcpc-20240930.htm:00046",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-043795",
+          "document": "bcpc-20240930.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 10,
+          "score": 0.661636,
+          "chunk_id": "0001628280-24-005203:exhibit991q42023.htm:00006",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-005203",
+          "document": "exhibit991q42023.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 11,
+          "score": 0.65976,
+          "chunk_id": "0000009326-25-000019:exhibit991-q32025.htm:00001",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000019",
+          "document": "exhibit991-q32025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 12,
+          "score": 0.65838,
+          "chunk_id": "0000009326-25-000022:bcpc-20250930.htm:00005",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000022",
+          "document": "bcpc-20250930.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 13,
+          "score": 0.65763,
+          "chunk_id": "0001628280-24-033177:bcpc-20240630.htm:00045",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-033177",
+          "document": "bcpc-20240630.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 14,
+          "score": 0.657126,
+          "chunk_id": "0001628280-24-020268:bcpc-20240331.htm:00042",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-020268",
+          "document": "bcpc-20240331.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 15,
+          "score": 0.652632,
+          "chunk_id": "0001628280-24-020128:exhibit991-q12024.htm:00005",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-020128",
+          "document": "exhibit991-q12024.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 16,
+          "score": 0.651623,
+          "chunk_id": "0001628280-25-019593:bcpc-20250331.htm:00042",
+          "ticker": "BCPC",
+          "accession": "0001628280-25-019593",
+          "document": "bcpc-20250331.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 17,
+          "score": 0.651284,
+          "chunk_id": "0001628280-24-020268:bcpc-20240331.htm:00004",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-020268",
+          "document": "bcpc-20240331.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 18,
+          "score": 0.650988,
+          "chunk_id": "0000009326-25-000022:bcpc-20250930.htm:00050",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000022",
+          "document": "bcpc-20250930.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 19,
+          "score": 0.650975,
+          "chunk_id": "0000009326-25-000014:bcpc-20250630.htm:00048",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000014",
+          "document": "bcpc-20250630.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 20,
+          "score": 0.650521,
+          "chunk_id": "0000009326-25-000019:exhibit991-q32025.htm:00000",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000019",
+          "document": "exhibit991-q32025.htm",
+          "section": "EX-99.1"
+        }
+      ],
+      "scored": true,
+      "score": {
+        "recall@5": false,
+        "recall@20": true,
+        "rank": 7,
+        "top1_correct": false,
+        "citation_correct": false,
+        "target_chunks": 1
+      },
+      "section": {
+        "eligible": true,
+        "expected": [
+          "part1_item1_financial_statements"
+        ],
+        "observed": "part1_item1_financial_statements",
+        "correct": true,
+        "tickers": [
+          "BCPC"
+        ]
+      }
+    },
+    {
+      "id": "q11",
+      "type": "single_fact",
+      "question": "What instruments does AGNC use to hedge interest rate risk?",
+      "top1_score": 0.782765,
+      "top1_chunk_id": "0001423689-25-000106:agnc-20250930.htm:00066",
+      "top1_ticker": "AGNC",
+      "unresolved_ground_truths": 0,
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.782765,
+          "chunk_id": "0001423689-25-000106:agnc-20250930.htm:00066",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000106",
+          "document": "agnc-20250930.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 2,
+          "score": 0.756704,
+          "chunk_id": "0001423689-26-000124:agnc8kexhibit99163026.htm:00007",
+          "ticker": "AGNC",
+          "accession": "0001423689-26-000124",
+          "document": "agnc8kexhibit99163026.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 3,
+          "score": 0.754354,
+          "chunk_id": "0001423689-26-000128:agnc-20260630.htm:00017",
+          "ticker": "AGNC",
+          "accession": "0001423689-26-000128",
+          "document": "agnc-20260630.htm",
+          "section": null
+        },
+        {
+          "rank": 4,
+          "score": 0.753735,
+          "chunk_id": "0001423689-25-000073:agnc-20250630.htm:00017",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000073",
+          "document": "agnc-20250630.htm",
+          "section": null
+        },
+        {
+          "rank": 5,
+          "score": 0.751762,
+          "chunk_id": "0001423689-26-000124:agnc8kexhibit99163026.htm:00001",
+          "ticker": "AGNC",
+          "accession": "0001423689-26-000124",
+          "document": "agnc8kexhibit99163026.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 6,
+          "score": 0.751248,
+          "chunk_id": "0001423689-24-000076:agnc-20240930.htm:00017",
+          "ticker": "AGNC",
+          "accession": "0001423689-24-000076",
+          "document": "agnc-20240930.htm",
+          "section": null
+        },
+        {
+          "rank": 7,
+          "score": 0.751083,
+          "chunk_id": "0001423689-26-000095:agnc8kexhibit99133126.htm:00001",
+          "ticker": "AGNC",
+          "accession": "0001423689-26-000095",
+          "document": "agnc8kexhibit99133126.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 8,
+          "score": 0.750908,
+          "chunk_id": "0001423689-25-000043:agnc8kexhibit99133125.htm:00001",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000043",
+          "document": "agnc8kexhibit99133125.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 9,
+          "score": 0.749058,
+          "chunk_id": "0001423689-25-000106:agnc-20250930.htm:00063",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000106",
+          "document": "agnc-20250930.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 10,
+          "score": 0.744933,
+          "chunk_id": "0001423689-25-000101:agnc8kexhibit99193025.htm:00001",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000101",
+          "document": "agnc8kexhibit99193025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 11,
+          "score": 0.742774,
+          "chunk_id": "0001423689-24-000060:agnc8kexhibit99193024.htm:00001",
+          "ticker": "AGNC",
+          "accession": "0001423689-24-000060",
+          "document": "agnc8kexhibit99193024.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 12,
+          "score": 0.741967,
+          "chunk_id": "0001423689-25-000061:agnc8kexhibit99163025.htm:00001",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000061",
+          "document": "agnc8kexhibit99163025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 13,
+          "score": 0.741156,
+          "chunk_id": "0001423689-25-000073:agnc-20250630.htm:00063",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000073",
+          "document": "agnc-20250630.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 14,
+          "score": 0.741029,
+          "chunk_id": "0001423689-24-000003:agnc8kexhibit991123123.htm:00027",
+          "ticker": "AGNC",
+          "accession": "0001423689-24-000003",
+          "document": "agnc8kexhibit991123123.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 15,
+          "score": 0.740341,
+          "chunk_id": "0001423689-24-000037:agnc8kexhibit99133124.htm:00002",
+          "ticker": "AGNC",
+          "accession": "0001423689-24-000037",
+          "document": "agnc8kexhibit99133124.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 16,
+          "score": 0.739915,
+          "chunk_id": "0001423689-24-000056:agnc8kexhibit99163024.htm:00001",
+          "ticker": "AGNC",
+          "accession": "0001423689-24-000056",
+          "document": "agnc8kexhibit99163024.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 17,
+          "score": 0.739111,
+          "chunk_id": "0001423689-25-000061:agnc8kexhibit99163025.htm:00007",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000061",
+          "document": "agnc8kexhibit99163025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 18,
+          "score": 0.738981,
+          "chunk_id": "0001423689-25-000101:agnc8kexhibit99193025.htm:00002",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000101",
+          "document": "agnc8kexhibit99193025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 19,
+          "score": 0.738485,
+          "chunk_id": "0001423689-24-000039:agnc-20240331.htm:00061",
+          "ticker": "AGNC",
+          "accession": "0001423689-24-000039",
+          "document": "agnc-20240331.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 20,
+          "score": 0.737909,
+          "chunk_id": "0001423689-25-000043:agnc8kexhibit99133125.htm:00002",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000043",
+          "document": "agnc8kexhibit99133125.htm",
+          "section": "EX-99.1"
+        }
+      ],
+      "scored": true,
+      "score": {
+        "recall@5": true,
+        "recall@20": true,
+        "rank": 4,
+        "top1_correct": false,
+        "citation_correct": false,
+        "target_chunks": 2
+      },
+      "section": {
+        "eligible": false
+      }
+    },
+    {
+      "id": "q12",
+      "type": "single_fact",
+      "question": "What is the stated objective of AGNC's risk management strategy?",
+      "top1_score": 0.727332,
+      "top1_chunk_id": "0001423689-26-000124:agnc8kexhibit99163026.htm:00001",
+      "top1_ticker": "AGNC",
+      "unresolved_ground_truths": 0,
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.727332,
+          "chunk_id": "0001423689-26-000124:agnc8kexhibit99163026.htm:00001",
+          "ticker": "AGNC",
+          "accession": "0001423689-26-000124",
+          "document": "agnc8kexhibit99163026.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 2,
+          "score": 0.725437,
+          "chunk_id": "0001423689-25-000043:agnc8kexhibit99133125.htm:00001",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000043",
+          "document": "agnc8kexhibit99133125.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 3,
+          "score": 0.716021,
+          "chunk_id": "0001423689-24-000037:agnc8kexhibit99133124.htm:00026",
+          "ticker": "AGNC",
+          "accession": "0001423689-24-000037",
+          "document": "agnc8kexhibit99133124.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 4,
+          "score": 0.714849,
+          "chunk_id": "0001423689-24-000039:agnc-20240331.htm:00061",
+          "ticker": "AGNC",
+          "accession": "0001423689-24-000039",
+          "document": "agnc-20240331.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 5,
+          "score": 0.71384,
+          "chunk_id": "0001423689-25-000061:agnc8kexhibit99163025.htm:00001",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000061",
+          "document": "agnc8kexhibit99163025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 6,
+          "score": 0.713465,
+          "chunk_id": "0001423689-24-000003:agnc8kexhibit991123123.htm:00027",
+          "ticker": "AGNC",
+          "accession": "0001423689-24-000003",
+          "document": "agnc8kexhibit991123123.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 7,
+          "score": 0.710083,
+          "chunk_id": "0001423689-26-000095:agnc8kexhibit99133126.htm:00001",
+          "ticker": "AGNC",
+          "accession": "0001423689-26-000095",
+          "document": "agnc8kexhibit99133126.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 8,
+          "score": 0.705696,
+          "chunk_id": "0001423689-24-000056:agnc8kexhibit99163024.htm:00001",
+          "ticker": "AGNC",
+          "accession": "0001423689-24-000056",
+          "document": "agnc8kexhibit99163024.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 9,
+          "score": 0.70514,
+          "chunk_id": "0001423689-25-000061:agnc8kexhibit99163025.htm:00027",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000061",
+          "document": "agnc8kexhibit99163025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 10,
+          "score": 0.704201,
+          "chunk_id": "0001423689-24-000058:agnc-20240630.htm:00064",
+          "ticker": "AGNC",
+          "accession": "0001423689-24-000058",
+          "document": "agnc-20240630.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 11,
+          "score": 0.704124,
+          "chunk_id": "0001423689-25-000101:agnc8kexhibit99193025.htm:00001",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000101",
+          "document": "agnc8kexhibit99193025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 12,
+          "score": 0.703251,
+          "chunk_id": "0001423689-25-000043:agnc8kexhibit99133125.htm:00027",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000043",
+          "document": "agnc8kexhibit99133125.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 13,
+          "score": 0.701791,
+          "chunk_id": "0001423689-24-000037:agnc8kexhibit99133124.htm:00001",
+          "ticker": "AGNC",
+          "accession": "0001423689-24-000037",
+          "document": "agnc8kexhibit99133124.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 14,
+          "score": 0.700091,
+          "chunk_id": "0001423689-24-000056:agnc8kexhibit99163024.htm:00026",
+          "ticker": "AGNC",
+          "accession": "0001423689-24-000056",
+          "document": "agnc8kexhibit99163024.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 15,
+          "score": 0.697759,
+          "chunk_id": "0001423689-24-000060:agnc8kexhibit99193024.htm:00001",
+          "ticker": "AGNC",
+          "accession": "0001423689-24-000060",
+          "document": "agnc8kexhibit99193024.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 16,
+          "score": 0.696444,
+          "chunk_id": "0001423689-25-000056:agnc-20250331.htm:00057",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000056",
+          "document": "agnc-20250331.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 17,
+          "score": 0.695877,
+          "chunk_id": "0001423689-26-000024:agnc8kexhibit991123125.htm:00001",
+          "ticker": "AGNC",
+          "accession": "0001423689-26-000024",
+          "document": "agnc8kexhibit991123125.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 18,
+          "score": 0.695873,
+          "chunk_id": "0001423689-25-000106:agnc-20250930.htm:00060",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000106",
+          "document": "agnc-20250930.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 19,
+          "score": 0.695642,
+          "chunk_id": "0001423689-25-000073:agnc-20250630.htm:00060",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000073",
+          "document": "agnc-20250630.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 20,
+          "score": 0.69524,
+          "chunk_id": "0001423689-24-000076:agnc-20240930.htm:00062",
+          "ticker": "AGNC",
+          "accession": "0001423689-24-000076",
+          "document": "agnc-20240930.htm",
+          "section": "part1_item2_mdna"
+        }
+      ],
+      "scored": true,
+      "score": {
+        "recall@5": false,
+        "recall@20": false,
+        "rank": null,
+        "top1_correct": false,
+        "citation_correct": false,
+        "target_chunks": 1
+      },
+      "section": {
+        "eligible": false
+      }
+    },
+    {
+      "id": "q27",
+      "type": "single_fact",
+      "question": "What did Honeywell's CEO say about second quarter 2025 results?",
+      "top1_score": 0.815775,
+      "top1_chunk_id": "0000773840-25-000062:exhibit99-q22025earningsre.htm:00006",
+      "top1_ticker": "HON",
+      "unresolved_ground_truths": 0,
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.815775,
+          "chunk_id": "0000773840-25-000062:exhibit99-q22025earningsre.htm:00006",
+          "ticker": "HON",
+          "accession": "0000773840-25-000062",
+          "document": "exhibit99-q22025earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 2,
+          "score": 0.795586,
+          "chunk_id": "0000773840-24-000081:exhibit99-q22024earningsre.htm:00005",
+          "ticker": "HON",
+          "accession": "0000773840-24-000081",
+          "document": "exhibit99-q22024earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 3,
+          "score": 0.787419,
+          "chunk_id": "0000773840-25-000005:exhibit991-q42024earningsr.htm:00006",
+          "ticker": "HON",
+          "accession": "0000773840-25-000005",
+          "document": "exhibit991-q42024earningsr.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 4,
+          "score": 0.781557,
+          "chunk_id": "0000773840-25-000062:hon-20250724.htm:00002",
+          "ticker": "HON",
+          "accession": "0000773840-25-000062",
+          "document": "hon-20250724.htm",
+          "section": "item_2.02"
+        },
+        {
+          "rank": 5,
+          "score": 0.781303,
+          "chunk_id": "0000773840-25-000062:exhibit99-q22025earningsre.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-25-000062",
+          "document": "exhibit99-q22025earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 6,
+          "score": 0.77346,
+          "chunk_id": "0000773840-24-000045:exhibit99-q12024earningsre.htm:00005",
+          "ticker": "HON",
+          "accession": "0000773840-24-000045",
+          "document": "exhibit99-q12024earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 7,
+          "score": 0.772529,
+          "chunk_id": "0000773840-25-000005:exhibit991-q42024earningsr.htm:00002",
+          "ticker": "HON",
+          "accession": "0000773840-25-000005",
+          "document": "exhibit991-q42024earningsr.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 8,
+          "score": 0.771033,
+          "chunk_id": "0000773840-25-000005:exhibit992-winter.htm:00005",
+          "ticker": "HON",
+          "accession": "0000773840-25-000005",
+          "document": "exhibit992-winter.htm",
+          "section": "EX-99.2"
+        },
+        {
+          "rank": 9,
+          "score": 0.77043,
+          "chunk_id": "0000773840-25-000104:exhibit99-q32025earningsre.htm:00006",
+          "ticker": "HON",
+          "accession": "0000773840-25-000104",
+          "document": "exhibit99-q32025earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 10,
+          "score": 0.766723,
+          "chunk_id": "0000773840-26-000120:exhibit99-q22026earningsre.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-26-000120",
+          "document": "exhibit99-q22026earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 11,
+          "score": 0.765314,
+          "chunk_id": "0000773840-24-000081:exhibit99-q22024earningsre.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-24-000081",
+          "document": "exhibit99-q22024earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 12,
+          "score": 0.762296,
+          "chunk_id": "0000773840-24-000007:exhibit99-q42023earningsre.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-24-000007",
+          "document": "exhibit99-q42023earningsre.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 13,
+          "score": 0.762173,
+          "chunk_id": "0000773840-25-000062:exhibit99-q22025earningsre.htm:00004",
+          "ticker": "HON",
+          "accession": "0000773840-25-000062",
+          "document": "exhibit99-q22025earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 14,
+          "score": 0.761489,
+          "chunk_id": "0000773840-24-000081:hon-20240725.htm:00002",
+          "ticker": "HON",
+          "accession": "0000773840-24-000081",
+          "document": "hon-20240725.htm",
+          "section": "item_2.02"
+        },
+        {
+          "rank": 15,
+          "score": 0.759495,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00097",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 16,
+          "score": 0.757955,
+          "chunk_id": "0000773840-26-000120:hon-20260723.htm:00002",
+          "ticker": "HON",
+          "accession": "0000773840-26-000120",
+          "document": "hon-20260723.htm",
+          "section": "item_2.02"
+        },
+        {
+          "rank": 17,
+          "score": 0.757952,
+          "chunk_id": "0000773840-25-000035:exhibit99-q12025earningsre.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-25-000035",
+          "document": "exhibit99-q12025earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 18,
+          "score": 0.757222,
+          "chunk_id": "0000773840-24-000045:exhibit99-q12024earningsre.htm:00007",
+          "ticker": "HON",
+          "accession": "0000773840-24-000045",
+          "document": "exhibit99-q12024earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 19,
+          "score": 0.755456,
+          "chunk_id": "0000773840-25-000035:hon-20250429.htm:00002",
+          "ticker": "HON",
+          "accession": "0000773840-25-000035",
+          "document": "hon-20250429.htm",
+          "section": "item_2.02"
+        },
+        {
+          "rank": 20,
+          "score": 0.752708,
+          "chunk_id": "0000773840-25-000005:exhibit991-q42024earningsr.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-25-000005",
+          "document": "exhibit991-q42024earningsr.htm",
+          "section": "EX-99.1"
+        }
+      ],
+      "scored": true,
+      "score": {
+        "recall@5": false,
+        "recall@20": false,
+        "rank": null,
+        "top1_correct": false,
+        "citation_correct": true,
+        "target_chunks": 1
+      },
+      "section": {
+        "eligible": false
+      }
+    },
+    {
+      "id": "q28",
+      "type": "single_fact",
+      "question": "Why did AIG stop consolidating Corebridge Financial?",
+      "top1_score": 0.858074,
+      "top1_chunk_id": "0000005272-24-000063:aig-20240609.htm:00002",
+      "top1_ticker": "AIG",
+      "unresolved_ground_truths": 0,
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.858074,
+          "chunk_id": "0000005272-24-000063:aig-20240609.htm:00002",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000063",
+          "document": "aig-20240609.htm",
+          "section": "item_2.01"
+        },
+        {
+          "rank": 2,
+          "score": 0.833091,
+          "chunk_id": "0000005272-24-000079:aig-20240630.htm:00028",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000079",
+          "document": "aig-20240630.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 3,
+          "score": 0.810097,
+          "chunk_id": "0000005272-24-000058:a991-june10.htm:00000",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000058",
+          "document": "a991-june10.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 4,
+          "score": 0.80813,
+          "chunk_id": "0000005272-24-000068:aigfinsupprecastcrbgdisc.htm:00002",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000068",
+          "document": "aigfinsupprecastcrbgdisc.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 5,
+          "score": 0.80631,
+          "chunk_id": "0000005272-24-000058:a991-june10.htm:00001",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000058",
+          "document": "a991-june10.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 6,
+          "score": 0.803846,
+          "chunk_id": "0000005272-25-000081:aig-20250630.htm:00027",
+          "ticker": "AIG",
+          "accession": "0000005272-25-000081",
+          "document": "aig-20250630.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 7,
+          "score": 0.802855,
+          "chunk_id": "0000005272-25-000160:aig-20250930.htm:00027",
+          "ticker": "AIG",
+          "accession": "0000005272-25-000160",
+          "document": "aig-20250930.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 8,
+          "score": 0.801008,
+          "chunk_id": "0000005272-24-000126:aig-20240930.htm:00029",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000126",
+          "document": "aig-20240930.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 9,
+          "score": 0.800798,
+          "chunk_id": "0000005272-24-000068:aig-20240624.htm:00002",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000068",
+          "document": "aig-20240624.htm",
+          "section": "item_7.01"
+        },
+        {
+          "rank": 10,
+          "score": 0.797668,
+          "chunk_id": "0000005272-24-000051:aig-20240331.htm:00015",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000051",
+          "document": "aig-20240331.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 11,
+          "score": 0.787849,
+          "chunk_id": "0000005272-24-000126:aig-20240930.htm:00030",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000126",
+          "document": "aig-20240930.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 12,
+          "score": 0.786408,
+          "chunk_id": "0000005272-24-000079:aig-20240630.htm:00029",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000079",
+          "document": "aig-20240630.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 13,
+          "score": 0.784909,
+          "chunk_id": "0000005272-25-000040:aig-20250331.htm:00021",
+          "ticker": "AIG",
+          "accession": "0000005272-25-000040",
+          "document": "aig-20250331.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 14,
+          "score": 0.784354,
+          "chunk_id": "0000005272-26-000076:aig-20260630.htm:00015",
+          "ticker": "AIG",
+          "accession": "0000005272-26-000076",
+          "document": "aig-20260630.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 15,
+          "score": 0.784208,
+          "chunk_id": "0000005272-24-000079:aig-20240630.htm:00027",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000079",
+          "document": "aig-20240630.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 16,
+          "score": 0.783152,
+          "chunk_id": "0000005272-26-000052:aig-20260331.htm:00013",
+          "ticker": "AIG",
+          "accession": "0000005272-26-000052",
+          "document": "aig-20260331.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 17,
+          "score": 0.777594,
+          "chunk_id": "0000005272-24-000126:aig-20240930.htm:00028",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000126",
+          "document": "aig-20240930.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 18,
+          "score": 0.772091,
+          "chunk_id": "0001104659-24-062171:tm2414457d1_ex99-2.htm:00001",
+          "ticker": "AIG",
+          "accession": "0001104659-24-062171",
+          "document": "tm2414457d1_ex99-2.htm",
+          "section": "EX-99.2"
+        },
+        {
+          "rank": 19,
+          "score": 0.771938,
+          "chunk_id": "0000005272-24-000126:aig-20240930.htm:00155",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000126",
+          "document": "aig-20240930.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 20,
+          "score": 0.769776,
+          "chunk_id": "0000005272-25-000160:aig-20250930.htm:00026",
+          "ticker": "AIG",
+          "accession": "0000005272-25-000160",
+          "document": "aig-20250930.htm",
+          "section": "part1_item2_mdna"
+        }
+      ],
+      "scored": true,
+      "score": {
+        "recall@5": true,
+        "recall@20": true,
+        "rank": 1,
+        "top1_correct": true,
+        "citation_correct": true,
+        "target_chunks": 1
+      },
+      "section": {
+        "eligible": false
+      }
+    },
+    {
+      "id": "q13",
+      "type": "cross_company",
+      "question": "Which companies disclosed the enactment of the One Big Beautiful Bill Act and its tax implications?",
+      "top1_score": 0.740644,
+      "top1_chunk_id": "0001646972-25-000063:aci-20250614.htm:00011",
+      "top1_ticker": "ACI",
+      "unresolved_ground_truths": 0,
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.740644,
+          "chunk_id": "0001646972-25-000063:aci-20250614.htm:00011",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000063",
+          "document": "aci-20250614.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 2,
+          "score": 0.723278,
+          "chunk_id": "0000009326-26-000018:bcpc-20260331.htm:00020",
+          "ticker": "BCPC",
+          "accession": "0000009326-26-000018",
+          "document": "bcpc-20260331.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 3,
+          "score": 0.712517,
+          "chunk_id": "0001646972-25-000083:aci-20250906.htm:00013",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000083",
+          "document": "aci-20250906.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 4,
+          "score": 0.690145,
+          "chunk_id": "0001646972-26-000010:aci-20251129.htm:00015",
+          "ticker": "ACI",
+          "accession": "0001646972-26-000010",
+          "document": "aci-20251129.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 5,
+          "score": 0.68314,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00121",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 6,
+          "score": 0.681055,
+          "chunk_id": "0000009326-26-000028:bcpc-20260630.htm:00022",
+          "ticker": "BCPC",
+          "accession": "0000009326-26-000028",
+          "document": "bcpc-20260630.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 7,
+          "score": 0.660342,
+          "chunk_id": "0000773840-25-000064:hon-20250630.htm:00035",
+          "ticker": "HON",
+          "accession": "0000773840-25-000064",
+          "document": "hon-20250630.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 8,
+          "score": 0.653938,
+          "chunk_id": "0000009326-26-000018:bcpc-20260331.htm:00019",
+          "ticker": "BCPC",
+          "accession": "0000009326-26-000018",
+          "document": "bcpc-20260331.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 9,
+          "score": 0.65055,
+          "chunk_id": "0000773840-25-000105:hon-20250930.htm:00035",
+          "ticker": "HON",
+          "accession": "0000773840-25-000105",
+          "document": "hon-20250930.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 10,
+          "score": 0.649729,
+          "chunk_id": "0000009326-25-000014:bcpc-20250630.htm:00024",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000014",
+          "document": "bcpc-20250630.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 11,
+          "score": 0.644265,
+          "chunk_id": "0000009326-25-000022:bcpc-20250930.htm:00025",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000022",
+          "document": "bcpc-20250930.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 12,
+          "score": 0.63669,
+          "chunk_id": "0001646972-25-000063:aci-20250614.htm:00010",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000063",
+          "document": "aci-20250614.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 13,
+          "score": 0.627009,
+          "chunk_id": "0001646972-24-000009:aci-20231202.htm:00016",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000009",
+          "document": "aci-20231202.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 14,
+          "score": 0.624904,
+          "chunk_id": "0000773840-25-000037:hon-20250331.htm:00081",
+          "ticker": "HON",
+          "accession": "0000773840-25-000037",
+          "document": "hon-20250331.htm",
+          "section": "part2_item2_unregistered_sales"
+        },
+        {
+          "rank": 15,
+          "score": 0.624534,
+          "chunk_id": "0000009326-25-000022:bcpc-20250930.htm:00027",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000022",
+          "document": "bcpc-20250930.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 16,
+          "score": 0.623869,
+          "chunk_id": "0000773840-24-000099:hon-20240930.htm:00103",
+          "ticker": "HON",
+          "accession": "0000773840-24-000099",
+          "document": "hon-20240930.htm",
+          "section": "part2_item2_unregistered_sales"
+        },
+        {
+          "rank": 17,
+          "score": 0.617483,
+          "chunk_id": "0000773840-26-000124:hon-20260630.htm:00132",
+          "ticker": "HON",
+          "accession": "0000773840-26-000124",
+          "document": "hon-20260630.htm",
+          "section": "part2_item2_unregistered_sales"
+        },
+        {
+          "rank": 18,
+          "score": 0.617148,
+          "chunk_id": "0001646972-24-000225:aci-20240907.htm:00013",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000225",
+          "document": "aci-20240907.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 19,
+          "score": 0.616214,
+          "chunk_id": "0001646972-26-000028:aciq425earningsrelease.htm:00004",
+          "ticker": "ACI",
+          "accession": "0001646972-26-000028",
+          "document": "aciq425earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 20,
+          "score": 0.61592,
+          "chunk_id": "0000773840-25-000064:hon-20250630.htm:00095",
+          "ticker": "HON",
+          "accession": "0000773840-25-000064",
+          "document": "hon-20250630.htm",
+          "section": "part2_item2_unregistered_sales"
+        }
+      ],
+      "scored": true,
+      "score": {
+        "members": [
+          {
+            "accession": "0001646972-25-000063",
+            "ticker": "ACI",
+            "document": "aci-20250614.htm",
+            "rank": 1,
+            "covered@5": true,
+            "covered@20": true
+          },
+          {
+            "accession": "0000009326-25-000014",
+            "ticker": "BCPC",
+            "document": "bcpc-20250630.htm",
+            "rank": 10,
+            "covered@5": false,
+            "covered@20": true
+          }
+        ],
+        "recall@5": false,
+        "covered@5": 1,
+        "recall@20": true,
+        "covered@20": 2,
+        "members_total": 2
+      },
+      "section": {
+        "eligible": true,
+        "expected": [
+          "part1_item1_financial_statements"
+        ],
+        "observed": "part1_item1_financial_statements",
+        "correct": true,
+        "tickers": [
+          "ACI",
+          "BCPC"
+        ]
+      }
+    },
+    {
+      "id": "q15",
+      "type": "period_over_period",
+      "question": "How did Honeywell's stated timing for the Solstice Advanced Materials spin-off change between its Q2 and Q3 2025 filings?",
+      "top1_score": 0.847582,
+      "top1_chunk_id": "0000773840-25-000064:hon-20250630.htm:00022",
+      "top1_ticker": "HON",
+      "unresolved_ground_truths": 0,
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.847582,
+          "chunk_id": "0000773840-25-000064:hon-20250630.htm:00022",
+          "ticker": "HON",
+          "accession": "0000773840-25-000064",
+          "document": "hon-20250630.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 2,
+          "score": 0.837551,
+          "chunk_id": "0000773840-25-000109:hon-20251030.htm:00002",
+          "ticker": "HON",
+          "accession": "0000773840-25-000109",
+          "document": "hon-20251030.htm",
+          "section": "item_8.01"
+        },
+        {
+          "rank": 3,
+          "score": 0.83376,
+          "chunk_id": "0000773840-25-000037:hon-20250331.htm:00019",
+          "ticker": "HON",
+          "accession": "0000773840-25-000037",
+          "document": "hon-20250331.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 4,
+          "score": 0.827864,
+          "chunk_id": "0000773840-25-000096:exhibit991-pressrelease101.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-25-000096",
+          "document": "exhibit991-pressrelease101.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 5,
+          "score": 0.823741,
+          "chunk_id": "0000773840-25-000037:hon-20250331.htm:00058",
+          "ticker": "HON",
+          "accession": "0000773840-25-000037",
+          "document": "hon-20250331.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 6,
+          "score": 0.823625,
+          "chunk_id": "0000773840-25-000071:exhibit991-pressrelease8.htm:00003",
+          "ticker": "HON",
+          "accession": "0000773840-25-000071",
+          "document": "exhibit991-pressrelease8.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 7,
+          "score": 0.820758,
+          "chunk_id": "0000773840-25-000071:hon-20250821.htm:00002",
+          "ticker": "HON",
+          "accession": "0000773840-25-000071",
+          "document": "hon-20250821.htm",
+          "section": "item_7.01"
+        },
+        {
+          "rank": 8,
+          "score": 0.820459,
+          "chunk_id": "0000773840-25-000109:exhibit991-pressrelease103.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-25-000109",
+          "document": "exhibit991-pressrelease103.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 9,
+          "score": 0.816317,
+          "chunk_id": "0000773840-24-000091:exhibit991-oct8pressrelease.htm:00003",
+          "ticker": "HON",
+          "accession": "0000773840-24-000091",
+          "document": "exhibit991-oct8pressrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 10,
+          "score": 0.815771,
+          "chunk_id": "0000773840-25-000090:exhibit991-pressrelease101.htm:00004",
+          "ticker": "HON",
+          "accession": "0000773840-25-000090",
+          "document": "exhibit991-pressrelease101.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 11,
+          "score": 0.811553,
+          "chunk_id": "0000773840-25-000090:exhibit991-pressrelease101.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-25-000090",
+          "document": "exhibit991-pressrelease101.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 12,
+          "score": 0.810829,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00131",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 13,
+          "score": 0.809939,
+          "chunk_id": "0000773840-25-000071:exhibit991-pressrelease8.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-25-000071",
+          "document": "exhibit991-pressrelease8.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 14,
+          "score": 0.806263,
+          "chunk_id": "0000773840-24-000091:exhibit991-oct8pressrelease.htm:00002",
+          "ticker": "HON",
+          "accession": "0000773840-24-000091",
+          "document": "exhibit991-oct8pressrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 15,
+          "score": 0.806098,
+          "chunk_id": "0000773840-25-000090:exhibit991-pressrelease101.htm:00003",
+          "ticker": "HON",
+          "accession": "0000773840-25-000090",
+          "document": "exhibit991-pressrelease101.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 16,
+          "score": 0.803139,
+          "chunk_id": "0000773840-25-000071:exhibit992-pressrelease821.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-25-000071",
+          "document": "exhibit992-pressrelease821.htm",
+          "section": "EX-99.2"
+        },
+        {
+          "rank": 17,
+          "score": 0.799438,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00026",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 18,
+          "score": 0.797052,
+          "chunk_id": "0000773840-25-000096:exhibit991-pressrelease101.htm:00002",
+          "ticker": "HON",
+          "accession": "0000773840-25-000096",
+          "document": "exhibit991-pressrelease101.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 19,
+          "score": 0.796253,
+          "chunk_id": "0000773840-26-000057:hon-20260331.htm:00019",
+          "ticker": "HON",
+          "accession": "0000773840-26-000057",
+          "document": "hon-20260331.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 20,
+          "score": 0.795373,
+          "chunk_id": "0000773840-25-000064:hon-20250630.htm:00068",
+          "ticker": "HON",
+          "accession": "0000773840-25-000064",
+          "document": "hon-20250630.htm",
+          "section": "part1_item2_mdna"
+        }
+      ],
+      "scored": true,
+      "score": {
+        "members": [
+          {
+            "accession": "0000773840-25-000064",
+            "ticker": "HON",
+            "document": "hon-20250630.htm",
+            "rank": 1,
+            "covered@5": true,
+            "covered@20": true
+          },
+          {
+            "accession": "0000773840-25-000105",
+            "ticker": "HON",
+            "document": "hon-20250930.htm",
+            "rank": null,
+            "covered@5": false,
+            "covered@20": false
+          }
+        ],
+        "recall@5": false,
+        "covered@5": 1,
+        "recall@20": false,
+        "covered@20": 1,
+        "members_total": 2
+      },
+      "target_recall": {
+        "meaningful": true,
+        "max_corpus_accessions": 1,
+        "max_duplicate_text_count": 1,
+        "members": [
+          {
+            "accession": "0000773840-25-000064",
+            "rank": 1,
+            "duplicate_text_count": 1,
+            "corpus_accessions": 1,
+            "hit@5": true,
+            "hit@20": true
+          },
+          {
+            "accession": "0000773840-25-000105",
+            "rank": null,
+            "duplicate_text_count": 1,
+            "corpus_accessions": 1,
+            "hit@5": false,
+            "hit@20": false
+          }
+        ],
+        "recall@5": false,
+        "recall@20": false
+      }
+    },
+    {
+      "id": "q16",
+      "type": "period_over_period",
+      "question": "What did Honeywell say about the expected closing of the Johnson Matthey Catalyst Technologies acquisition?",
+      "top1_score": 0.766033,
+      "top1_chunk_id": "0000773840-26-000058:hon-20260423.htm:00005",
+      "top1_ticker": "HON",
+      "unresolved_ground_truths": 0,
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.766033,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00005",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 2,
+          "score": 0.764721,
+          "chunk_id": "0000773840-26-000057:hon-20260331.htm:00059",
+          "ticker": "HON",
+          "accession": "0000773840-26-000057",
+          "document": "hon-20260331.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 3,
+          "score": 0.759525,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00024",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 4,
+          "score": 0.754982,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00123",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 5,
+          "score": 0.752092,
+          "chunk_id": "0000773840-25-000105:hon-20250930.htm:00017",
+          "ticker": "HON",
+          "accession": "0000773840-25-000105",
+          "document": "hon-20250930.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 6,
+          "score": 0.729031,
+          "chunk_id": "0000773840-26-000120:exhibit99-q22026earningsre.htm:00006",
+          "ticker": "HON",
+          "accession": "0000773840-26-000120",
+          "document": "exhibit99-q22026earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 7,
+          "score": 0.723159,
+          "chunk_id": "0000773840-25-000062:exhibit99-q22025earningsre.htm:00003",
+          "ticker": "HON",
+          "accession": "0000773840-25-000062",
+          "document": "exhibit99-q22025earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 8,
+          "score": 0.720567,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00079",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 9,
+          "score": 0.713501,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00122",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 10,
+          "score": 0.707508,
+          "chunk_id": "0000773840-26-000124:hon-20260630.htm:00093",
+          "ticker": "HON",
+          "accession": "0000773840-26-000124",
+          "document": "hon-20260630.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 11,
+          "score": 0.702421,
+          "chunk_id": "0000773840-26-000057:hon-20260331.htm:00072",
+          "ticker": "HON",
+          "accession": "0000773840-26-000057",
+          "document": "hon-20260331.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 12,
+          "score": 0.700509,
+          "chunk_id": "0000773840-25-000064:hon-20250630.htm:00085",
+          "ticker": "HON",
+          "accession": "0000773840-25-000064",
+          "document": "hon-20250630.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 13,
+          "score": 0.700121,
+          "chunk_id": "0000773840-26-000055:exhibit99-q12026earningsre.htm:00007",
+          "ticker": "HON",
+          "accession": "0000773840-26-000055",
+          "document": "exhibit99-q12026earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 14,
+          "score": 0.695917,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00004",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 15,
+          "score": 0.692517,
+          "chunk_id": "0000773840-25-000005:exhibit992-winter.htm:00004",
+          "ticker": "HON",
+          "accession": "0000773840-25-000005",
+          "document": "exhibit992-winter.htm",
+          "section": "EX-99.2"
+        },
+        {
+          "rank": 16,
+          "score": 0.690572,
+          "chunk_id": "0000773840-26-000124:hon-20260630.htm:00074",
+          "ticker": "HON",
+          "accession": "0000773840-26-000124",
+          "document": "hon-20260630.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 17,
+          "score": 0.687951,
+          "chunk_id": "0000773840-25-000105:hon-20250930.htm:00016",
+          "ticker": "HON",
+          "accession": "0000773840-25-000105",
+          "document": "hon-20250930.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 18,
+          "score": 0.687875,
+          "chunk_id": "0000773840-26-000006:exhibit991-q42025earningsr.htm:00011",
+          "ticker": "HON",
+          "accession": "0000773840-26-000006",
+          "document": "exhibit991-q42025earningsr.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 19,
+          "score": 0.686614,
+          "chunk_id": "0000773840-25-000035:exhibit99-q12025earningsre.htm:00008",
+          "ticker": "HON",
+          "accession": "0000773840-25-000035",
+          "document": "exhibit99-q12025earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 20,
+          "score": 0.686022,
+          "chunk_id": "0000773840-25-000091:exhibit991-pressrelease101.htm:00001",
+          "ticker": "HON",
+          "accession": "0000773840-25-000091",
+          "document": "exhibit991-pressrelease101.htm",
+          "section": "EX-99.1"
+        }
+      ],
+      "scored": true,
+      "score": {
+        "members": [
+          {
+            "accession": "0000773840-25-000064",
+            "ticker": "HON",
+            "document": "hon-20250630.htm",
+            "rank": 12,
+            "covered@5": false,
+            "covered@20": true
+          },
+          {
+            "accession": "0000773840-25-000105",
+            "ticker": "HON",
+            "document": "hon-20250930.htm",
+            "rank": 5,
+            "covered@5": true,
+            "covered@20": true
+          }
+        ],
+        "recall@5": false,
+        "covered@5": 1,
+        "recall@20": true,
+        "covered@20": 2,
+        "members_total": 2
+      },
+      "target_recall": {
+        "meaningful": false,
+        "max_corpus_accessions": 4,
+        "max_duplicate_text_count": 1,
+        "members": [
+          {
+            "accession": "0000773840-25-000064",
+            "rank": null,
+            "duplicate_text_count": 1,
+            "corpus_accessions": 4,
+            "hit@5": false,
+            "hit@20": false
+          },
+          {
+            "accession": "0000773840-25-000105",
+            "rank": 5,
+            "duplicate_text_count": 1,
+            "corpus_accessions": 4,
+            "hit@5": true,
+            "hit@20": true
+          }
+        ],
+        "not_meaningful_because": "the identifying quote occurs in 4 different accessions; which near-identical chunk ranks first is incidental, so chunk identity does not measure retrieval quality here",
+        "recall@5": false,
+        "recall@20": false
+      }
+    },
+    {
+      "id": "q17",
+      "type": "period_over_period",
+      "question": "How did Albertsons' description of the Kroger merger change between its fiscal 2024 and fiscal 2025 second-quarter filings?",
+      "top1_score": 0.834342,
+      "top1_chunk_id": "0001646972-24-000224:aciq224earningsrelease.htm:00003",
+      "top1_ticker": "ACI",
+      "unresolved_ground_truths": 0,
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.834342,
+          "chunk_id": "0001646972-24-000224:aciq224earningsrelease.htm:00003",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000224",
+          "document": "aciq224earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 2,
+          "score": 0.812163,
+          "chunk_id": "0001646972-24-000059:aciq423earningsrelease.htm:00004",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000059",
+          "document": "aciq423earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 3,
+          "score": 0.805221,
+          "chunk_id": "0001646972-24-000006:aciq323earningsrelease.htm:00005",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000006",
+          "document": "aciq323earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 4,
+          "score": 0.794875,
+          "chunk_id": "0001646972-24-000231:aci-20241210.htm:00002",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000231",
+          "document": "aci-20241210.htm",
+          "section": "item_1.02"
+        },
+        {
+          "rank": 5,
+          "score": 0.78964,
+          "chunk_id": "0001646972-24-000164:aciq124earningsrelease.htm:00003",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000164",
+          "document": "aciq124earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 6,
+          "score": 0.78464,
+          "chunk_id": "0001646972-24-000224:aciq224earningsrelease.htm:00004",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000224",
+          "document": "aciq224earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 7,
+          "score": 0.779217,
+          "chunk_id": "0001646972-24-000063:aci-20240422.htm:00002",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000063",
+          "document": "aci-20240422.htm",
+          "section": "item_8.01"
+        },
+        {
+          "rank": 8,
+          "score": 0.778431,
+          "chunk_id": "0001646972-25-000008:aci-20241130.htm:00047",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000008",
+          "document": "aci-20241130.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 9,
+          "score": 0.773937,
+          "chunk_id": "0001646972-25-000007:aciq324earningsrelease.htm:00006",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000007",
+          "document": "aciq324earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 10,
+          "score": 0.772611,
+          "chunk_id": "0001646972-24-000164:aciq124earningsrelease.htm:00004",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000164",
+          "document": "aciq124earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 11,
+          "score": 0.771381,
+          "chunk_id": "0001646972-24-000063:ex991aprildivestiturerelea.htm:00000",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000063",
+          "document": "ex991aprildivestiturerelea.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 12,
+          "score": 0.770911,
+          "chunk_id": "0001646972-24-000165:aci-20240615.htm:00040",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000165",
+          "document": "aci-20240615.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 13,
+          "score": 0.768495,
+          "chunk_id": "0001646972-25-000008:aci-20241130.htm:00018",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000008",
+          "document": "aci-20241130.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 14,
+          "score": 0.762853,
+          "chunk_id": "0001646972-24-000225:aci-20240907.htm:00045",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000225",
+          "document": "aci-20240907.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 15,
+          "score": 0.761058,
+          "chunk_id": "0001646972-24-000006:aciq323earningsrelease.htm:00004",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000006",
+          "document": "aciq323earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 16,
+          "score": 0.757972,
+          "chunk_id": "0001646972-25-000007:aciq324earningsrelease.htm:00005",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000007",
+          "document": "aciq324earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 17,
+          "score": 0.757304,
+          "chunk_id": "0001646972-24-000224:aciq224earningsrelease.htm:00000",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000224",
+          "document": "aciq224earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 18,
+          "score": 0.757046,
+          "chunk_id": "0001646972-24-000164:aciq124earningsrelease.htm:00000",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000164",
+          "document": "aciq124earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 19,
+          "score": 0.756957,
+          "chunk_id": "0001646972-26-000028:aciq425earningsrelease.htm:00000",
+          "ticker": "ACI",
+          "accession": "0001646972-26-000028",
+          "document": "aciq425earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 20,
+          "score": 0.754566,
+          "chunk_id": "0001646972-25-000008:aci-20241130.htm:00020",
+          "ticker": "ACI",
+          "accession": "0001646972-25-000008",
+          "document": "aci-20241130.htm",
+          "section": "part1_item1_financial_statements"
+        }
+      ],
+      "scored": true,
+      "score": {
+        "members": [
+          {
+            "accession": "0001646972-24-000225",
+            "ticker": "ACI",
+            "document": "aci-20240907.htm",
+            "rank": 14,
+            "covered@5": false,
+            "covered@20": true
+          },
+          {
+            "accession": "0001646972-25-000063",
+            "ticker": "ACI",
+            "document": "aci-20250614.htm",
+            "rank": null,
+            "covered@5": false,
+            "covered@20": false
+          }
+        ],
+        "recall@5": false,
+        "covered@5": 0,
+        "recall@20": false,
+        "covered@20": 1,
+        "members_total": 2
+      },
+      "target_recall": {
+        "meaningful": false,
+        "max_corpus_accessions": 6,
+        "max_duplicate_text_count": 1,
+        "members": [
+          {
+            "accession": "0001646972-24-000225",
+            "rank": null,
+            "duplicate_text_count": 1,
+            "corpus_accessions": 1,
+            "hit@5": false,
+            "hit@20": false
+          },
+          {
+            "accession": "0001646972-25-000063",
+            "rank": null,
+            "duplicate_text_count": 1,
+            "corpus_accessions": 6,
+            "hit@5": false,
+            "hit@20": false
+          }
+        ],
+        "not_meaningful_because": "the identifying quote occurs in 6 different accessions; which near-identical chunk ranks first is incidental, so chunk identity does not measure retrieval quality here",
+        "recall@5": false,
+        "recall@20": false
+      }
+    },
+    {
+      "id": "q18",
+      "type": "period_over_period",
+      "question": "How did AIG's retained ownership in Corebridge and its accounting treatment change between 2024 and 2026?",
+      "top1_score": 0.821464,
+      "top1_chunk_id": "0000005272-24-000051:aig-20240331.htm:00015",
+      "top1_ticker": "AIG",
+      "unresolved_ground_truths": 0,
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.821464,
+          "chunk_id": "0000005272-24-000051:aig-20240331.htm:00015",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000051",
+          "document": "aig-20240331.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 2,
+          "score": 0.816599,
+          "chunk_id": "0000005272-24-000063:aig-20240609.htm:00002",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000063",
+          "document": "aig-20240609.htm",
+          "section": "item_2.01"
+        },
+        {
+          "rank": 3,
+          "score": 0.801855,
+          "chunk_id": "0000005272-25-000004:q42024earningsrelease.htm:00033",
+          "ticker": "AIG",
+          "accession": "0000005272-25-000004",
+          "document": "q42024earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 4,
+          "score": 0.796142,
+          "chunk_id": "0000005272-24-000079:aig-20240630.htm:00028",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000079",
+          "document": "aig-20240630.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 5,
+          "score": 0.789798,
+          "chunk_id": "0000005272-24-000126:aig-20240930.htm:00029",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000126",
+          "document": "aig-20240930.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 6,
+          "score": 0.789397,
+          "chunk_id": "0000005272-25-000160:aig-20250930.htm:00153",
+          "ticker": "AIG",
+          "accession": "0000005272-25-000160",
+          "document": "aig-20250930.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 7,
+          "score": 0.785157,
+          "chunk_id": "0000005272-24-000017:q42023earningsrelease.htm:00003",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000017",
+          "document": "q42023earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 8,
+          "score": 0.784899,
+          "chunk_id": "0000005272-24-000075:q22024earningsrelease.htm:00031",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000075",
+          "document": "q22024earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 9,
+          "score": 0.78358,
+          "chunk_id": "0000005272-24-000079:aig-20240630.htm:00155",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000079",
+          "document": "aig-20240630.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 10,
+          "score": 0.78255,
+          "chunk_id": "0000005272-24-000121:q32024earningsrelease.htm:00030",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000121",
+          "document": "q32024earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 11,
+          "score": 0.782454,
+          "chunk_id": "0000005272-24-000079:aig-20240630.htm:00176",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000079",
+          "document": "aig-20240630.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 12,
+          "score": 0.780581,
+          "chunk_id": "0000005272-25-000017:aig_investorxdayx2025.htm:00073",
+          "ticker": "AIG",
+          "accession": "0000005272-25-000017",
+          "document": "aig_investorxdayx2025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 13,
+          "score": 0.780076,
+          "chunk_id": "0000005272-25-000081:aig-20250630.htm:00027",
+          "ticker": "AIG",
+          "accession": "0000005272-25-000081",
+          "document": "aig-20250630.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 14,
+          "score": 0.777508,
+          "chunk_id": "0000005272-24-000068:aig-20240624.htm:00002",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000068",
+          "document": "aig-20240624.htm",
+          "section": "item_7.01"
+        },
+        {
+          "rank": 15,
+          "score": 0.777443,
+          "chunk_id": "0000005272-25-000160:aig-20250930.htm:00026",
+          "ticker": "AIG",
+          "accession": "0000005272-25-000160",
+          "document": "aig-20250930.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 16,
+          "score": 0.776354,
+          "chunk_id": "0000005272-26-000076:aig-20260630.htm:00015",
+          "ticker": "AIG",
+          "accession": "0000005272-26-000076",
+          "document": "aig-20260630.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 17,
+          "score": 0.774741,
+          "chunk_id": "0000005272-24-000063:aig-20240609.htm:00004",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000063",
+          "document": "aig-20240609.htm",
+          "section": "item_2.01"
+        },
+        {
+          "rank": 18,
+          "score": 0.773755,
+          "chunk_id": "0000005272-25-000156:q32025earningsrelease.htm:00027",
+          "ticker": "AIG",
+          "accession": "0000005272-25-000156",
+          "document": "q32025earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 19,
+          "score": 0.772945,
+          "chunk_id": "0000005272-26-000052:aig-20260331.htm:00013",
+          "ticker": "AIG",
+          "accession": "0000005272-26-000052",
+          "document": "aig-20260331.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 20,
+          "score": 0.772808,
+          "chunk_id": "0000005272-24-000126:aig-20240930.htm:00030",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000126",
+          "document": "aig-20240930.htm",
+          "section": "part1_item2_mdna"
+        }
+      ],
+      "scored": true,
+      "score": {
+        "members": [
+          {
+            "accession": "0000005272-24-000079",
+            "ticker": "AIG",
+            "document": "aig-20240630.htm",
+            "rank": 4,
+            "covered@5": true,
+            "covered@20": true
+          },
+          {
+            "accession": "0000005272-26-000052",
+            "ticker": "AIG",
+            "document": "aig-20260331.htm",
+            "rank": 19,
+            "covered@5": false,
+            "covered@20": true
+          }
+        ],
+        "recall@5": false,
+        "covered@5": 1,
+        "recall@20": true,
+        "covered@20": 2,
+        "members_total": 2
+      },
+      "target_recall": {
+        "meaningful": false,
+        "max_corpus_accessions": 2,
+        "max_duplicate_text_count": 1,
+        "members": [
+          {
+            "accession": "0000005272-24-000079",
+            "rank": null,
+            "duplicate_text_count": 1,
+            "corpus_accessions": 2,
+            "hit@5": false,
+            "hit@20": false
+          },
+          {
+            "accession": "0000005272-26-000052",
+            "rank": 19,
+            "duplicate_text_count": 1,
+            "corpus_accessions": 1,
+            "hit@5": false,
+            "hit@20": true
+          }
+        ],
+        "not_meaningful_because": "the identifying quote occurs in 2 different accessions; which near-identical chunk ranks first is incidental, so chunk identity does not measure retrieval quality here",
+        "recall@5": false,
+        "recall@20": false
+      }
+    },
+    {
+      "id": "q19",
+      "type": "period_over_period",
+      "question": "Has AGNC's stated set of primary interest rate hedging instruments changed between 2024 and 2026?",
+      "top1_score": 0.762057,
+      "top1_chunk_id": "0001423689-26-000124:agnc8kexhibit99163026.htm:00001",
+      "top1_ticker": "AGNC",
+      "unresolved_ground_truths": 0,
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.762057,
+          "chunk_id": "0001423689-26-000124:agnc8kexhibit99163026.htm:00001",
+          "ticker": "AGNC",
+          "accession": "0001423689-26-000124",
+          "document": "agnc8kexhibit99163026.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 2,
+          "score": 0.743465,
+          "chunk_id": "0001423689-25-000106:agnc-20250930.htm:00066",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000106",
+          "document": "agnc-20250930.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 3,
+          "score": 0.74289,
+          "chunk_id": "0001423689-25-000101:agnc8kexhibit99193025.htm:00028",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000101",
+          "document": "agnc8kexhibit99193025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 4,
+          "score": 0.741799,
+          "chunk_id": "0001423689-24-000037:agnc8kexhibit99133124.htm:00026",
+          "ticker": "AGNC",
+          "accession": "0001423689-24-000037",
+          "document": "agnc8kexhibit99133124.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 5,
+          "score": 0.741015,
+          "chunk_id": "0001423689-26-000024:agnc8kexhibit991123125.htm:00029",
+          "ticker": "AGNC",
+          "accession": "0001423689-26-000024",
+          "document": "agnc8kexhibit991123125.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 6,
+          "score": 0.735833,
+          "chunk_id": "0001423689-24-000003:agnc8kexhibit991123123.htm:00027",
+          "ticker": "AGNC",
+          "accession": "0001423689-24-000003",
+          "document": "agnc8kexhibit991123123.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 7,
+          "score": 0.735618,
+          "chunk_id": "0001423689-26-000095:agnc8kexhibit99133126.htm:00001",
+          "ticker": "AGNC",
+          "accession": "0001423689-26-000095",
+          "document": "agnc8kexhibit99133126.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 8,
+          "score": 0.734983,
+          "chunk_id": "0001423689-24-000056:agnc8kexhibit99163024.htm:00001",
+          "ticker": "AGNC",
+          "accession": "0001423689-24-000056",
+          "document": "agnc8kexhibit99163024.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 9,
+          "score": 0.73365,
+          "chunk_id": "0001423689-25-000043:agnc8kexhibit99133125.htm:00001",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000043",
+          "document": "agnc8kexhibit99133125.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 10,
+          "score": 0.731795,
+          "chunk_id": "0001423689-25-000061:agnc8kexhibit99163025.htm:00001",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000061",
+          "document": "agnc8kexhibit99163025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 11,
+          "score": 0.730799,
+          "chunk_id": "0001423689-25-000002:agnc8kexhibit991123124.htm:00016",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000002",
+          "document": "agnc8kexhibit991123124.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 12,
+          "score": 0.729775,
+          "chunk_id": "0001423689-24-000037:agnc8kexhibit99133124.htm:00001",
+          "ticker": "AGNC",
+          "accession": "0001423689-24-000037",
+          "document": "agnc8kexhibit99133124.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 13,
+          "score": 0.729487,
+          "chunk_id": "0001423689-26-000124:agnc8kexhibit99163026.htm:00028",
+          "ticker": "AGNC",
+          "accession": "0001423689-26-000124",
+          "document": "agnc8kexhibit99163026.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 14,
+          "score": 0.728189,
+          "chunk_id": "0001423689-24-000073:agnc-20241025.htm:00003",
+          "ticker": "AGNC",
+          "accession": "0001423689-24-000073",
+          "document": "agnc-20241025.htm",
+          "section": "item_8.01"
+        },
+        {
+          "rank": 15,
+          "score": 0.727375,
+          "chunk_id": "0001423689-24-000037:agnc8kexhibit99133124.htm:00002",
+          "ticker": "AGNC",
+          "accession": "0001423689-24-000037",
+          "document": "agnc8kexhibit99133124.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 16,
+          "score": 0.725331,
+          "chunk_id": "0001423689-25-000061:agnc8kexhibit99163025.htm:00027",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000061",
+          "document": "agnc8kexhibit99163025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 17,
+          "score": 0.724263,
+          "chunk_id": "0001423689-24-000060:agnc8kexhibit99193024.htm:00001",
+          "ticker": "AGNC",
+          "accession": "0001423689-24-000060",
+          "document": "agnc8kexhibit99193024.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 18,
+          "score": 0.724218,
+          "chunk_id": "0001423689-25-000002:agnc8kexhibit991123124.htm:00000",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000002",
+          "document": "agnc8kexhibit991123124.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 19,
+          "score": 0.724183,
+          "chunk_id": "0001423689-25-000002:agnc8kexhibit991123124.htm:00014",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000002",
+          "document": "agnc8kexhibit991123124.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 20,
+          "score": 0.724143,
+          "chunk_id": "0001423689-25-000043:agnc8kexhibit99133125.htm:00027",
+          "ticker": "AGNC",
+          "accession": "0001423689-25-000043",
+          "document": "agnc8kexhibit99133125.htm",
+          "section": "EX-99.1"
+        }
+      ],
+      "scored": true,
+      "score": {
+        "members": [
+          {
+            "accession": "0001423689-24-000058",
+            "ticker": "AGNC",
+            "document": "agnc-20240630.htm",
+            "rank": null,
+            "covered@5": false,
+            "covered@20": false
+          },
+          {
+            "accession": "0001423689-26-000128",
+            "ticker": "AGNC",
+            "document": "agnc-20260630.htm",
+            "rank": null,
+            "covered@5": false,
+            "covered@20": false
+          }
+        ],
+        "recall@5": false,
+        "covered@5": 0,
+        "recall@20": false,
+        "covered@20": 0,
+        "members_total": 2
+      },
+      "target_recall": {
+        "meaningful": false,
+        "max_corpus_accessions": 8,
+        "max_duplicate_text_count": 1,
+        "members": [
+          {
+            "accession": "0001423689-24-000058",
+            "rank": null,
+            "duplicate_text_count": 1,
+            "corpus_accessions": 8,
+            "hit@5": false,
+            "hit@20": false
+          },
+          {
+            "accession": "0001423689-26-000128",
+            "rank": null,
+            "duplicate_text_count": 1,
+            "corpus_accessions": 8,
+            "hit@5": false,
+            "hit@20": false
+          }
+        ],
+        "not_meaningful_because": "the identifying quote occurs in 8 different accessions; which near-identical chunk ranks first is incidental, so chunk identity does not measure retrieval quality here",
+        "recall@5": false,
+        "recall@20": false
+      }
+    },
+    {
+      "id": "q21",
+      "type": "negative_control",
+      "question": "What did Costco report for membership fee revenue in its most recent quarter?",
+      "top1_score": 0.70599,
+      "top1_chunk_id": "0001628280-24-043760:exhibit991-q32024.htm:00005",
+      "top1_ticker": "BCPC",
+      "unresolved_ground_truths": 0,
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.70599,
+          "chunk_id": "0001628280-24-043760:exhibit991-q32024.htm:00005",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-043760",
+          "document": "exhibit991-q32024.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 2,
+          "score": 0.695898,
+          "chunk_id": "0000009326-25-000019:exhibit991-q32025.htm:00005",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000019",
+          "document": "exhibit991-q32025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 3,
+          "score": 0.692189,
+          "chunk_id": "0001646972-24-000009:aci-20231202.htm:00016",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000009",
+          "document": "aci-20231202.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 4,
+          "score": 0.687697,
+          "chunk_id": "0000009326-25-000022:bcpc-20250930.htm:00028",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000022",
+          "document": "bcpc-20250930.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 5,
+          "score": 0.684388,
+          "chunk_id": "0000009326-26-000018:bcpc-20260331.htm:00021",
+          "ticker": "BCPC",
+          "accession": "0000009326-26-000018",
+          "document": "bcpc-20260331.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 6,
+          "score": 0.683727,
+          "chunk_id": "0001628280-25-019593:bcpc-20250331.htm:00024",
+          "ticker": "BCPC",
+          "accession": "0001628280-25-019593",
+          "document": "bcpc-20250331.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 7,
+          "score": 0.680464,
+          "chunk_id": "0001628280-24-033055:exhibit991-q22024.htm:00005",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-033055",
+          "document": "exhibit991-q22024.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 8,
+          "score": 0.678303,
+          "chunk_id": "0001628280-25-006975:exhibit991q42024.htm:00005",
+          "ticker": "BCPC",
+          "accession": "0001628280-25-006975",
+          "document": "exhibit991q42024.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 9,
+          "score": 0.678092,
+          "chunk_id": "0001628280-24-005203:exhibit991q42023.htm:00005",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-005203",
+          "document": "exhibit991q42023.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 10,
+          "score": 0.676939,
+          "chunk_id": "0001646972-24-000165:aci-20240615.htm:00013",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000165",
+          "document": "aci-20240615.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 11,
+          "score": 0.676151,
+          "chunk_id": "0000009326-25-000014:bcpc-20250630.htm:00026",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000014",
+          "document": "bcpc-20250630.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 12,
+          "score": 0.673328,
+          "chunk_id": "0001646972-24-000225:aci-20240907.htm:00016",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000225",
+          "document": "aci-20240907.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 13,
+          "score": 0.672844,
+          "chunk_id": "0001646972-24-000165:aci-20240615.htm:00011",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000165",
+          "document": "aci-20240615.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 14,
+          "score": 0.671719,
+          "chunk_id": "0000009326-26-000004:exhibit991q42025.htm:00005",
+          "ticker": "BCPC",
+          "accession": "0000009326-26-000004",
+          "document": "exhibit991q42025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 15,
+          "score": 0.670122,
+          "chunk_id": "0000009326-25-000019:exhibit991-q32025.htm:00002",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000019",
+          "document": "exhibit991-q32025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 16,
+          "score": 0.669597,
+          "chunk_id": "0001646972-24-000165:aci-20240615.htm:00044",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000165",
+          "document": "aci-20240615.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 17,
+          "score": 0.667908,
+          "chunk_id": "0001628280-25-019593:bcpc-20250331.htm:00023",
+          "ticker": "BCPC",
+          "accession": "0001628280-25-019593",
+          "document": "bcpc-20250331.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 18,
+          "score": 0.665849,
+          "chunk_id": "0000009326-26-000028:bcpc-20260630.htm:00024",
+          "ticker": "BCPC",
+          "accession": "0000009326-26-000028",
+          "document": "bcpc-20260630.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 19,
+          "score": 0.665586,
+          "chunk_id": "0000009326-25-000014:bcpc-20250630.htm:00027",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000014",
+          "document": "bcpc-20250630.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 20,
+          "score": 0.665561,
+          "chunk_id": "0001646972-24-000225:aci-20240907.htm:00014",
+          "ticker": "ACI",
+          "accession": "0001646972-24-000225",
+          "document": "aci-20240907.htm",
+          "section": "part1_item1_financial_statements"
+        }
+      ],
+      "scored": false
+    },
+    {
+      "id": "q22",
+      "type": "negative_control",
+      "question": "What did Honeywell disclose about its aerospace segment performance in 2019?",
+      "top1_score": 0.778588,
+      "top1_chunk_id": "0000773840-25-000099:exhibit99-projectsummerxpr.htm:00000",
+      "top1_ticker": "HON",
+      "unresolved_ground_truths": 0,
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.778588,
+          "chunk_id": "0000773840-25-000099:exhibit99-projectsummerxpr.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-25-000099",
+          "document": "exhibit99-projectsummerxpr.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 2,
+          "score": 0.77164,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00002",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 3,
+          "score": 0.768753,
+          "chunk_id": "0000773840-24-000007:hon-20240201.htm:00002",
+          "ticker": "HON",
+          "accession": "0000773840-24-000007",
+          "document": "hon-20240201.htm",
+          "section": "item_2.02"
+        },
+        {
+          "rank": 4,
+          "score": 0.762987,
+          "chunk_id": "0000773840-26-000120:exhibit99-q22026earningsre.htm:00006",
+          "ticker": "HON",
+          "accession": "0000773840-26-000120",
+          "document": "exhibit99-q22026earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 5,
+          "score": 0.762616,
+          "chunk_id": "0000773840-26-000055:exhibit99-q12026earningsre.htm:00003",
+          "ticker": "HON",
+          "accession": "0000773840-26-000055",
+          "document": "exhibit99-q12026earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 6,
+          "score": 0.754527,
+          "chunk_id": "0000773840-24-000054:hon-20240425.htm:00197",
+          "ticker": "HON",
+          "accession": "0000773840-24-000054",
+          "document": "hon-20240425.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 7,
+          "score": 0.753663,
+          "chunk_id": "0000773840-24-000081:exhibit99-q22024earningsre.htm:00005",
+          "ticker": "HON",
+          "accession": "0000773840-24-000081",
+          "document": "exhibit99-q22024earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 8,
+          "score": 0.752876,
+          "chunk_id": "0000773840-25-000035:exhibit99-q12025earningsre.htm:00002",
+          "ticker": "HON",
+          "accession": "0000773840-25-000035",
+          "document": "exhibit99-q12025earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 9,
+          "score": 0.750325,
+          "chunk_id": "0000773840-24-000045:exhibit99-q12024earningsre.htm:00005",
+          "ticker": "HON",
+          "accession": "0000773840-24-000045",
+          "document": "exhibit99-q12024earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 10,
+          "score": 0.749756,
+          "chunk_id": "0000773840-26-000055:exhibit99-q12026earningsre.htm:00002",
+          "ticker": "HON",
+          "accession": "0000773840-26-000055",
+          "document": "exhibit99-q12026earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 11,
+          "score": 0.749084,
+          "chunk_id": "0000773840-26-000006:exhibit991-q42025earningsr.htm:00003",
+          "ticker": "HON",
+          "accession": "0000773840-26-000006",
+          "document": "exhibit991-q42025earningsr.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 12,
+          "score": 0.746852,
+          "chunk_id": "0000773840-25-000104:exhibit99-q32025earningsre.htm:00003",
+          "ticker": "HON",
+          "accession": "0000773840-25-000104",
+          "document": "exhibit99-q32025earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 13,
+          "score": 0.745606,
+          "chunk_id": "0000773840-26-000058:hon-20260423.htm:00226",
+          "ticker": "HON",
+          "accession": "0000773840-26-000058",
+          "document": "hon-20260423.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 14,
+          "score": 0.743337,
+          "chunk_id": "0000773840-26-000017:exhibit991-pressrelease332.htm:00002",
+          "ticker": "HON",
+          "accession": "0000773840-26-000017",
+          "document": "exhibit991-pressrelease332.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 15,
+          "score": 0.742816,
+          "chunk_id": "0000773840-24-000054:hon-20240425.htm:00005",
+          "ticker": "HON",
+          "accession": "0000773840-24-000054",
+          "document": "hon-20240425.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 16,
+          "score": 0.742789,
+          "chunk_id": "0000773840-26-000120:exhibit99-q22026earningsre.htm:00022",
+          "ticker": "HON",
+          "accession": "0000773840-26-000120",
+          "document": "exhibit99-q22026earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 17,
+          "score": 0.74001,
+          "chunk_id": "0000773840-24-000081:exhibit99-q22024earningsre.htm:00002",
+          "ticker": "HON",
+          "accession": "0000773840-24-000081",
+          "document": "exhibit99-q22024earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 18,
+          "score": 0.738965,
+          "chunk_id": "0000773840-24-000081:exhibit99-q22024earningsre.htm:00001",
+          "ticker": "HON",
+          "accession": "0000773840-24-000081",
+          "document": "exhibit99-q22024earningsre.htm",
+          "section": "EX-99"
+        },
+        {
+          "rank": 19,
+          "score": 0.737995,
+          "chunk_id": "0001193125-26-095179:d71810dex991.htm:00002",
+          "ticker": "HON",
+          "accession": "0001193125-26-095179",
+          "document": "d71810dex991.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 20,
+          "score": 0.737564,
+          "chunk_id": "0000773840-25-000104:exhibit99-q32025earningsre.htm:00002",
+          "ticker": "HON",
+          "accession": "0000773840-25-000104",
+          "document": "exhibit99-q32025earningsre.htm",
+          "section": "EX-99"
+        }
+      ],
+      "scored": false
+    },
+    {
+      "id": "q23",
+      "type": "negative_control",
+      "question": "What is the total compensation of Balchem's chief executive officer?",
+      "top1_score": 0.747674,
+      "top1_chunk_id": "0001628280-25-019487:exhibit991-q12025.htm:00010",
+      "top1_ticker": "BCPC",
+      "unresolved_ground_truths": 0,
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.747674,
+          "chunk_id": "0001628280-25-019487:exhibit991-q12025.htm:00010",
+          "ticker": "BCPC",
+          "accession": "0001628280-25-019487",
+          "document": "exhibit991-q12025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 2,
+          "score": 0.746995,
+          "chunk_id": "0000009326-25-000022:bcpc-20250930.htm:00005",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000022",
+          "document": "bcpc-20250930.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 3,
+          "score": 0.746976,
+          "chunk_id": "0001628280-25-006975:exhibit991q42024.htm:00011",
+          "ticker": "BCPC",
+          "accession": "0001628280-25-006975",
+          "document": "exhibit991q42024.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 4,
+          "score": 0.746929,
+          "chunk_id": "0000009326-25-000014:bcpc-20250630.htm:00005",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000014",
+          "document": "bcpc-20250630.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 5,
+          "score": 0.743734,
+          "chunk_id": "0000009326-26-000028:bcpc-20260630.htm:00005",
+          "ticker": "BCPC",
+          "accession": "0000009326-26-000028",
+          "document": "bcpc-20260630.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 6,
+          "score": 0.740801,
+          "chunk_id": "0001628280-24-020268:bcpc-20240331.htm:00004",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-020268",
+          "document": "bcpc-20240331.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 7,
+          "score": 0.737784,
+          "chunk_id": "0001628280-24-043795:bcpc-20240930.htm:00005",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-043795",
+          "document": "bcpc-20240930.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 8,
+          "score": 0.736376,
+          "chunk_id": "0001628280-24-033177:bcpc-20240630.htm:00005",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-033177",
+          "document": "bcpc-20240630.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 9,
+          "score": 0.727915,
+          "chunk_id": "0000009326-26-000018:bcpc-20260331.htm:00004",
+          "ticker": "BCPC",
+          "accession": "0000009326-26-000018",
+          "document": "bcpc-20260331.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 10,
+          "score": 0.727488,
+          "chunk_id": "0001628280-25-019593:bcpc-20250331.htm:00004",
+          "ticker": "BCPC",
+          "accession": "0001628280-25-019593",
+          "document": "bcpc-20250331.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 11,
+          "score": 0.72456,
+          "chunk_id": "0000009326-26-000004:exhibit991q42025.htm:00000",
+          "ticker": "BCPC",
+          "accession": "0000009326-26-000004",
+          "document": "exhibit991q42025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 12,
+          "score": 0.722256,
+          "chunk_id": "0000009326-25-000022:bcpc-20250930.htm:00008",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000022",
+          "document": "bcpc-20250930.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 13,
+          "score": 0.720908,
+          "chunk_id": "0000009326-25-000014:bcpc-20250630.htm:00004",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000014",
+          "document": "bcpc-20250630.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 14,
+          "score": 0.719044,
+          "chunk_id": "0000009326-26-000004:exhibit991q42025.htm:00011",
+          "ticker": "BCPC",
+          "accession": "0000009326-26-000004",
+          "document": "exhibit991q42025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 15,
+          "score": 0.7179,
+          "chunk_id": "0000009326-25-000022:bcpc-20250930.htm:00004",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000022",
+          "document": "bcpc-20250930.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 16,
+          "score": 0.71703,
+          "chunk_id": "0001140361-25-045137:ef20061036_ex99-1.htm:00000",
+          "ticker": "BCPC",
+          "accession": "0001140361-25-045137",
+          "document": "ef20061036_ex99-1.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 17,
+          "score": 0.716622,
+          "chunk_id": "0001628280-24-005203:exhibit991q42023.htm:00010",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-005203",
+          "document": "exhibit991q42023.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 18,
+          "score": 0.716232,
+          "chunk_id": "0001628280-24-020128:exhibit991-q12024.htm:00005",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-020128",
+          "document": "exhibit991-q12024.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 19,
+          "score": 0.715361,
+          "chunk_id": "0001140361-24-048915:ef20039817_ex99-1.htm:00000",
+          "ticker": "BCPC",
+          "accession": "0001140361-24-048915",
+          "document": "ef20039817_ex99-1.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 20,
+          "score": 0.714321,
+          "chunk_id": "0001628280-24-020128:exhibit991-q12024.htm:00010",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-020128",
+          "document": "exhibit991-q12024.htm",
+          "section": "EX-99.1"
+        }
+      ],
+      "scored": false
+    },
+    {
+      "id": "q24",
+      "type": "negative_control",
+      "question": "What did Balchem disclose about its semiconductor fabrication segment?",
+      "top1_score": 0.694705,
+      "top1_chunk_id": "0001628280-24-033055:exhibit991-q22024.htm:00007",
+      "top1_ticker": "BCPC",
+      "unresolved_ground_truths": 0,
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.694705,
+          "chunk_id": "0001628280-24-033055:exhibit991-q22024.htm:00007",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-033055",
+          "document": "exhibit991-q22024.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 2,
+          "score": 0.687209,
+          "chunk_id": "0001140361-25-006756:ef20044803_8k.htm:00000",
+          "ticker": "BCPC",
+          "accession": "0001140361-25-006756",
+          "document": "ef20044803_8k.htm",
+          "section": null
+        },
+        {
+          "rank": 3,
+          "score": 0.686092,
+          "chunk_id": "0000009326-25-000022:bcpc-20250930.htm:00028",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000022",
+          "document": "bcpc-20250930.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 4,
+          "score": 0.684495,
+          "chunk_id": "0000009326-25-000012:bcpc-20250731.htm:00002",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000012",
+          "document": "bcpc-20250731.htm",
+          "section": "item_2.02"
+        },
+        {
+          "rank": 5,
+          "score": 0.684357,
+          "chunk_id": "0001140361-26-006184:ef20065786_8k.htm:00000",
+          "ticker": "BCPC",
+          "accession": "0001140361-26-006184",
+          "document": "ef20065786_8k.htm",
+          "section": null
+        },
+        {
+          "rank": 6,
+          "score": 0.684164,
+          "chunk_id": "0001140361-24-041566:ef20036097_8k.htm:00000",
+          "ticker": "BCPC",
+          "accession": "0001140361-24-041566",
+          "document": "ef20036097_8k.htm",
+          "section": null
+        },
+        {
+          "rank": 7,
+          "score": 0.683999,
+          "chunk_id": "0001140361-26-025971:ef20076533_8k.htm:00000",
+          "ticker": "BCPC",
+          "accession": "0001140361-26-025971",
+          "document": "ef20076533_8k.htm",
+          "section": null
+        },
+        {
+          "rank": 8,
+          "score": 0.683561,
+          "chunk_id": "0001140361-25-023176:ef20050822_8k.htm:00000",
+          "ticker": "BCPC",
+          "accession": "0001140361-25-023176",
+          "document": "ef20050822_8k.htm",
+          "section": null
+        },
+        {
+          "rank": 9,
+          "score": 0.683417,
+          "chunk_id": "0001140361-24-016602:ef20025497_8k.htm:00000",
+          "ticker": "BCPC",
+          "accession": "0001140361-24-016602",
+          "document": "ef20025497_8k.htm",
+          "section": null
+        },
+        {
+          "rank": 10,
+          "score": 0.683241,
+          "chunk_id": "0001140361-24-031096:ef20031584_8k.htm:00000",
+          "ticker": "BCPC",
+          "accession": "0001140361-24-031096",
+          "document": "ef20031584_8k.htm",
+          "section": null
+        },
+        {
+          "rank": 11,
+          "score": 0.682902,
+          "chunk_id": "0001140361-25-045137:ef20061036_8k.htm:00000",
+          "ticker": "BCPC",
+          "accession": "0001140361-25-045137",
+          "document": "ef20061036_8k.htm",
+          "section": null
+        },
+        {
+          "rank": 12,
+          "score": 0.682578,
+          "chunk_id": "0001140361-24-048915:ef20039817_8k.htm:00000",
+          "ticker": "BCPC",
+          "accession": "0001140361-24-048915",
+          "document": "ef20039817_8k.htm",
+          "section": null
+        },
+        {
+          "rank": 13,
+          "score": 0.681775,
+          "chunk_id": "0001140361-24-043626:ef20037359_8k.htm:00000",
+          "ticker": "BCPC",
+          "accession": "0001140361-24-043626",
+          "document": "ef20037359_8k.htm",
+          "section": null
+        },
+        {
+          "rank": 14,
+          "score": 0.681432,
+          "chunk_id": "0001628280-24-005203:exhibit991q42023.htm:00006",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-005203",
+          "document": "exhibit991q42023.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 15,
+          "score": 0.681229,
+          "chunk_id": "0000009326-26-000026:bcpc-20260731.htm:00002",
+          "ticker": "BCPC",
+          "accession": "0000009326-26-000026",
+          "document": "bcpc-20260731.htm",
+          "section": "item_2.02"
+        },
+        {
+          "rank": 16,
+          "score": 0.68101,
+          "chunk_id": "0000009326-26-000018:bcpc-20260331.htm:00021",
+          "ticker": "BCPC",
+          "accession": "0000009326-26-000018",
+          "document": "bcpc-20260331.htm",
+          "section": "part1_item1_financial_statements"
+        },
+        {
+          "rank": 17,
+          "score": 0.680936,
+          "chunk_id": "0000009326-25-000019:bcpc-20251021.htm:00002",
+          "ticker": "BCPC",
+          "accession": "0000009326-25-000019",
+          "document": "bcpc-20251021.htm",
+          "section": "item_2.02"
+        },
+        {
+          "rank": 18,
+          "score": 0.680368,
+          "chunk_id": "0001140361-25-004806:ef20043682_8k.htm:00000",
+          "ticker": "BCPC",
+          "accession": "0001140361-25-004806",
+          "document": "ef20043682_8k.htm",
+          "section": null
+        },
+        {
+          "rank": 19,
+          "score": 0.679897,
+          "chunk_id": "0000009326-26-000026:bcpc-20260731.htm:00000",
+          "ticker": "BCPC",
+          "accession": "0000009326-26-000026",
+          "document": "bcpc-20260731.htm",
+          "section": null
+        },
+        {
+          "rank": 20,
+          "score": 0.679881,
+          "chunk_id": "0001628280-24-033055:bcpc-20240726.htm:00000",
+          "ticker": "BCPC",
+          "accession": "0001628280-24-033055",
+          "document": "bcpc-20240726.htm",
+          "section": null
+        }
+      ],
+      "scored": false
+    },
+    {
+      "id": "q25",
+      "type": "negative_control",
+      "question": "What is AIG's projected combined ratio for 2028?",
+      "top1_score": 0.737074,
+      "top1_chunk_id": "0000005272-25-000017:aig_investorxdayx2025.htm:00023",
+      "top1_ticker": "AIG",
+      "unresolved_ground_truths": 0,
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.737074,
+          "chunk_id": "0000005272-25-000017:aig_investorxdayx2025.htm:00023",
+          "ticker": "AIG",
+          "accession": "0000005272-25-000017",
+          "document": "aig_investorxdayx2025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 2,
+          "score": 0.732103,
+          "chunk_id": "0000005272-25-000017:aig_investorxdayx2025.htm:00006",
+          "ticker": "AIG",
+          "accession": "0000005272-25-000017",
+          "document": "aig_investorxdayx2025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 3,
+          "score": 0.727534,
+          "chunk_id": "0000005272-26-000048:q12026earningsrelease.htm:00021",
+          "ticker": "AIG",
+          "accession": "0000005272-26-000048",
+          "document": "q12026earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 4,
+          "score": 0.72544,
+          "chunk_id": "0000005272-25-000036:q12025earningsrelease.htm:00002",
+          "ticker": "AIG",
+          "accession": "0000005272-25-000036",
+          "document": "q12025earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 5,
+          "score": 0.7248,
+          "chunk_id": "0000005272-26-000014:q42025earningsrelease.htm:00002",
+          "ticker": "AIG",
+          "accession": "0000005272-26-000014",
+          "document": "q42025earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 6,
+          "score": 0.72446,
+          "chunk_id": "0000005272-24-000079:aig-20240630.htm:00232",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000079",
+          "document": "aig-20240630.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 7,
+          "score": 0.723751,
+          "chunk_id": "0000005272-25-000017:aig_investorxdayx2025.htm:00056",
+          "ticker": "AIG",
+          "accession": "0000005272-25-000017",
+          "document": "aig_investorxdayx2025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 8,
+          "score": 0.720892,
+          "chunk_id": "0000005272-26-000076:aig-20260630.htm:00005",
+          "ticker": "AIG",
+          "accession": "0000005272-26-000076",
+          "document": "aig-20260630.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 9,
+          "score": 0.719831,
+          "chunk_id": "0000005272-24-000047:q12024earningsrelease.htm:00001",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000047",
+          "document": "q12024earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 10,
+          "score": 0.718978,
+          "chunk_id": "0000005272-25-000017:aig_investorxdayx2025.htm:00029",
+          "ticker": "AIG",
+          "accession": "0000005272-25-000017",
+          "document": "aig_investorxdayx2025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 11,
+          "score": 0.716101,
+          "chunk_id": "0000005272-26-000014:q42025earningsrelease.htm:00027",
+          "ticker": "AIG",
+          "accession": "0000005272-26-000014",
+          "document": "q42025earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 12,
+          "score": 0.715499,
+          "chunk_id": "0000005272-24-000051:aig-20240331.htm:00014",
+          "ticker": "AIG",
+          "accession": "0000005272-24-000051",
+          "document": "aig-20240331.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 13,
+          "score": 0.715341,
+          "chunk_id": "0000005272-25-000040:aig-20250331.htm:00005",
+          "ticker": "AIG",
+          "accession": "0000005272-25-000040",
+          "document": "aig-20250331.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 14,
+          "score": 0.714825,
+          "chunk_id": "0000005272-26-000076:aig-20260630.htm:00122",
+          "ticker": "AIG",
+          "accession": "0000005272-26-000076",
+          "document": "aig-20260630.htm",
+          "section": "part2_item1a_risk_factors"
+        },
+        {
+          "rank": 15,
+          "score": 0.714651,
+          "chunk_id": "0000005272-26-000048:q12026earningsrelease.htm:00002",
+          "ticker": "AIG",
+          "accession": "0000005272-26-000048",
+          "document": "q12026earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 16,
+          "score": 0.714648,
+          "chunk_id": "0000005272-25-000017:aig_investorxdayx2025.htm:00037",
+          "ticker": "AIG",
+          "accession": "0000005272-25-000017",
+          "document": "aig_investorxdayx2025.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 17,
+          "score": 0.714501,
+          "chunk_id": "0000005272-25-000077:q22025earningsrelease.htm:00023",
+          "ticker": "AIG",
+          "accession": "0000005272-25-000077",
+          "document": "q22025earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 18,
+          "score": 0.714125,
+          "chunk_id": "0000005272-25-000081:aig-20250630.htm:00016",
+          "ticker": "AIG",
+          "accession": "0000005272-25-000081",
+          "document": "aig-20250630.htm",
+          "section": "part1_item2_mdna"
+        },
+        {
+          "rank": 19,
+          "score": 0.71409,
+          "chunk_id": "0000005272-25-000036:q12025earningsrelease.htm:00022",
+          "ticker": "AIG",
+          "accession": "0000005272-25-000036",
+          "document": "q12025earningsrelease.htm",
+          "section": "EX-99.1"
+        },
+        {
+          "rank": 20,
+          "score": 0.714084,
+          "chunk_id": "0000005272-26-000014:q42025earningsrelease.htm:00001",
+          "ticker": "AIG",
+          "accession": "0000005272-26-000014",
+          "document": "q42025earningsrelease.htm",
+          "section": "EX-99.1"
+        }
+      ],
+      "scored": false
+    },
+    {
+      "id": "q26",
+      "type": "dedup_diagnostic",
+      "question": "Which Honeywell securities are registered under Section 12(b) of the Exchange Act?",
+      "top1_score": 0.769925,
+      "top1_chunk_id": "0000773840-25-000062:hon-20250724.htm:00000",
+      "top1_ticker": "HON",
+      "unresolved_ground_truths": 0,
+      "hits": [
+        {
+          "rank": 1,
+          "score": 0.769925,
+          "chunk_id": "0000773840-25-000062:hon-20250724.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-25-000062",
+          "document": "hon-20250724.htm",
+          "section": null
+        },
+        {
+          "rank": 2,
+          "score": 0.769853,
+          "chunk_id": "0000773840-24-000075:hon-20240710.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-24-000075",
+          "document": "hon-20240710.htm",
+          "section": null
+        },
+        {
+          "rank": 3,
+          "score": 0.76967,
+          "chunk_id": "0000773840-26-000120:hon-20260723.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-26-000120",
+          "document": "hon-20260723.htm",
+          "section": null
+        },
+        {
+          "rank": 4,
+          "score": 0.769631,
+          "chunk_id": "0000773840-24-000081:hon-20240725.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-24-000081",
+          "document": "hon-20240725.htm",
+          "section": null
+        },
+        {
+          "rank": 5,
+          "score": 0.769488,
+          "chunk_id": "0000773840-25-000067:hon-20250725.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-25-000067",
+          "document": "hon-20250725.htm",
+          "section": null
+        },
+        {
+          "rank": 6,
+          "score": 0.769231,
+          "chunk_id": "0000773840-24-000086:hon-20240905.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-24-000086",
+          "document": "hon-20240905.htm",
+          "section": null
+        },
+        {
+          "rank": 7,
+          "score": 0.769225,
+          "chunk_id": "0000773840-24-000069:hon-20240607.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-24-000069",
+          "document": "hon-20240607.htm",
+          "section": null
+        },
+        {
+          "rank": 8,
+          "score": 0.769222,
+          "chunk_id": "0000773840-24-000006:hon-20240130.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-24-000006",
+          "document": "hon-20240130.htm",
+          "section": null
+        },
+        {
+          "rank": 9,
+          "score": 0.769218,
+          "chunk_id": "0000773840-25-000090:hon-20250926.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-25-000090",
+          "document": "hon-20250926.htm",
+          "section": null
+        },
+        {
+          "rank": 10,
+          "score": 0.769202,
+          "chunk_id": "0000773840-26-000006:hon-20260129.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-26-000006",
+          "document": "hon-20260129.htm",
+          "section": null
+        },
+        {
+          "rank": 11,
+          "score": 0.769192,
+          "chunk_id": "0000773840-25-000074:hon-20250822.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-25-000074",
+          "document": "hon-20250822.htm",
+          "section": null
+        },
+        {
+          "rank": 12,
+          "score": 0.769176,
+          "chunk_id": "0000773840-25-000091:hon-20250929.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-25-000091",
+          "document": "hon-20250929.htm",
+          "section": null
+        },
+        {
+          "rank": 13,
+          "score": 0.769117,
+          "chunk_id": "0000773840-25-000071:hon-20250821.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-25-000071",
+          "document": "hon-20250821.htm",
+          "section": null
+        },
+        {
+          "rank": 14,
+          "score": 0.769094,
+          "chunk_id": "0000773840-24-000066:hon-20240603.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-24-000066",
+          "document": "hon-20240603.htm",
+          "section": null
+        },
+        {
+          "rank": 15,
+          "score": 0.769015,
+          "chunk_id": "0000773840-25-000054:hon-20250623.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-25-000054",
+          "document": "hon-20250623.htm",
+          "section": null
+        },
+        {
+          "rank": 16,
+          "score": 0.768989,
+          "chunk_id": "0000773840-26-000068:hon-20260601.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-26-000068",
+          "document": "hon-20260601.htm",
+          "section": null
+        },
+        {
+          "rank": 17,
+          "score": 0.768989,
+          "chunk_id": "0000773840-26-000080:hon-20260615.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-26-000080",
+          "document": "hon-20260615.htm",
+          "section": null
+        },
+        {
+          "rank": 18,
+          "score": 0.768908,
+          "chunk_id": "0000773840-24-000091:hon-20241008.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-24-000091",
+          "document": "hon-20241008.htm",
+          "section": null
+        },
+        {
+          "rank": 19,
+          "score": 0.768877,
+          "chunk_id": "0000773840-26-000072:hon-20260605.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-26-000072",
+          "document": "hon-20260605.htm",
+          "section": null
+        },
+        {
+          "rank": 20,
+          "score": 0.768845,
+          "chunk_id": "0000773840-24-000058:hon-20240514.htm:00000",
+          "ticker": "HON",
+          "accession": "0000773840-24-000058",
+          "document": "hon-20240514.htm",
+          "section": null
+        }
+      ],
+      "scored": false,
+      "dedup": {
+        "window": 20,
+        "distinct_accessions": 20,
+        "distinct_texts": 20,
+        "ratio_accessions_per_text": 1.0,
+        "tickers": [
+          "HON"
+        ]
+      }
+    }
+  ]
+}

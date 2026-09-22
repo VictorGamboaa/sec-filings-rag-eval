@@ -22,6 +22,9 @@ dependencies = [
     "torch>=2.0",
     "sentence-transformers>=3.0",
     "faiss-cpu>=1.8",
+    # Hosted embedding provider. Optional at runtime -- the embedder seam
+    # imports it lazily, so the local providers work without it.
+    "voyageai>=0.2",
 ]
 
 [dependency-groups]

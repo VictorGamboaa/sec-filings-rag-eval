@@ -25,5 +25,6 @@ scratch/*
 
 # Model caches
 .cache/
-scratch/
+outputs/index/
+temp/
 *.bak*

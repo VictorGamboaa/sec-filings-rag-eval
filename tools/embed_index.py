@@ -271,7 +271,10 @@ def embed_index(
                     continue
                 keep.append(chunk)
 
-            index_dir.mkdir(parents=True, exist_ok=True)
+            # An EXISTING index is inspected up front -- reading costs nothing
+            # and a width mismatch should fail before any embedding is paid for.
+            # Nothing is CREATED here: see _open_for_writing below.
+            index = None
             if not rebuild and index_path.is_file():
                 index = faiss.read_index(str(index_path))
                 if index.d != embedder.dim:
@@ -279,25 +282,41 @@ def embed_index(
                         f"{index_path} has width {index.d}, embedder declares "
                         f"{embedder.dim}. Refusing to append."
                     )
-            else:
-                index = faiss.IndexFlatIP(embedder.dim)
-
-            if orphaned:
-                # Discard metadata describing vectors that were never written,
-                # so appends land on a row boundary the index agrees with.
-                _truncate_metadata(metadata_path, committed)
-                stage.error(
-                    "metadata rows ahead of the index were discarded; their "
-                    "chunks are re-embedded. An earlier run was interrupted "
-                    "between the metadata flush and the index write.",
-                    context={"orphaned_rows": orphaned, "index_ntotal": committed},
-                )
-                stage.note(orphaned_metadata_rows=orphaned)
 
             batch_size = max(1, int(config.get("embed.batch_size", 64)))
             checkpoint_every = max(1, int(config.get("embed.checkpoint_batches", 20)))
             mode = "w" if (rebuild or not metadata_path.is_file()) else "a"
             checkpoints = 0
+            meta_fh: Any = None
+
+            def _open_for_writing() -> Any:
+                """Create the index directory and metadata file. Called ONLY
+                after the first batch has come back successfully.
+
+                A run that dies before batch one -- a rejected API key, a rate
+                limit, a model that will not load -- must leave nothing behind.
+                An empty directory holding a zero-byte metadata.jsonl reads to
+                every later check as an index that exists, and a pre-flight
+                asking "is this a fresh build?" would answer wrongly.
+                """
+                nonlocal index
+                index_dir.mkdir(parents=True, exist_ok=True)
+                if index is None:
+                    index = faiss.IndexFlatIP(embedder.dim)
+                if orphaned:
+                    # Discard metadata describing vectors that were never
+                    # written, so appends land on a row boundary the index
+                    # agrees with.
+                    _truncate_metadata(metadata_path, committed)
+                    stage.error(
+                        "metadata rows ahead of the index were discarded; their "
+                        "chunks are re-embedded. An earlier run was interrupted "
+                        "between the metadata flush and the index write.",
+                        context={"orphaned_rows": orphaned,
+                                 "index_ntotal": committed},
+                    )
+                    stage.note(orphaned_metadata_rows=orphaned)
+                return metadata_path.open(mode, encoding="utf-8")
 
             def checkpoint(meta_fh: Any) -> None:
                 """Commit metadata then the index, in that order.
@@ -311,9 +330,10 @@ def embed_index(
                 os.fsync(meta_fh.fileno())
                 faiss.write_index(index, str(index_path))
 
-            with metadata_path.open(mode, encoding="utf-8") as meta_fh:
+            try:
                 for start in range(0, len(keep), batch_size):
                     batch = keep[start : start + batch_size]
+                    # Embed FIRST. A failure here leaves the filesystem alone.
                     vectors = embedder.embed_documents([c["text"] for c in batch], stage)
                     if vectors.shape[0] != len(batch):
                         raise EmbedderError(
@@ -321,6 +341,8 @@ def embed_index(
                             f"{len(batch)} inputs; refusing to write a metadata "
                             f"file that would not be row-aligned with the index."
                         )
+                    if meta_fh is None:
+                        meta_fh = _open_for_writing()
                     index.add(np.ascontiguousarray(vectors, dtype="float32"))
                     # Written after the add, in the same order, so metadata line
                     # N is FAISS row N.
@@ -336,7 +358,21 @@ def embed_index(
                     if (start // batch_size + 1) % checkpoint_every == 0:
                         checkpoint(meta_fh)
                         checkpoints += 1
-                checkpoint(meta_fh)
+                if meta_fh is not None:
+                    checkpoint(meta_fh)
+            finally:
+                if meta_fh is not None:
+                    meta_fh.close()
+
+            if index is None:
+                # Nothing was embedded and no prior index exists. Writing a
+                # sidecar would create the directory this run deliberately did
+                # not, so report and stop instead.
+                print(f"Nothing to embed into {index_dir} and no existing index; "
+                      f"nothing written.")
+                stage.note(embedded=0, skipped=len(chunks) - len(pending),
+                           over_length=over_length, created=False)
+                return 0
 
             stage.note(checkpoints=checkpoints)
             index_bytes = index_path.stat().st_size
@@ -344,6 +380,10 @@ def embed_index(
 
             sidecar_payload = {
                 "embedder": embedder.describe(),
+                # Hosted providers report what they billed; local ones report
+                # zero, and that asymmetry is the cost comparison.
+                "tokens_billed": int(getattr(embedder, "total_tokens", 0) or 0),
+                "api_requests": int(getattr(embedder, "total_requests", 0) or 0),
                 "chunk_fingerprint": fingerprint,
                 "windower": windower.identity,
                 "dim": embedder.dim,
@@ -368,6 +408,8 @@ def embed_index(
 
             stage.note(
                 embedded=embedded,
+                tokens_billed=int(getattr(embedder, "total_tokens", 0) or 0),
+                api_requests=int(getattr(embedder, "total_requests", 0) or 0),
                 skipped=len(chunks) - len(pending),
                 over_length=over_length,
                 dim=embedder.dim,

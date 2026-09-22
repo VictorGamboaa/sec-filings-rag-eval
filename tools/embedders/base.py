@@ -189,7 +189,10 @@ def _load_builtins() -> None:
     surface as "provider unavailable" when that provider is actually requested,
     not as a crash when merely listing what exists.
     """
-    try:
-        from tools.embedders import local  # noqa: F401
-    except ImportError:
-        pass
+    for module in ("local", "voyage"):
+        try:
+            __import__(f"tools.embedders.{module}")
+        except ImportError:
+            # A provider whose optional dependency is absent stays unavailable
+            # until it is actually requested, rather than crashing a listing.
+            pass

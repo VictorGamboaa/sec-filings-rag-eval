@@ -1,0 +1,1170 @@
+{
+  "answer_key": "inputs/answer_key.yaml",
+  "index": "outputs/index/main",
+  "index_fingerprint": "7614b05c13658707",
+  "index_sidecar": {
+    "embedder": {
+      "provider": "local",
+      "model": "BAAI/bge-small-en-v1.5",
+      "dim": 384,
+      "normalized": true,
+      "max_batch": 64,
+      "max_seq_tokens": 512,
+      "device": "cpu",
+      "query_prefix": "Represent this sentence for searching relevant passages: "
+    },
+    "chunk_fingerprint": "ac83b4d88850dfdf",
+    "windower": "tokens:BAAI/bge-small-en-v1.5",
+    "dim": 384,
+    "metric": "ip",
+    "count": 8690,
+    "index_file": "index.faiss",
+    "metadata_file": "metadata.jsonl"
+  },
+  "entries": 26,
+  "generic_match_threshold": 3,
+  "summary": {
+    "entries_negative_control": 5,
+    "key_status_verified": 26,
+    "quotes_checked": 27,
+    "quotes_dedup_measured": 1,
+    "quotes_ok": 26
+  },
+  "results": [
+    {
+      "id": "q01",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0000773840-24-000082",
+          "ticker": "HON",
+          "document": "hon-20240630.htm",
+          "key_section": "part2_item1a_risk_factors",
+          "quote": "for total consideration of $ 4,913 million, net of cash acquired",
+          "quote_chars": 64,
+          "status": "ok",
+          "match_count": 2,
+          "matches": [
+            {
+              "chunk_id": "0000773840-24-000082:hon-20240630.htm:00016",
+              "accession": "0000773840-24-000082",
+              "section": "part2_item1a_risk_factors",
+              "doc_type": "primary",
+              "document": "hon-20240630.htm",
+              "n_tokens": 361
+            },
+            {
+              "chunk_id": "0000773840-24-000082:hon-20240630.htm:00017",
+              "accession": "0000773840-24-000082",
+              "section": "part2_item1a_risk_factors",
+              "doc_type": "primary",
+              "document": "hon-20240630.htm",
+              "n_tokens": 434
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q02",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0000773840-25-000064",
+          "ticker": "HON",
+          "document": "hon-20250630.htm",
+          "key_section": "part2_item1a_risk_factors",
+          "quote": "the Company announced its intention to pursue a separation of its Automation and Aerospace Technologies businesses into independent, U.S. publicly traded companies",
+          "quote_chars": 163,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0000773840-25-000064:hon-20250630.htm:00021",
+              "accession": "0000773840-25-000064",
+              "section": "part2_item1a_risk_factors",
+              "doc_type": "primary",
+              "document": "hon-20250630.htm",
+              "n_tokens": 363
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q03",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0000773840-25-000064",
+          "ticker": "HON",
+          "document": "hon-20250630.htm",
+          "key_section": "part2_item1a_risk_factors",
+          "quote": "for total consideration of $ 2,152 million, net of cash acquired",
+          "quote_chars": 64,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0000773840-25-000064:hon-20250630.htm:00016",
+              "accession": "0000773840-25-000064",
+              "section": "part2_item1a_risk_factors",
+              "doc_type": "primary",
+              "document": "hon-20250630.htm",
+              "n_tokens": 450
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q04",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0000773840-25-000064",
+          "ticker": "HON",
+          "document": "hon-20250630.htm",
+          "key_section": "part2_item1a_risk_factors",
+          "quote": "the Company completed the sale of its personal protective equipment (PPE) business in exchange for total consideration of",
+          "quote_chars": 121,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0000773840-25-000064:hon-20250630.htm:00020",
+              "accession": "0000773840-25-000064",
+              "section": "part2_item1a_risk_factors",
+              "doc_type": "primary",
+              "document": "hon-20250630.htm",
+              "n_tokens": 445
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q05",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0001646972-25-000063",
+          "ticker": "ACI",
+          "document": "aci-20250614.htm",
+          "key_section": "TBD",
+          "quote": "the United States District Court for the District of Oregon issued a preliminary injunction in the case Federal Trade Commission et al. v. The Kroger Company and Albertsons Companies, Inc.",
+          "quote_chars": 188,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0001646972-25-000063:aci-20250614.htm:00028",
+              "accession": "0001646972-25-000063",
+              "section": "part1_item1_financial_statements",
+              "doc_type": "primary",
+              "document": "aci-20250614.htm",
+              "n_tokens": 401
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q06",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0001646972-25-000063",
+          "ticker": "ACI",
+          "document": "aci-20250614.htm",
+          "key_section": "TBD",
+          "quote": "the Company prevailed at trial and the District Court entered judgment in favor of the Company",
+          "quote_chars": 94,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0001646972-25-000063:aci-20250614.htm:00023",
+              "accession": "0001646972-25-000063",
+              "section": "part1_item1_financial_statements",
+              "doc_type": "primary",
+              "document": "aci-20250614.htm",
+              "n_tokens": 447
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q07",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0001646972-25-000063",
+          "ticker": "ACI",
+          "document": "aci-20250614.htm",
+          "key_section": "TBD",
+          "quote": "completed the issuance of $600.0 million in aggregate principal amount of 6.250% senior unsecured notes due March 15, 2033",
+          "quote_chars": 122,
+          "status": "ok",
+          "match_count": 2,
+          "matches": [
+            {
+              "chunk_id": "0001646972-25-000063:aci-20250614.htm:00053",
+              "accession": "0001646972-25-000063",
+              "section": "part1_item2_mdna",
+              "doc_type": "primary",
+              "document": "aci-20250614.htm",
+              "n_tokens": 377
+            },
+            {
+              "chunk_id": "0001646972-25-000063:aci-20250614.htm:00054",
+              "accession": "0001646972-25-000063",
+              "section": "part1_item2_mdna",
+              "doc_type": "primary",
+              "document": "aci-20250614.htm",
+              "n_tokens": 420
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q08",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0000009326-25-000014",
+          "ticker": "BCPC",
+          "document": "bcpc-20250630.htm",
+          "key_section": "part1_item1_financial_statements",
+          "quote": "The 2022 Credit Agreement allows for up to $ 550,000 of borrowing",
+          "quote_chars": 65,
+          "status": "ok",
+          "match_count": 2,
+          "matches": [
+            {
+              "chunk_id": "0000009326-25-000014:bcpc-20250630.htm:00021",
+              "accession": "0000009326-25-000014",
+              "section": "part1_item1_financial_statements",
+              "doc_type": "primary",
+              "document": "bcpc-20250630.htm",
+              "n_tokens": 433
+            },
+            {
+              "chunk_id": "0000009326-25-000014:bcpc-20250630.htm:00022",
+              "accession": "0000009326-25-000014",
+              "section": "part1_item1_financial_statements",
+              "doc_type": "primary",
+              "document": "bcpc-20250630.htm",
+              "n_tokens": 411
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q09",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0000009326-25-000014",
+          "ticker": "BCPC",
+          "document": "bcpc-20250630.htm",
+          "key_section": "TBD",
+          "quote": "the Company and Eastman Chemical Company formed a joint venture",
+          "quote_chars": 63,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0000009326-25-000014:bcpc-20250630.htm:00020",
+              "accession": "0000009326-25-000014",
+              "section": "part1_item1_financial_statements",
+              "doc_type": "primary",
+              "document": "bcpc-20250630.htm",
+              "n_tokens": 416
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0000009326-25-000014",
+          "ticker": "BCPC",
+          "document": "bcpc-20250630.htm",
+          "key_section": "TBD",
+          "quote": "three reportable segments: Human Nutrition and Health, Animal Nutrition and Health, and Specialty Products",
+          "quote_chars": 106,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0000009326-25-000014:bcpc-20250630.htm:00026",
+              "accession": "0000009326-25-000014",
+              "section": "part1_item1_financial_statements",
+              "doc_type": "primary",
+              "document": "bcpc-20250630.htm",
+              "n_tokens": 418
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q11",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0001423689-25-000073",
+          "ticker": "AGNC",
+          "document": "agnc-20250630.htm",
+          "key_section": null,
+          "quote": "The primary instruments that we use are interest rate swaps, options to enter into interest rate swaps",
+          "quote_chars": 102,
+          "status": "ok",
+          "match_count": 2,
+          "matches": [
+            {
+              "chunk_id": "0001423689-25-000073:agnc-20250630.htm:00016",
+              "accession": "0001423689-25-000073",
+              "section": null,
+              "doc_type": "primary",
+              "document": "agnc-20250630.htm",
+              "n_tokens": 445
+            },
+            {
+              "chunk_id": "0001423689-25-000073:agnc-20250630.htm:00017",
+              "accession": "0001423689-25-000073",
+              "section": null,
+              "doc_type": "primary",
+              "document": "agnc-20250630.htm",
+              "n_tokens": 432
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q12",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0001423689-25-000073",
+          "ticker": "AGNC",
+          "document": "agnc-20250630.htm",
+          "key_section": null,
+          "quote": "The objective of our risk management strategy is to reduce fluctuations in net book value over a range of interest rate scenarios.",
+          "quote_chars": 130,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0001423689-25-000073:agnc-20250630.htm:00016",
+              "accession": "0001423689-25-000073",
+              "section": null,
+              "doc_type": "primary",
+              "document": "agnc-20250630.htm",
+              "n_tokens": 445
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q27",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0000773840-25-000062",
+          "ticker": "HON",
+          "document": "exhibit99-q22025earningsre.htm",
+          "key_section": "EX-99",
+          "quote": "Honeywell delivered outstanding results in the second quarter with both organic growth and adjusted earnings per share exceeding guidance despite the unpredictable macroeconomic backdrop",
+          "quote_chars": 186,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0000773840-25-000062:exhibit99-q22025earningsre.htm:00001",
+              "accession": "0000773840-25-000062",
+              "section": "EX-99",
+              "doc_type": "exhibit",
+              "document": "exhibit99-q22025earningsre.htm",
+              "n_tokens": 411
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q28",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0000005272-24-000063",
+          "ticker": "AIG",
+          "document": "aig-20240609.htm",
+          "key_section": "item_2.01",
+          "quote": "it no longer had a controlling interest in Corebridge and would no longer consolidate Corebridge",
+          "quote_chars": 96,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0000005272-24-000063:aig-20240609.htm:00002",
+              "accession": "0000005272-24-000063",
+              "section": "item_2.01",
+              "doc_type": "primary",
+              "document": "aig-20240609.htm",
+              "n_tokens": 446
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q13",
+      "type": "cross_company",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0001646972-25-000063",
+          "ticker": "ACI",
+          "document": "aci-20250614.htm",
+          "key_section": "TBD",
+          "quote": "the President signed into law the One Big Beautiful Bill Act",
+          "quote_chars": 60,
+          "status": "ok",
+          "match_count": 2,
+          "matches": [
+            {
+              "chunk_id": "0001646972-25-000063:aci-20250614.htm:00010",
+              "accession": "0001646972-25-000063",
+              "section": "part1_item1_financial_statements",
+              "doc_type": "primary",
+              "document": "aci-20250614.htm",
+              "n_tokens": 434
+            },
+            {
+              "chunk_id": "0001646972-25-000063:aci-20250614.htm:00011",
+              "accession": "0001646972-25-000063",
+              "section": "part1_item1_financial_statements",
+              "doc_type": "primary",
+              "document": "aci-20250614.htm",
+              "n_tokens": 447
+            }
+          ]
+        },
+        {
+          "position": 1,
+          "accession": "0000009326-25-000014",
+          "ticker": "BCPC",
+          "document": "bcpc-20250630.htm",
+          "key_section": "TBD",
+          "quote": "the One Big Beautiful Bill Act",
+          "quote_chars": 30,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0000009326-25-000014:bcpc-20250630.htm:00024",
+              "accession": "0000009326-25-000014",
+              "section": "part1_item1_financial_statements",
+              "doc_type": "primary",
+              "document": "bcpc-20250630.htm",
+              "n_tokens": 428
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q15",
+      "type": "period_over_period",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0000773840-25-000064",
+          "ticker": "HON",
+          "document": "hon-20250630.htm",
+          "key_section": "part2_item1a_risk_factors",
+          "quote": "expected to be completed during the fourth quarter of 2025",
+          "quote_chars": 58,
+          "status": "ok",
+          "match_count": 3,
+          "matches": [
+            {
+              "chunk_id": "0000773840-25-000064:hon-20250630.htm:00021",
+              "accession": "0000773840-25-000064",
+              "section": "part2_item1a_risk_factors",
+              "doc_type": "primary",
+              "document": "hon-20250630.htm",
+              "n_tokens": 363
+            },
+            {
+              "chunk_id": "0000773840-25-000064:hon-20250630.htm:00022",
+              "accession": "0000773840-25-000064",
+              "section": "part2_item1a_risk_factors",
+              "doc_type": "primary",
+              "document": "hon-20250630.htm",
+              "n_tokens": 450
+            },
+            {
+              "chunk_id": "0000773840-25-000064:hon-20250630.htm:00080",
+              "accession": "0000773840-25-000064",
+              "section": "part1_item2_mdna",
+              "doc_type": "primary",
+              "document": "hon-20250630.htm",
+              "n_tokens": 437
+            }
+          ]
+        },
+        {
+          "position": 1,
+          "accession": "0000773840-25-000105",
+          "ticker": "HON",
+          "document": "hon-20250930.htm",
+          "key_section": "part1_item2_mdna",
+          "quote": "the Board approved the spin-off, which will be effective as of 12:01 a.m.",
+          "quote_chars": 73,
+          "status": "ok",
+          "match_count": 3,
+          "matches": [
+            {
+              "chunk_id": "0000773840-25-000105:hon-20250930.htm:00021",
+              "accession": "0000773840-25-000105",
+              "section": "part2_item1a_risk_factors",
+              "doc_type": "primary",
+              "document": "hon-20250930.htm",
+              "n_tokens": 441
+            },
+            {
+              "chunk_id": "0000773840-25-000105:hon-20250930.htm:00072",
+              "accession": "0000773840-25-000105",
+              "section": "part1_item2_mdna",
+              "doc_type": "primary",
+              "document": "hon-20250930.htm",
+              "n_tokens": 449
+            },
+            {
+              "chunk_id": "0000773840-25-000105:hon-20250930.htm:00073",
+              "accession": "0000773840-25-000105",
+              "section": "part1_item2_mdna",
+              "doc_type": "primary",
+              "document": "hon-20250930.htm",
+              "n_tokens": 447
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q16",
+      "type": "period_over_period",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0000773840-25-000064",
+          "ticker": "HON",
+          "document": "hon-20250630.htm",
+          "key_section": "part2_item1a_risk_factors",
+          "quote": "announced its agreement to acquire Johnson Matthey's Catalyst Technologies business segment in an all-cash transaction",
+          "quote_chars": 118,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0000773840-25-000064:hon-20250630.htm:00016",
+              "accession": "0000773840-25-000064",
+              "section": "part2_item1a_risk_factors",
+              "doc_type": "primary",
+              "document": "hon-20250630.htm",
+              "n_tokens": 450
+            }
+          ]
+        },
+        {
+          "position": 1,
+          "accession": "0000773840-25-000105",
+          "ticker": "HON",
+          "document": "hon-20250930.htm",
+          "key_section": "part2_item1a_risk_factors",
+          "quote": "The transaction is subject to customary closing conditions, including receipt of certain regulatory approvals.",
+          "quote_chars": 110,
+          "status": "ok",
+          "match_count": 2,
+          "matches": [
+            {
+              "chunk_id": "0000773840-25-000105:hon-20250930.htm:00016",
+              "accession": "0000773840-25-000105",
+              "section": "part2_item1a_risk_factors",
+              "doc_type": "primary",
+              "document": "hon-20250930.htm",
+              "n_tokens": 449
+            },
+            {
+              "chunk_id": "0000773840-25-000105:hon-20250930.htm:00017",
+              "accession": "0000773840-25-000105",
+              "section": "part2_item1a_risk_factors",
+              "doc_type": "primary",
+              "document": "hon-20250930.htm",
+              "n_tokens": 371
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q17",
+      "type": "period_over_period",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0001646972-24-000225",
+          "ticker": "ACI",
+          "document": "aci-20240907.htm",
+          "key_section": "part1_item1_financial_statements",
+          "quote": "The FTC administrative proceeding and the preliminary injunction hearing in the Federal Action have concluded and the Company awaits a decision.",
+          "quote_chars": 144,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0001646972-24-000225:aci-20240907.htm:00020",
+              "accession": "0001646972-24-000225",
+              "section": "part1_item1_financial_statements",
+              "doc_type": "primary",
+              "document": "aci-20240907.htm",
+              "n_tokens": 421
+            }
+          ]
+        },
+        {
+          "position": 1,
+          "accession": "0001646972-25-000063",
+          "ticker": "ACI",
+          "document": "aci-20250614.htm",
+          "key_section": "part1_item1_financial_statements",
+          "quote": "the Company exercised its right to terminate the Merger Agreement and sent a notice to Kroger on December 10, 2024 terminating the Merger Agreement",
+          "quote_chars": 147,
+          "status": "ok",
+          "match_count": 2,
+          "matches": [
+            {
+              "chunk_id": "0001646972-25-000063:aci-20250614.htm:00028",
+              "accession": "0001646972-25-000063",
+              "section": "part1_item1_financial_statements",
+              "doc_type": "primary",
+              "document": "aci-20250614.htm",
+              "n_tokens": 401
+            },
+            {
+              "chunk_id": "0001646972-25-000063:aci-20250614.htm:00029",
+              "accession": "0001646972-25-000063",
+              "section": "part1_item1_financial_statements",
+              "doc_type": "primary",
+              "document": "aci-20250614.htm",
+              "n_tokens": 439
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q18",
+      "type": "period_over_period",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0000005272-24-000079",
+          "ticker": "AIG",
+          "document": "aig-20240630.htm",
+          "key_section": "part1_item2_mdna",
+          "quote": "Corebridge retained investment ( 48.4 % @ 28.90 per share at June 9, 2024)",
+          "quote_chars": 74,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0000005272-24-000079:aig-20240630.htm:00033",
+              "accession": "0000005272-24-000079",
+              "section": "part1_item2_mdna",
+              "doc_type": "primary",
+              "document": "aig-20240630.htm",
+              "n_tokens": 419
+            }
+          ]
+        },
+        {
+          "position": 1,
+          "accession": "0000005272-26-000052",
+          "ticker": "AIG",
+          "document": "aig-20260331.htm",
+          "key_section": "part1_item2_mdna",
+          "quote": "AIG held 5.6 percent of the outstanding common stock of Corebridge and we concluded that we no longer have the ability to exert significant influence over Corebridge",
+          "quote_chars": 165,
+          "status": "ok",
+          "match_count": 2,
+          "matches": [
+            {
+              "chunk_id": "0000005272-26-000052:aig-20260331.htm:00013",
+              "accession": "0000005272-26-000052",
+              "section": "part1_item2_mdna",
+              "doc_type": "primary",
+              "document": "aig-20260331.htm",
+              "n_tokens": 432
+            },
+            {
+              "chunk_id": "0000005272-26-000052:aig-20260331.htm:00014",
+              "accession": "0000005272-26-000052",
+              "section": "part1_item2_mdna",
+              "doc_type": "primary",
+              "document": "aig-20260331.htm",
+              "n_tokens": 398
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q19",
+      "type": "period_over_period",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0001423689-24-000058",
+          "ticker": "AGNC",
+          "document": "agnc-20240630.htm",
+          "key_section": null,
+          "quote": "The primary instruments that we use are interest rate swaps, options to enter into interest rate swaps",
+          "quote_chars": 102,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0001423689-24-000058:agnc-20240630.htm:00016",
+              "accession": "0001423689-24-000058",
+              "section": null,
+              "doc_type": "primary",
+              "document": "agnc-20240630.htm",
+              "n_tokens": 418
+            }
+          ]
+        },
+        {
+          "position": 1,
+          "accession": "0001423689-26-000128",
+          "ticker": "AGNC",
+          "document": "agnc-20260630.htm",
+          "key_section": null,
+          "quote": "The primary instruments that we use are interest rate swaps, options to enter into interest rate swaps",
+          "quote_chars": 102,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0001423689-26-000128:agnc-20260630.htm:00017",
+              "accession": "0001423689-26-000128",
+              "section": null,
+              "doc_type": "primary",
+              "document": "agnc-20260630.htm",
+              "n_tokens": 445
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q21",
+      "type": "negative_control",
+      "key_status": "verified",
+      "status": "negative_control",
+      "quotes": []
+    },
+    {
+      "id": "q22",
+      "type": "negative_control",
+      "key_status": "verified",
+      "status": "negative_control",
+      "quotes": []
+    },
+    {
+      "id": "q23",
+      "type": "negative_control",
+      "key_status": "verified",
+      "status": "negative_control",
+      "quotes": []
+    },
+    {
+      "id": "q24",
+      "type": "negative_control",
+      "key_status": "verified",
+      "status": "negative_control",
+      "quotes": []
+    },
+    {
+      "id": "q25",
+      "type": "negative_control",
+      "key_status": "verified",
+      "status": "negative_control",
+      "quotes": []
+    },
+    {
+      "id": "q26",
+      "type": "dedup_diagnostic",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "ANY",
+          "ticker": "HON",
+          "document": "ANY",
+          "key_section": "None",
+          "quote": "d-2(b)) \u2610 Pre-commencement communications pursuant to Rule 13e-4(c) under the Exchange Act (17 CFR 240.13e-4(c)) Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading Symbol(s) Name of each exchange on which registered Common Stock, par value $1 per share HON The Nasdaq Stock Market LLC 3.500% Senior Notes due 2027 HON 27 The Nasdaq Stock Market LLC 2.250% Senior Notes due 2028 HON 28A The Nasdaq Stock Market LLC 3.375% Senior Notes due 2030 HON 30 The Nasdaq Stock Market LLC 0.750% Senior Notes due 2032 HON 32 The Nasdaq Stock Market LLC 3.750% Senior Notes due 2032 HON 32A The Nasdaq Stock Market LLC 4.125% Senior Notes due 2034 HON 34 The Nasdaq Stock Market LLC 3.750% Senior Notes due 2036 HON 36 The Nasdaq Stock Market LLC Indicate by check mark whether the registrant is an emerging growth company as defined in Rule 405 of the Securities Act of 1933 (\u00a7230.405 of this chapter) or Rule 12b-2 of the Securities Exchange Act of 1934 (\u00a7240.12b-2 of this chapter). Emerging Growth Company \u2610 If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. \u2610",
+          "quote_chars": 1289,
+          "status": "dedup_measured",
+          "match_count": 34,
+          "matches": [
+            {
+              "chunk_id": "0000773840-24-000045:hon-20240425.htm:00001",
+              "accession": "0000773840-24-000045",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20240425.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-24-000054:hon-20240425_d2.htm:00001",
+              "accession": "0000773840-24-000054",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20240425_d2.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-24-000058:hon-20240514.htm:00001",
+              "accession": "0000773840-24-000058",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20240514.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-24-000066:hon-20240603.htm:00001",
+              "accession": "0000773840-24-000066",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20240603.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-24-000069:hon-20240607.htm:00001",
+              "accession": "0000773840-24-000069",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20240607.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-24-000075:hon-20240710.htm:00001",
+              "accession": "0000773840-24-000075",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20240710.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-24-000081:hon-20240725.htm:00001",
+              "accession": "0000773840-24-000081",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20240725.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-24-000086:hon-20240905.htm:00001",
+              "accession": "0000773840-24-000086",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20240905.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-24-000091:hon-20241008.htm:00001",
+              "accession": "0000773840-24-000091",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20241008.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-24-000097:hon-20241024.htm:00001",
+              "accession": "0000773840-24-000097",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20241024.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-24-000102:hon-20241202.htm:00001",
+              "accession": "0000773840-24-000102",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20241202.htm",
+              "n_tokens": 329
+            },
+            {
+              "chunk_id": "0000773840-25-000005:hon-20250206.htm:00001",
+              "accession": "0000773840-25-000005",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20250206.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-25-000014:hon-20250214.htm:00001",
+              "accession": "0000773840-25-000014",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20250214.htm",
+              "n_tokens": 329
+            },
+            {
+              "chunk_id": "0000773840-25-000019:hon-20250401.htm:00001",
+              "accession": "0000773840-25-000019",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20250401.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-25-000025:hon-20250407.htm:00001",
+              "accession": "0000773840-25-000025",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20250407.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-25-000035:hon-20250429.htm:00001",
+              "accession": "0000773840-25-000035",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20250429.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-25-000043:hon-20250520.htm:00001",
+              "accession": "0000773840-25-000043",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20250520.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-25-000054:hon-20250623.htm:00001",
+              "accession": "0000773840-25-000054",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20250623.htm",
+              "n_tokens": 450
+            },
+            {
+              "chunk_id": "0000773840-25-000062:hon-20250724.htm:00001",
+              "accession": "0000773840-25-000062",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20250724.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-25-000067:hon-20250725.htm:00001",
+              "accession": "0000773840-25-000067",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20250725.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-25-000071:hon-20250821.htm:00001",
+              "accession": "0000773840-25-000071",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20250821.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-25-000074:hon-20250822.htm:00001",
+              "accession": "0000773840-25-000074",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20250822.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-25-000090:hon-20250926.htm:00001",
+              "accession": "0000773840-25-000090",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20250926.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-25-000091:hon-20250929.htm:00001",
+              "accession": "0000773840-25-000091",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20250929.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-25-000096:hon-20251015.htm:00001",
+              "accession": "0000773840-25-000096",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20251015.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-25-000099:hon-20251022.htm:00001",
+              "accession": "0000773840-25-000099",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20251022.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-25-000104:hon-20251023.htm:00001",
+              "accession": "0000773840-25-000104",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20251023.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-25-000109:hon-20251030.htm:00001",
+              "accession": "0000773840-25-000109",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20251030.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-25-000117:hon-20251103.htm:00001",
+              "accession": "0000773840-25-000117",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20251103.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-25-000120:hon-20251210.htm:00001",
+              "accession": "0000773840-25-000120",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20251210.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-25-000125:hon-20251222.htm:00001",
+              "accession": "0000773840-25-000125",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20251222.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-26-000006:hon-20260129.htm:00001",
+              "accession": "0000773840-26-000006",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20260129.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-26-000015:hon-20260217.htm:00001",
+              "accession": "0000773840-26-000015",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20260217.htm",
+              "n_tokens": 327
+            },
+            {
+              "chunk_id": "0000773840-26-000017:hon-20260303.htm:00001",
+              "accession": "0000773840-26-000017",
+              "section": null,
+              "doc_type": "primary",
+              "document": "hon-20260303.htm",
+              "n_tokens": 327
+            }
+          ],
+          "distinct_accessions": 34,
+          "distinct_texts": 3,
+          "distinct_tickers": [
+            "HON"
+          ]
+        }
+      ]
+    }
+  ]
+}

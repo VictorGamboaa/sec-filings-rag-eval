@@ -1,0 +1,20 @@
+{
+  "kind": "bm25",
+  "chunk_fingerprint": "ac83b4d88850dfdf",
+  "count": 8690,
+  "built_from_index": "outputs/index/main",
+  "bm25": {
+    "k1": 1.2,
+    "b": 0.75,
+    "note": "Robertson/Lucene defaults; not tuned against the key"
+  },
+  "tokenizer": {
+    "pattern": "[a-z0-9]+(?:[.,][a-z0-9]+)*%?",
+    "lowercase": true,
+    "stemming": false,
+    "stopwords": false,
+    "note": "numerics keep internal . and , and a trailing %"
+  },
+  "vocabulary": 28229,
+  "avg_doc_len_tokens": 272.04
+}

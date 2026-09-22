@@ -1,0 +1,22 @@
+{
+  "embedder": {
+    "provider": "voyage",
+    "model": "voyage-finance-2",
+    "dim": 1024,
+    "normalized": true,
+    "max_batch": 128,
+    "max_seq_tokens": 32000,
+    "query_prefix": null,
+    "input_type_query": "query",
+    "input_type_document": "document"
+  },
+  "tokens_billed": 4443914,
+  "api_requests": 68,
+  "chunk_fingerprint": "ac83b4d88850dfdf",
+  "windower": "tokens:BAAI/bge-small-en-v1.5",
+  "dim": 1024,
+  "metric": "ip",
+  "count": 8690,
+  "index_file": "index.faiss",
+  "metadata_file": "metadata.jsonl"
+}

@@ -393,3 +393,65 @@ def test_index_ahead_of_metadata_is_not_produced(workspace, stub):
     rows = len((index_dir / METADATA_FILE).read_text(encoding="utf-8").splitlines())
     assert rows >= ntotal, "the index must never run ahead of its metadata"
     assert rows == ntotal
+
+
+# --------------------------------------------------------------------------
+# A failed build must leave nothing behind
+# --------------------------------------------------------------------------
+
+
+def test_failure_before_the_first_batch_creates_no_directory(workspace, monkeypatch):
+    """Proved necessary by a real aborted run.
+
+    A rate-limited Voyage build died on batch one and left a zero-byte
+    metadata.jsonl in a new directory. Every later check -- including a
+    pre-flight asking "is this a fresh index?" -- reads that as an index that
+    already exists.
+    """
+    write, overrides, index_dir = workspace
+    write([_chunk(i) for i in range(4)])
+
+    class Failing(StubEmbedder):
+        def embed_documents(self, texts, stage=None):
+            raise ei.EmbedderError("rate limited before any text was embedded")
+
+    monkeypatch.setattr(ei, "get_embedder", lambda config, stage=None: Failing())
+    with pytest.raises(ei.EmbedderError):
+        _run(overrides)
+
+    assert not index_dir.exists(), (
+        "a run that failed before batch one must leave no directory at all"
+    )
+
+
+def test_failure_on_a_later_batch_keeps_the_committed_prefix(workspace, monkeypatch):
+    """Failing midway is different: work already committed must survive."""
+    import faiss
+
+    write, overrides, index_dir = workspace
+    write([_chunk(i) for i in range(9)])
+
+    class FailsLate(StubEmbedder):
+        def embed_documents(self, texts, stage=None):
+            if self.calls >= 2:
+                raise ei.EmbedderError("upstream failure on the third batch")
+            return super().embed_documents(texts, stage)
+
+    monkeypatch.setattr(ei, "get_embedder", lambda config, stage=None: FailsLate())
+    with pytest.raises(ei.EmbedderError):
+        _run(overrides + ["embed.checkpoint_batches=1"])
+
+    assert index_dir.exists()
+    committed = faiss.read_index(str(index_dir / "index.faiss")).ntotal
+    assert committed == 6, "two batches of three were checkpointed before the failure"
+
+
+def test_directory_is_created_only_after_a_batch_succeeds(workspace, stub):
+    """The positive case: a successful run does create everything."""
+    write, overrides, index_dir = workspace
+    write([_chunk(i) for i in range(3)])
+    assert not index_dir.exists()
+    assert _run(overrides) == 0
+    assert (index_dir / "index.faiss").is_file()
+    assert (index_dir / METADATA_FILE).is_file()
+    assert (index_dir / SIDECAR_FILE).is_file()

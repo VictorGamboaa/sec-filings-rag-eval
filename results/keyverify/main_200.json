@@ -1,0 +1,855 @@
+{
+  "answer_key": "inputs/answer_key.yaml",
+  "index": "outputs/index/main_200",
+  "index_fingerprint": "55fec8044a5da4b9",
+  "index_sidecar": {
+    "embedder": {
+      "provider": "local",
+      "model": "BAAI/bge-small-en-v1.5",
+      "dim": 384,
+      "normalized": true,
+      "max_batch": 64,
+      "max_seq_tokens": 512,
+      "device": "cpu",
+      "query_prefix": "Represent this sentence for searching relevant passages: "
+    },
+    "chunk_fingerprint": "4f143556fa785a1a",
+    "windower": "tokens:BAAI/bge-small-en-v1.5",
+    "dim": 384,
+    "metric": "ip",
+    "count": 18887,
+    "index_file": "index.faiss",
+    "metadata_file": "metadata.jsonl"
+  },
+  "entries": 26,
+  "generic_match_threshold": 3,
+  "summary": {
+    "entries_negative_control": 5,
+    "key_status_verified": 26,
+    "quotes_checked": 27,
+    "quotes_ok": 26,
+    "quotes_quote_absent": 1
+  },
+  "results": [
+    {
+      "id": "q01",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0000773840-24-000082",
+          "ticker": "HON",
+          "document": "hon-20240630.htm",
+          "key_section": "part2_item1a_risk_factors",
+          "quote": "for total consideration of $ 4,913 million, net of cash acquired",
+          "quote_chars": 64,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0000773840-24-000082:hon-20240630.htm:00040",
+              "accession": "0000773840-24-000082",
+              "section": "part2_item1a_risk_factors",
+              "doc_type": "primary",
+              "document": "hon-20240630.htm",
+              "n_tokens": 200
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q02",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0000773840-25-000064",
+          "ticker": "HON",
+          "document": "hon-20250630.htm",
+          "key_section": "part2_item1a_risk_factors",
+          "quote": "the Company announced its intention to pursue a separation of its Automation and Aerospace Technologies businesses into independent, U.S. publicly traded companies",
+          "quote_chars": 163,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0000773840-25-000064:hon-20250630.htm:00048",
+              "accession": "0000773840-25-000064",
+              "section": "part2_item1a_risk_factors",
+              "doc_type": "primary",
+              "document": "hon-20250630.htm",
+              "n_tokens": 195
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q03",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0000773840-25-000064",
+          "ticker": "HON",
+          "document": "hon-20250630.htm",
+          "key_section": "part2_item1a_risk_factors",
+          "quote": "for total consideration of $ 2,152 million, net of cash acquired",
+          "quote_chars": 64,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0000773840-25-000064:hon-20250630.htm:00039",
+              "accession": "0000773840-25-000064",
+              "section": "part2_item1a_risk_factors",
+              "doc_type": "primary",
+              "document": "hon-20250630.htm",
+              "n_tokens": 198
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q04",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0000773840-25-000064",
+          "ticker": "HON",
+          "document": "hon-20250630.htm",
+          "key_section": "part2_item1a_risk_factors",
+          "quote": "the Company completed the sale of its personal protective equipment (PPE) business in exchange for total consideration of",
+          "quote_chars": 121,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0000773840-25-000064:hon-20250630.htm:00047",
+              "accession": "0000773840-25-000064",
+              "section": "part2_item1a_risk_factors",
+              "doc_type": "primary",
+              "document": "hon-20250630.htm",
+              "n_tokens": 192
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q05",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0001646972-25-000063",
+          "ticker": "ACI",
+          "document": "aci-20250614.htm",
+          "key_section": "TBD",
+          "quote": "the United States District Court for the District of Oregon issued a preliminary injunction in the case Federal Trade Commission et al. v. The Kroger Company and Albertsons Companies, Inc.",
+          "quote_chars": 188,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0001646972-25-000063:aci-20250614.htm:00063",
+              "accession": "0001646972-25-000063",
+              "section": "part1_item1_financial_statements",
+              "doc_type": "primary",
+              "document": "aci-20250614.htm",
+              "n_tokens": 191
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q06",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0001646972-25-000063",
+          "ticker": "ACI",
+          "document": "aci-20250614.htm",
+          "key_section": "TBD",
+          "quote": "the Company prevailed at trial and the District Court entered judgment in favor of the Company",
+          "quote_chars": 94,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0001646972-25-000063:aci-20250614.htm:00052",
+              "accession": "0001646972-25-000063",
+              "section": "part1_item1_financial_statements",
+              "doc_type": "primary",
+              "document": "aci-20250614.htm",
+              "n_tokens": 194
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q07",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0001646972-25-000063",
+          "ticker": "ACI",
+          "document": "aci-20250614.htm",
+          "key_section": "TBD",
+          "quote": "completed the issuance of $600.0 million in aggregate principal amount of 6.250% senior unsecured notes due March 15, 2033",
+          "quote_chars": 122,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0001646972-25-000063:aci-20250614.htm:00118",
+              "accession": "0001646972-25-000063",
+              "section": "part1_item2_mdna",
+              "doc_type": "primary",
+              "document": "aci-20250614.htm",
+              "n_tokens": 171
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q08",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0000009326-25-000014",
+          "ticker": "BCPC",
+          "document": "bcpc-20250630.htm",
+          "key_section": "part1_item1_financial_statements",
+          "quote": "The 2022 Credit Agreement allows for up to $ 550,000 of borrowing",
+          "quote_chars": 65,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0000009326-25-000014:bcpc-20250630.htm:00049",
+              "accession": "0000009326-25-000014",
+              "section": "part1_item1_financial_statements",
+              "doc_type": "primary",
+              "document": "bcpc-20250630.htm",
+              "n_tokens": 192
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q09",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0000009326-25-000014",
+          "ticker": "BCPC",
+          "document": "bcpc-20250630.htm",
+          "key_section": "TBD",
+          "quote": "the Company and Eastman Chemical Company formed a joint venture",
+          "quote_chars": 63,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0000009326-25-000014:bcpc-20250630.htm:00046",
+              "accession": "0000009326-25-000014",
+              "section": "part1_item1_financial_statements",
+              "doc_type": "primary",
+              "document": "bcpc-20250630.htm",
+              "n_tokens": 186
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0000009326-25-000014",
+          "ticker": "BCPC",
+          "document": "bcpc-20250630.htm",
+          "key_section": "TBD",
+          "quote": "three reportable segments: Human Nutrition and Health, Animal Nutrition and Health, and Specialty Products",
+          "quote_chars": 106,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0000009326-25-000014:bcpc-20250630.htm:00061",
+              "accession": "0000009326-25-000014",
+              "section": "part1_item1_financial_statements",
+              "doc_type": "primary",
+              "document": "bcpc-20250630.htm",
+              "n_tokens": 190
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q11",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0001423689-25-000073",
+          "ticker": "AGNC",
+          "document": "agnc-20250630.htm",
+          "key_section": null,
+          "quote": "The primary instruments that we use are interest rate swaps, options to enter into interest rate swaps",
+          "quote_chars": 102,
+          "status": "ok",
+          "match_count": 2,
+          "matches": [
+            {
+              "chunk_id": "0001423689-25-000073:agnc-20250630.htm:00037",
+              "accession": "0001423689-25-000073",
+              "section": null,
+              "doc_type": "primary",
+              "document": "agnc-20250630.htm",
+              "n_tokens": 196
+            },
+            {
+              "chunk_id": "0001423689-25-000073:agnc-20250630.htm:00038",
+              "accession": "0001423689-25-000073",
+              "section": null,
+              "doc_type": "primary",
+              "document": "agnc-20250630.htm",
+              "n_tokens": 200
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q12",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0001423689-25-000073",
+          "ticker": "AGNC",
+          "document": "agnc-20250630.htm",
+          "key_section": null,
+          "quote": "The objective of our risk management strategy is to reduce fluctuations in net book value over a range of interest rate scenarios.",
+          "quote_chars": 130,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0001423689-25-000073:agnc-20250630.htm:00037",
+              "accession": "0001423689-25-000073",
+              "section": null,
+              "doc_type": "primary",
+              "document": "agnc-20250630.htm",
+              "n_tokens": 196
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q27",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0000773840-25-000062",
+          "ticker": "HON",
+          "document": "exhibit99-q22025earningsre.htm",
+          "key_section": "EX-99",
+          "quote": "Honeywell delivered outstanding results in the second quarter with both organic growth and adjusted earnings per share exceeding guidance despite the unpredictable macroeconomic backdrop",
+          "quote_chars": 186,
+          "status": "ok",
+          "match_count": 2,
+          "matches": [
+            {
+              "chunk_id": "0000773840-25-000062:exhibit99-q22025earningsre.htm:00002",
+              "accession": "0000773840-25-000062",
+              "section": "EX-99",
+              "doc_type": "exhibit",
+              "document": "exhibit99-q22025earningsre.htm",
+              "n_tokens": 200
+            },
+            {
+              "chunk_id": "0000773840-25-000062:exhibit99-q22025earningsre.htm:00003",
+              "accession": "0000773840-25-000062",
+              "section": "EX-99",
+              "doc_type": "exhibit",
+              "document": "exhibit99-q22025earningsre.htm",
+              "n_tokens": 179
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q28",
+      "type": "single_fact",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0000005272-24-000063",
+          "ticker": "AIG",
+          "document": "aig-20240609.htm",
+          "key_section": "item_2.01",
+          "quote": "it no longer had a controlling interest in Corebridge and would no longer consolidate Corebridge",
+          "quote_chars": 96,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0000005272-24-000063:aig-20240609.htm:00004",
+              "accession": "0000005272-24-000063",
+              "section": "item_2.01",
+              "doc_type": "primary",
+              "document": "aig-20240609.htm",
+              "n_tokens": 174
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q13",
+      "type": "cross_company",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0001646972-25-000063",
+          "ticker": "ACI",
+          "document": "aci-20250614.htm",
+          "key_section": "TBD",
+          "quote": "the President signed into law the One Big Beautiful Bill Act",
+          "quote_chars": 60,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0001646972-25-000063:aci-20250614.htm:00023",
+              "accession": "0001646972-25-000063",
+              "section": "part1_item1_financial_statements",
+              "doc_type": "primary",
+              "document": "aci-20250614.htm",
+              "n_tokens": 175
+            }
+          ]
+        },
+        {
+          "position": 1,
+          "accession": "0000009326-25-000014",
+          "ticker": "BCPC",
+          "document": "bcpc-20250630.htm",
+          "key_section": "TBD",
+          "quote": "the One Big Beautiful Bill Act",
+          "quote_chars": 30,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0000009326-25-000014:bcpc-20250630.htm:00056",
+              "accession": "0000009326-25-000014",
+              "section": "part1_item1_financial_statements",
+              "doc_type": "primary",
+              "document": "bcpc-20250630.htm",
+              "n_tokens": 173
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q15",
+      "type": "period_over_period",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0000773840-25-000064",
+          "ticker": "HON",
+          "document": "hon-20250630.htm",
+          "key_section": "part2_item1a_risk_factors",
+          "quote": "expected to be completed during the fourth quarter of 2025",
+          "quote_chars": 58,
+          "status": "ok",
+          "match_count": 2,
+          "matches": [
+            {
+              "chunk_id": "0000773840-25-000064:hon-20250630.htm:00050",
+              "accession": "0000773840-25-000064",
+              "section": "part2_item1a_risk_factors",
+              "doc_type": "primary",
+              "document": "hon-20250630.htm",
+              "n_tokens": 188
+            },
+            {
+              "chunk_id": "0000773840-25-000064:hon-20250630.htm:00180",
+              "accession": "0000773840-25-000064",
+              "section": "part1_item2_mdna",
+              "doc_type": "primary",
+              "document": "hon-20250630.htm",
+              "n_tokens": 181
+            }
+          ]
+        },
+        {
+          "position": 1,
+          "accession": "0000773840-25-000105",
+          "ticker": "HON",
+          "document": "hon-20250930.htm",
+          "key_section": "part1_item2_mdna",
+          "quote": "the Board approved the spin-off, which will be effective as of 12:01 a.m.",
+          "quote_chars": 73,
+          "status": "ok",
+          "match_count": 2,
+          "matches": [
+            {
+              "chunk_id": "0000773840-25-000105:hon-20250930.htm:00050",
+              "accession": "0000773840-25-000105",
+              "section": "part2_item1a_risk_factors",
+              "doc_type": "primary",
+              "document": "hon-20250930.htm",
+              "n_tokens": 188
+            },
+            {
+              "chunk_id": "0000773840-25-000105:hon-20250930.htm:00165",
+              "accession": "0000773840-25-000105",
+              "section": "part1_item2_mdna",
+              "doc_type": "primary",
+              "document": "hon-20250930.htm",
+              "n_tokens": 193
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q16",
+      "type": "period_over_period",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0000773840-25-000064",
+          "ticker": "HON",
+          "document": "hon-20250630.htm",
+          "key_section": "part2_item1a_risk_factors",
+          "quote": "announced its agreement to acquire Johnson Matthey's Catalyst Technologies business segment in an all-cash transaction",
+          "quote_chars": 118,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0000773840-25-000064:hon-20250630.htm:00038",
+              "accession": "0000773840-25-000064",
+              "section": "part2_item1a_risk_factors",
+              "doc_type": "primary",
+              "document": "hon-20250630.htm",
+              "n_tokens": 200
+            }
+          ]
+        },
+        {
+          "position": 1,
+          "accession": "0000773840-25-000105",
+          "ticker": "HON",
+          "document": "hon-20250930.htm",
+          "key_section": "part2_item1a_risk_factors",
+          "quote": "The transaction is subject to customary closing conditions, including receipt of certain regulatory approvals.",
+          "quote_chars": 110,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0000773840-25-000105:hon-20250930.htm:00040",
+              "accession": "0000773840-25-000105",
+              "section": "part2_item1a_risk_factors",
+              "doc_type": "primary",
+              "document": "hon-20250930.htm",
+              "n_tokens": 200
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q17",
+      "type": "period_over_period",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0001646972-24-000225",
+          "ticker": "ACI",
+          "document": "aci-20240907.htm",
+          "key_section": "part1_item1_financial_statements",
+          "quote": "The FTC administrative proceeding and the preliminary injunction hearing in the Federal Action have concluded and the Company awaits a decision.",
+          "quote_chars": 144,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0001646972-24-000225:aci-20240907.htm:00045",
+              "accession": "0001646972-24-000225",
+              "section": "part1_item1_financial_statements",
+              "doc_type": "primary",
+              "document": "aci-20240907.htm",
+              "n_tokens": 199
+            }
+          ]
+        },
+        {
+          "position": 1,
+          "accession": "0001646972-25-000063",
+          "ticker": "ACI",
+          "document": "aci-20250614.htm",
+          "key_section": "part1_item1_financial_statements",
+          "quote": "the Company exercised its right to terminate the Merger Agreement and sent a notice to Kroger on December 10, 2024 terminating the Merger Agreement",
+          "quote_chars": 147,
+          "status": "ok",
+          "match_count": 2,
+          "matches": [
+            {
+              "chunk_id": "0001646972-25-000063:aci-20250614.htm:00063",
+              "accession": "0001646972-25-000063",
+              "section": "part1_item1_financial_statements",
+              "doc_type": "primary",
+              "document": "aci-20250614.htm",
+              "n_tokens": 191
+            },
+            {
+              "chunk_id": "0001646972-25-000063:aci-20250614.htm:00064",
+              "accession": "0001646972-25-000063",
+              "section": "part1_item1_financial_statements",
+              "doc_type": "primary",
+              "document": "aci-20250614.htm",
+              "n_tokens": 185
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q18",
+      "type": "period_over_period",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0000005272-24-000079",
+          "ticker": "AIG",
+          "document": "aig-20240630.htm",
+          "key_section": "part1_item2_mdna",
+          "quote": "Corebridge retained investment ( 48.4 % @ 28.90 per share at June 9, 2024)",
+          "quote_chars": 74,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0000005272-24-000079:aig-20240630.htm:00075",
+              "accession": "0000005272-24-000079",
+              "section": "part1_item2_mdna",
+              "doc_type": "primary",
+              "document": "aig-20240630.htm",
+              "n_tokens": 200
+            }
+          ]
+        },
+        {
+          "position": 1,
+          "accession": "0000005272-26-000052",
+          "ticker": "AIG",
+          "document": "aig-20260331.htm",
+          "key_section": "part1_item2_mdna",
+          "quote": "AIG held 5.6 percent of the outstanding common stock of Corebridge and we concluded that we no longer have the ability to exert significant influence over Corebridge",
+          "quote_chars": 165,
+          "status": "ok",
+          "match_count": 2,
+          "matches": [
+            {
+              "chunk_id": "0000005272-26-000052:aig-20260331.htm:00028",
+              "accession": "0000005272-26-000052",
+              "section": "part1_item2_mdna",
+              "doc_type": "primary",
+              "document": "aig-20260331.htm",
+              "n_tokens": 195
+            },
+            {
+              "chunk_id": "0000005272-26-000052:aig-20260331.htm:00029",
+              "accession": "0000005272-26-000052",
+              "section": "part1_item2_mdna",
+              "doc_type": "primary",
+              "document": "aig-20260331.htm",
+              "n_tokens": 184
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q19",
+      "type": "period_over_period",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "0001423689-24-000058",
+          "ticker": "AGNC",
+          "document": "agnc-20240630.htm",
+          "key_section": null,
+          "quote": "The primary instruments that we use are interest rate swaps, options to enter into interest rate swaps",
+          "quote_chars": 102,
+          "status": "ok",
+          "match_count": 1,
+          "matches": [
+            {
+              "chunk_id": "0001423689-24-000058:agnc-20240630.htm:00037",
+              "accession": "0001423689-24-000058",
+              "section": null,
+              "doc_type": "primary",
+              "document": "agnc-20240630.htm",
+              "n_tokens": 183
+            }
+          ]
+        },
+        {
+          "position": 1,
+          "accession": "0001423689-26-000128",
+          "ticker": "AGNC",
+          "document": "agnc-20260630.htm",
+          "key_section": null,
+          "quote": "The primary instruments that we use are interest rate swaps, options to enter into interest rate swaps",
+          "quote_chars": 102,
+          "status": "ok",
+          "match_count": 2,
+          "matches": [
+            {
+              "chunk_id": "0001423689-26-000128:agnc-20260630.htm:00038",
+              "accession": "0001423689-26-000128",
+              "section": null,
+              "doc_type": "primary",
+              "document": "agnc-20260630.htm",
+              "n_tokens": 196
+            },
+            {
+              "chunk_id": "0001423689-26-000128:agnc-20260630.htm:00039",
+              "accession": "0001423689-26-000128",
+              "section": null,
+              "doc_type": "primary",
+              "document": "agnc-20260630.htm",
+              "n_tokens": 200
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q21",
+      "type": "negative_control",
+      "key_status": "verified",
+      "status": "negative_control",
+      "quotes": []
+    },
+    {
+      "id": "q22",
+      "type": "negative_control",
+      "key_status": "verified",
+      "status": "negative_control",
+      "quotes": []
+    },
+    {
+      "id": "q23",
+      "type": "negative_control",
+      "key_status": "verified",
+      "status": "negative_control",
+      "quotes": []
+    },
+    {
+      "id": "q24",
+      "type": "negative_control",
+      "key_status": "verified",
+      "status": "negative_control",
+      "quotes": []
+    },
+    {
+      "id": "q25",
+      "type": "negative_control",
+      "key_status": "verified",
+      "status": "negative_control",
+      "quotes": []
+    },
+    {
+      "id": "q26",
+      "type": "dedup_diagnostic",
+      "key_status": "verified",
+      "status": "checked",
+      "quotes": [
+        {
+          "position": 0,
+          "accession": "ANY",
+          "ticker": "HON",
+          "document": "ANY",
+          "key_section": "None",
+          "quote": "d-2(b)) \u2610 Pre-commencement communications pursuant to Rule 13e-4(c) under the Exchange Act (17 CFR 240.13e-4(c)) Securities registered pursuant to Section 12(b) of the Act: Title of each class Trading Symbol(s) Name of each exchange on which registered Common Stock, par value $1 per share HON The Nasdaq Stock Market LLC 3.500% Senior Notes due 2027 HON 27 The Nasdaq Stock Market LLC 2.250% Senior Notes due 2028 HON 28A The Nasdaq Stock Market LLC 3.375% Senior Notes due 2030 HON 30 The Nasdaq Stock Market LLC 0.750% Senior Notes due 2032 HON 32 The Nasdaq Stock Market LLC 3.750% Senior Notes due 2032 HON 32A The Nasdaq Stock Market LLC 4.125% Senior Notes due 2034 HON 34 The Nasdaq Stock Market LLC 3.750% Senior Notes due 2036 HON 36 The Nasdaq Stock Market LLC Indicate by check mark whether the registrant is an emerging growth company as defined in Rule 405 of the Securities Act of 1933 (\u00a7230.405 of this chapter) or Rule 12b-2 of the Securities Exchange Act of 1934 (\u00a7240.12b-2 of this chapter). Emerging Growth Company \u2610 If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. \u2610",
+          "quote_chars": 1289,
+          "status": "quote_absent",
+          "match_count": 0,
+          "matches": [],
+          "distinct_accessions": 0,
+          "distinct_texts": 0,
+          "distinct_tickers": []
+        }
+      ]
+    }
+  ]
+}

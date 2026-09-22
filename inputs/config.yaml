@@ -203,6 +203,26 @@ embed:
     # max_seq_length 512 (same ceiling as bge-small, so chunk.size 450 is safe)
     # and vocab_size 30522 with a byte-identical tokenizer, so chunks built for
     # bge-small are reusable without a re-parse.
+    # Hosted, finance-domain. Selected with --set embed.provider=voyage.
+    # NOTE THE ASYMMETRY CONVENTION DIFFERS: bge prepends a literal string to
+    # queries; Voyage takes an input_type parameter ("query"/"document") and
+    # prepends its own prompt server-side. There is deliberately no
+    # query_prefix here -- sending bge's prefix would embed the instruction as
+    # content and the provider comparison would measure the prefix.
+    # Verified from docs.voyageai.com: 1024 dimensions, 32,000-token context,
+    # $0.12/M tokens with the first 50M free per account.
+    voyage:
+      model: voyage-finance-2
+      # Name of the env var holding the key. The value lives in .env only.
+      api_key_env: VOYAGE_API_KEY
+      normalize: true
+      # The API caps a request at 1,000 texts and 120K tokens for this model;
+      # both ceilings are respected, with headroom.
+      max_batch_tokens: 100000
+      max_retries: 6
+      backoff_initial_sec: 2.0
+      backoff_max_sec: 60.0
+
     local_base:
       model: BAAI/bge-base-en-v1.5
       revision: a5beb1e3e68b9ab74eb54cfd186867f64f240e1a
