@@ -77,9 +77,10 @@ _KNOWN_DIMS: dict[str, int] = {
 #: would be worse than an absent one -- too high and chunks are silently
 #: truncated, which is invisible downstream.
 _KNOWN_MAX_SEQ: dict[str, int] = {
-    # Verified against the model's sentence_bert_config.json ("max_seq_length":
-    # 512) and config.json (max_position_embeddings: 512).
+    # Each verified against that model's own sentence_bert_config.json
+    # ("max_seq_length": 512) and config.json (max_position_embeddings: 512).
     "BAAI/bge-small-en-v1.5": 512,
+    "BAAI/bge-base-en-v1.5": 512,
 }
 
 
@@ -96,8 +97,13 @@ class LocalEmbedder:
         normalize: bool = True,
         max_batch: int = 64,
         query_prefix: str = "",
+        revision: str | None = None,
     ) -> None:
         self.model_name = model
+        # Pinning the revision keeps a long build reproducible: without it the
+        # hub resolves "main", which can move between runs, and an A/B would be
+        # comparing two models while believing it compared one.
+        self.revision = revision
         self.device = None if device == "auto" else device
         self.normalized = bool(normalize)
         self.max_batch = int(max_batch)
@@ -131,7 +137,10 @@ class LocalEmbedder:
                 from sentence_transformers import SentenceTransformer
             except ImportError as exc:
                 raise EmbedderError(_diagnose_import("sentence_transformers", exc)) from exc
-            self._model = SentenceTransformer(self.model_name, device=self.device)
+            kwargs = {"device": self.device}
+            if self.revision:
+                kwargs["revision"] = self.revision
+            self._model = SentenceTransformer(self.model_name, **kwargs)
         return self._model
 
     def _encode(self, texts: list[str], stage: StageRecorder | None) -> np.ndarray:
@@ -188,6 +197,7 @@ class LocalEmbedder:
             "max_batch": self.max_batch,
             "max_seq_tokens": self.max_seq_tokens,
             "device": self.device or "auto",
+            "revision": self.revision,
             "query_prefix": self.query_prefix or None,
         }
 
@@ -195,19 +205,37 @@ class LocalEmbedder:
         return f"LocalEmbedder(model={self.model_name!r}, dim={self.dim})"
 
 
-@register_embedder("local")
-def _build_local(config: Config) -> LocalEmbedder:
-    """Factory: construct a LocalEmbedder from config.
+def _from_block(config: Config, block: str) -> LocalEmbedder:
+    """Construct a LocalEmbedder from one ``embed.providers.*`` block.
 
     Batch size comes from ``embed.batch_size`` (Rule 3) rather than the
     provider block, so a scaling sweep can vary it with --set without caring
     which provider is selected.
     """
-    settings = config.get("embed.providers.local", {}) or {}
+    settings = config.get(block, {}) or {}
+    if not settings.get("model"):
+        raise EmbedderError(f"config block {block!r} has no model")
     return LocalEmbedder(
-        model=settings.get("model", "BAAI/bge-small-en-v1.5"),
+        model=settings["model"],
         device=settings.get("device", "auto"),
         normalize=settings.get("normalize", True),
         max_batch=config.get("embed.batch_size", 64),
         query_prefix=settings.get("query_prefix", "") or "",
+        revision=settings.get("revision") or None,
     )
+
+
+@register_embedder("local")
+def _build_local(config: Config) -> LocalEmbedder:
+    """bge-small-en-v1.5 by default. The baseline this project was built on."""
+    return _from_block(config, "embed.providers.local")
+
+
+@register_embedder("local_base")
+def _build_local_base(config: Config) -> LocalEmbedder:
+    """A second local model, selected with ``--set embed.provider=local_base``.
+
+    Registered separately rather than by editing the ``local`` block so the
+    baseline stays runnable: an A/B needs both models addressable at once.
+    """
+    return _from_block(config, "embed.providers.local_base")

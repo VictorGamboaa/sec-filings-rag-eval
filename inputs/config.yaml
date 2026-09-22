@@ -186,12 +186,28 @@ embed:
   providers:
     local:
       model: BAAI/bge-small-en-v1.5
+      # Pinned so a long build cannot resolve "main" to a different revision
+      # part-way through, which would make an A/B compare two models while
+      # believing it compared one.
+      revision: 5c38ec7c405ec4b44b94cc5a9bb96e735b38267a
       # Pinned to cpu, not auto: auto silently selects CUDA where present, so the
       # same config would yield different throughput on different hosts and the
       # build-cost measurement would stop being comparable across runs.
       device: cpu
       normalize: true
       # bge models expect this prefix on queries but not on documents.
+      query_prefix: "Represent this sentence for searching relevant passages: "
+    # Selected with --set embed.provider=local_base. Same bge family, so the
+    # asymmetric query-prefix convention is unchanged; 110M params / 768 dims
+    # against local's 33M / 384. Verified from the model's own config:
+    # max_seq_length 512 (same ceiling as bge-small, so chunk.size 450 is safe)
+    # and vocab_size 30522 with a byte-identical tokenizer, so chunks built for
+    # bge-small are reusable without a re-parse.
+    local_base:
+      model: BAAI/bge-base-en-v1.5
+      revision: a5beb1e3e68b9ab74eb54cfd186867f64f240e1a
+      device: cpu
+      normalize: true
       query_prefix: "Represent this sentence for searching relevant passages: "
 
 index:
@@ -215,6 +231,19 @@ retrieve:
 evaluate:
   out_dir: outputs/eval
   answer_key_path: inputs/answer_key.yaml
+  recall_at: [5, 20]
+  # Section labels are trustworthy only for these filers. AGNC chunks are
+  # unsectioned (its 10-Q financial statements match no anchor), and HON and AIG
+  # carry confidently WRONG labels -- Notes text tagged part2_item1a_risk_factors
+  # or part1_item2_mdna, because the Item 1A anchor matches early and absorbs the
+  # notes region. Including them would inflate the metric: a consistently wrong
+  # label still matches itself.
+  section_accuracy_tickers: ["BCPC", "ACI"]
+  # Types counted as "answerable" in the headline comparison against the
+  # negative controls. dedup_diagnostic is excluded from both: q26 is a
+  # boilerplate probe and would score high for reasons that say nothing about
+  # whether a question is answerable.
+  answerable_types: ["single_fact", "cross_company", "period_over_period"]
   # A quote matching more than this many chunks is flagged as too generic to
   # score cleanly: a retrieval result containing "the" match is not evidence of
   # anything when the text appears in many chunks.

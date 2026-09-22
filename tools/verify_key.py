@@ -83,11 +83,19 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
+from tools.answerkey import (
+    MetadataIndex,
+    index_fingerprint,
+    load_key,
+    load_metadata,
+)
+from tools.answerkey import ground_truths as _ground_truths_shared
+from tools.answerkey import normalize as _normalize_shared
 from tools.config import Config, ConfigError, add_config_args, load_config
 from tools.edgar import from_stored_path
 from tools.htmltext import extract_text, inline_tags_from_config
 from tools.runlog import RunLog
-from tools.embed_index import METADATA_FILE
+from tools.embed_index import METADATA_FILE, SIDECAR_FILE
 
 __all__ = ["verify_key", "normalize"]
 
@@ -95,54 +103,27 @@ _WS = re.compile(r"\s+")
 
 
 def normalize(text: str) -> str:
-    """Collapse whitespace. The only transformation applied to either side."""
-    return _WS.sub(" ", str(text)).strip()
+    """Collapse whitespace. The only transformation applied to either side.
+
+    Delegates to tools.answerkey so verification and evaluation cannot drift
+    apart on what counts as a match.
+    """
+    return _normalize_shared(text)
 
 
 def _load_key(path: Path) -> list[dict[str, Any]]:
-    import yaml
-
-    if not path.is_file():
-        raise ConfigError(
-            f"{path} not found. Point evaluate.answer_key_path at the key, or "
-            f"create it."
-        )
-    data = yaml.safe_load(path.read_text(encoding="utf-8"))
-    if not isinstance(data, list):
-        raise ConfigError(
-            f"{path} must be a list of entries, got {type(data).__name__}."
-        )
-    return data
+    """See tools.answerkey.load_key."""
+    return load_key(path)
 
 
 def _ground_truths(entry: dict[str, Any]) -> list[dict[str, Any]]:
-    """Normalize the three shapes ``ground_truth`` takes in the key.
-
-    A mapping is one ground truth; a list is several (cross-company and
-    period-over-period questions need more than one); ``null`` is a negative
-    control, which is *supposed* to have none and is not a defect.
-    """
-    gt = entry.get("ground_truth")
-    if gt is None:
-        return []
-    if isinstance(gt, dict):
-        return [gt]
-    if isinstance(gt, list):
-        return [g for g in gt if isinstance(g, dict)]
-    return []
+    """See tools.answerkey.ground_truths."""
+    return _ground_truths_shared(entry)
 
 
 def _load_metadata(path: Path) -> list[dict[str, Any]]:
-    if not path.is_file():
-        raise ConfigError(
-            f"{path} not found. Build the index first: python -m tools.embed_index"
-        )
-    rows = []
-    for line in path.read_text(encoding="utf-8").splitlines():
-        line = line.strip()
-        if line:
-            rows.append(json.loads(line))
-    return rows
+    """See tools.answerkey.load_metadata."""
+    return load_metadata(path)
 
 
 def _document_text(
@@ -185,6 +166,16 @@ def verify_key(
 
     key = _load_key(key_path)
     metadata = _load_metadata(metadata_path)
+
+    # The chunk ids this key resolves to are only valid for THIS index. The
+    # fingerprint is recorded so tools.evaluate can refuse to score against a
+    # different one -- a rebuild silently changes what every id means.
+    sidecar_path = index_dir / SIDECAR_FILE
+    sidecar = (
+        json.loads(sidecar_path.read_text(encoding="utf-8"))
+        if sidecar_path.is_file() else {}
+    )
+    fingerprint = index_fingerprint(sidecar) if sidecar else None
 
     by_accession: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for row in metadata:
@@ -352,6 +343,8 @@ def verify_key(
     report = {
         "answer_key": str(key_path),
         "index": str(index_dir),
+        "index_fingerprint": fingerprint,
+        "index_sidecar": sidecar or None,
         "entries": len(results),
         "generic_match_threshold": threshold,
         "summary": _summarize(results),
@@ -407,6 +400,8 @@ def _print_report(report: dict[str, Any]) -> None:
     print("=== ANSWER KEY VERIFICATION (report only; the key is not modified) ===")
     print(f"  key   : {report['answer_key']}")
     print(f"  index : {report['index']}")
+    print(f"  index fingerprint : {report.get('index_fingerprint')}"
+          "   (tools.evaluate refuses to score against a different one)")
     print()
 
     flagged: list[tuple[str, dict[str, Any]]] = []
@@ -495,12 +490,24 @@ def main(argv: list[str] | None = None) -> int:
                 out_path = out_dir / f"key_verification_{log.run_id}.json"
                 payload = json.dumps(report, indent=2, default=str)
                 out_path.write_text(payload, encoding="utf-8")
+                # Overwritten each run, and named per index: tools.evaluate
+                # reads this rather than guessing which timestamped report is
+                # current, and an A/B over two indexes keeps both bindings.
+                from tools.evaluate import verification_record_path
+
+                latest = verification_record_path(config)
+                latest.write_text(payload, encoding="utf-8")
 
                 summary = report["summary"]
                 stage.count(summary.get("quotes_checked", 0))
                 stage.bytes_out(len(payload.encode("utf-8")))
                 # No request() calls: local files only.
-                stage.note(out_path=str(out_path), **summary)
+                stage.note(
+                    out_path=str(out_path),
+                    latest_path=str(latest),
+                    index_fingerprint=report.get("index_fingerprint"),
+                    **summary,
+                )
                 for entry in report["results"]:
                     for q in entry.get("quotes", []):
                         if q["status"] not in _NOT_A_DEFECT:

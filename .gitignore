@@ -18,5 +18,12 @@ outputs/*
 temp/*
 !temp/.gitkeep
 
+# One-off scripts and probes. Kept out of tools/ and the project root so that
+# tools/ stays the deterministic, tested layer the workflows depend on.
+scratch/*
+!scratch/.gitkeep
+
 # Model caches
 .cache/
+scratch/
+*.bak*

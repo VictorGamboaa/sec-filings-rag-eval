@@ -538,6 +538,22 @@
     cover-page text from different filings, and deduplication is worth doing.
     The previous quote ("855 S. Mint Street") measured nothing: it sits in
     chunk_ordinal 0, whose text differs per filing (7 hits, 7 distinct texts).
+    CHUNK-SIZE PORTABILITY -- tested and deliberately declined.
+    This quote is 1,289 characters, so it requires a chunk size large enough to
+    contain it. At chunk 450 it resolves to 34 accessions / 3 distinct texts.
+    At chunk 200 it resolves to NOTHING: the longest chunk there is 1,293
+    characters and the quote cannot fit inside one. That is unscoreable BY
+    CONSTRUCTION, not a defect in the entry.
+    A shorter span was searched for and rejected. Every candidate under 200
+    characters resolves to a strict SUPERSET -- the tightest was 119 characters
+    giving 49 accessions / 19 distinct texts. The cause is structural, not a
+    search failure: Honeywell prints the same Section 12(b) securities table on
+    the cover of its 10-Qs as well as its 8-Ks, so any span short enough to
+    survive chunk 200 sits entirely inside the shared table and picks up the
+    10-Q covers too. That would mix 10-Q cover pages into an 8-K boilerplate
+    diagnostic and quadruple the distinct-text count.
+    The tight 34:3 structure is what makes this metric diagnostic. Portability
+    was a convenience goal, not a requirement, and is not worth that trade.
 
 # =============================================================================
 # EXCLUDED — do not write ground truth here
